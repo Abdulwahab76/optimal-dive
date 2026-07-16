@@ -1,21 +1,90 @@
-import { ArrowRight } from "lucide-react";
+"use client";
 
-// Navbar.jsx
+import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
+import { ArrowRight, Menu, X } from "lucide-react";
+
+const navLinks = [
+  { title: "Services", href: "/services" },
+  { title: "Industries", href: "/industries" },
+  { title: "About", href: "/about" },
+  { title: "Portfolio", href: "/portfolio" },
+  { title: "Blog", href: "/blog" },
+];
+
 export default function Navbar() {
-  return (
-    <nav className="max-w-5xl mx-auto   border border-gray-100  rounded-bl-2xl rounded-br-2xl px-4 py-4 flex items-center justify-between shadow-[0px_-26px_15px_0px_#2A4CE0]">
-      <img src="/images/logo.png" className="h-8" alt="" />
+  const [open, setOpen] = useState(false);
 
-      <ul className="hidden md:flex items-center gap-8 p-2.5  px-6 rounded-full text-sm border border-primary-1 *:font-normal">
-        <li>Services</li>
-        <li>Industries</li>
-        <li>About</li>
-        <li>Portfolio</li>
-        <li>Blog</li>
-      </ul>
-      <div className="flex items-center gap-2 bg-linear-to-b from-primary-1 to-primary-2 text-white px-6 py-2   rounded-full">
-        <button className="text-sm font-semibold ">Contact</button>
-        <ArrowRight size={10}/>
+  return (
+    <nav className="relative z-50">
+      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-b-3xl border border-gray-100 bg-white px-5 py-4 shadow-[0px_-26px_15px_0px_#2A4CE0]">
+        <Link href="/">
+          <Image
+            src="/images/logo.png"
+            alt="Logo"
+            width={140}
+            height={40}
+            priority
+          />
+        </Link>
+
+        <ul className="hidden items-center gap-8 rounded-full border  border-primary-1 px-6 py-2 text-sm md:flex">
+          {navLinks.map((item) => (
+            <li key={item.title}>
+              <Link
+                href={item.href}
+                className="transition hover:text-primary-1"
+              >
+                {item.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+
+        <div className="hidden md:flex">
+          <Link
+            href="/contact"
+            className="flex items-center gap-2 rounded-full bg-gradient-to-b from-primary-1 to-primary-2 px-6 py-2 text-white"
+          >
+            <span className="text-sm font-semibold">Contact</span>
+            <ArrowRight size={12} />
+          </Link>
+        </div>
+
+        <button onClick={() => setOpen(!open)} className="md:hidden">
+          {open ? <X size={28} /> : <Menu size={28} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+
+      <div
+        className={`overflow-hidden transition-all duration-500 ease-in-out md:hidden border-b   border-primary-1 rounded-br-xl rounded-bl-xl ${
+          open ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        }`}
+      >
+        <div className="space-y-5    bg-white px-6 py-6  ">
+          {navLinks.map((item) => (
+            <Link
+              key={item.title}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              className="block text-gray-700 transition hover:text-primary-1"
+            >
+              {item.title}
+            </Link>
+          ))}
+
+          <Link
+            href="/contact"
+            onClick={() => setOpen(false)}
+            className="flex w-fit items-center gap-2 rounded-full bg-gradient-to-b from-primary-1 to-primary-2 px-6 py-3 text-white"
+          >
+            Contact
+            <ArrowRight size={14} />
+          </Link>
+        </div>
       </div>
     </nav>
   );

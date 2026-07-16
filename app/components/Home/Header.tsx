@@ -1,4 +1,3 @@
-// Header.jsx
 import Navbar from "./Navbar";
 import Hero from "./Hero";
 

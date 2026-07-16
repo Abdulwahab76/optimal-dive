@@ -13,14 +13,14 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <AboutSection />
+      {/* <AboutSection />
       <CompanySection />
       <SuccessStories />
       <ServicesSection />
       <ProductProcessSection />
       <Technologies />
       <TestimonialSlider />
-      <IndustriesSection />
+      <IndustriesSection /> */}
     </div>
   );
 }
