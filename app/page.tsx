@@ -8,6 +8,7 @@ import ProductProcessSection from "./components/Home/Productprocesssection";
 import Technologies from "./components/Home/Technologies";
 import TestimonialSlider from "./components/Home/TestimonialSlider";
 import IndustriesSection from "./components/Branding/IndustriesSection";
+import LatestInsights from "./components/Home/LatestInsights";
 
 export default function Home() {
   return (
@@ -22,6 +23,7 @@ export default function Home() {
       <Technologies />
       <TestimonialSlider />
       <IndustriesSection />
+      <LatestInsights />
     </div>
   );
 }

@@ -29,7 +29,7 @@ export default function Navbar() {
           />
         </Link>
 
-        <ul className="hidden items-center gap-8 rounded-full border  border-primary-1 px-6 py-2 text-sm md:flex">
+        <ul className="hidden items-center gap-8 rounded-full border  border-primary-1 px-8 py-2 text-sm md:flex">
           {navLinks.map((item) => (
             <li key={item.title}>
               <Link

@@ -51,15 +51,17 @@ export default function Hero() {
             <br />
             <span
               className="
-          font-bold
-          text-primary-1
-
-          text-4xl
-
-          sm:text-6xl
-          md:text-7xl
-          lg:text-8xl
-        "
+    bg-gradient-to-b
+    from-primary-1
+    to-primary-2
+    bg-clip-text
+    text-transparent
+    font-bold
+    text-4xl
+    sm:text-6xl
+    md:text-7xl
+    lg:text-8xl
+  "
             >
               Digital Futures
             </span>

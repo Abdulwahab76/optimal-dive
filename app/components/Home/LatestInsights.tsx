@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type Blog = {
@@ -31,11 +31,13 @@ export default function LatestInsights() {
     <section className="py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-10 flex items-center justify-between">
-          <h2 className="text-4xl font-bold text-gray-900">Latest Insights</h2>
+          <h2 className="text-3xl lg:text-6xl font-bold text-black">
+            Latest Insights
+          </h2>
 
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-sm font-medium text-white transition hover:bg-indigo-700"
+            className="inline-flex items-center gap-2 rounded-full bg-linear-to-b from-primary-1 to-primary-2  px-6 py-3 text-sm font-medium text-white transition hover:bg-indigo-700"
           >
             View All
             <ArrowRight size={16} />
@@ -56,8 +58,8 @@ export default function LatestInsights() {
                   className="object-cover"
                 />
 
-                <div className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-indigo-600 text-white">
-                  <ArrowRight size={16} />
+                <div className="absolute right-4 top-4 flex h-12 w-12 text-center font-bold text-xs items-center justify-center rounded-full bg-linear-to-b from-primary-1 to-primary-2 text-white">
+                  18 <br /> june
                 </div>
               </div>
 
@@ -76,12 +78,12 @@ export default function LatestInsights() {
 
                 <Link
                   href={`/blog/${blog.slug}`}
-                  className="mt-8 flex items-center justify-between border-t pt-5 text-sm font-medium text-gray-900"
+                  className="mt-8 flex items-center gap-x-3 justify-end pt-5 text-sm font-medium text-black"
                 >
-                  Read More
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-indigo-600 text-white">
-                    <ArrowRight size={14} />
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-linear-to-b from-primary-1 to-primary-2 text-white">
+                    <ChevronRight size={14} />
                   </span>
+                  Read More
                 </Link>
               </div>
             </article>
