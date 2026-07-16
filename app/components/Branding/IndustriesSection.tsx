@@ -6,6 +6,7 @@ import {
   GraduationCap,
   HeartPulse,
 } from "lucide-react";
+import IndustryCard from "./IndustryCard";
 
 const industries = [
   {
@@ -49,88 +50,81 @@ const industries = [
 
 export default function IndustriesSection() {
   return (
-    <section className="relative overflow-hidden bg-[#1F1F1F]">
+    <section className="relative overflow-hidden bg-[#1C1C1C]">
       {/* Top Curve */}
-      <div className="absolute top-0 left-0 w-full">
+      <div className="absolute top-0 left-0 z-30 w-full overflow-hidden leading-none">
         <svg
           viewBox="0 0 1440 140"
           preserveAspectRatio="none"
-          className="block h-20 w-full md:h-28"
+          className="block h-28 w-full"
+          style={{ transform: "scaleY(-1)" }}
         >
           <path
-            fill="#ffffff"
-            d="M0,0 L1440,0 L1440,38 C1080,105 360,105 0,38 Z"
+            fill="#fff"
+            d="M0,40 C360,120 1080,120 1440,40 L1440,140 L0,140 Z"
           />
         </svg>
       </div>
 
-      {/* Bottom Curve */}
-      <div className="absolute bottom-0 left-0 w-full">
-        <svg
-          viewBox="0 0 1440 140"
-          preserveAspectRatio="none"
-          className="block h-20 w-full md:h-28"
-        >
-          <path
-            fill="#ffffff"
-            d="M0,100 C360,35 1080,35 1440,100 L1440,140 L0,140 Z"
-          />
-        </svg>
-      </div>
-
-      {/* Purple Glow */}
+      {/* Bottom Purple Glow */}
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-            h-[420px] w-[900px] rounded-full pointer-events-none"
+        className="pointer-events-none absolute -bottom-52 left-1/2 -translate-x-1/2 z-0"
         style={{
-          background:
-            "radial-gradient(ellipse, rgba(92,79,255,.32) 0%, rgba(92,79,255,.15) 45%, transparent 80%)",
-          filter: "blur(90px)",
+          width: "1700px",
+          height: "520px",
+          background: `
+          radial-gradient(
+            ellipse at center,
+            rgba(109,123,248,.48) 0%,
+            rgba(81,87,247,.28) 35%,
+            rgba(81,87,247,.12) 60%,
+            transparent 100%
+          )
+        `,
+          filter: "blur(110px)",
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 py-36">
+      {/* Content */}
+      <div className="relative z-20 mx-auto max-w-6xl px-6 pt-36 pb-40">
         {/* Heading */}
-        <div className="mb-16 grid gap-6 md:grid-cols-2 md:items-start">
-          <h2 className="text-4xl font-bold text-white md:text-5xl">
+        <div className="mb-16 grid gap-8 lg:grid-cols-2 lg:items-start">
+          <h2 className="text-4xl font-semibold leading-tight text-white lg:text-5xl">
             Industries We Serve
           </h2>
 
-          <p className="max-w-md text-sm leading-7 text-white/70">
+          <p className="max-w-md text-sm leading-7 text-white/65">
             We provide tailored solutions that address the unique demands across
             various industries, delivering transformative experiences to drive
             significant impact.
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-          {industries.map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <div key={item.title}>
-                <div
-                  className={`mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl ${
-                    item.active
-                      ? "bg-gradient-to-b from-[#6D7BF8] to-[#5157F7]"
-                      : "bg-white/5"
-                  }`}
-                >
-                  <Icon size={20} className="text-white" />
-                </div>
-
-                <h3 className="mb-3 text-xl font-semibold text-white">
-                  {item.title}
-                </h3>
-
-                <p className="text-sm leading-7 text-white/60">
-                  {item.description}
-                </p>
-              </div>
-            );
-          })}
+        {/* Cards */}
+        <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {industries.map((item) => (
+            <IndustryCard
+              key={item.title}
+              title={item.title}
+              description={item.description}
+              icon={item.icon}
+            />
+          ))}
         </div>
+      </div>
+
+      {/* Bottom Curve */}
+      <div className="absolute bottom-0 left-0 z-30 w-full overflow-hidden leading-none">
+        <svg
+          viewBox="0 0 1440 140"
+          preserveAspectRatio="none"
+          className="block h-28 w-full"
+        >
+          <path
+            fill="#fff"
+            d="M0,40 C360,120 1080,120 1440,40 L1440,140 L0,140 Z"
+          />
+        </svg>
       </div>
     </section>
   );
