@@ -91,7 +91,7 @@ export default function Technologies() {
       </div>
       <div className="bg-white py-20">
         <div className="mx-auto max-w-7xl px-5">
-          <div className="flex flex-col items-center justify-between gap-8 rounded-full border border-[#9AA5FF] bg-[#F5F6FFB2] px-8 py-10 md:flex-row md:px-10 lg:px-14">
+          <div className="flex flex-col items-center justify-between gap-8 rounded-lg lg:rounded-full border border-[#9AA5FF] bg-[#F5F6FFB2] px-8 py-10 md:flex-row md:px-10 lg:px-14">
             <h2 className="text-center text-2xl font-semibold tracking-[-0.02em] text-[#111] md:text-left lg:text-4xl lg:leading-none">
               Ready to build something lasting?
             </h2>

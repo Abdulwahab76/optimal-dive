@@ -84,7 +84,7 @@ export function ProductProcessSection() {
       />
 
       <div className="relative z-20 mx-auto max-w-7xl px-6 pt-32 pb-32">
-        <h2 className="text-center text-3xl sm:text-6xl font-semibold leading-tight text-white">
+        <h2 className="text-center text-3xl sm:text-5xl font-semibold leading-tight text-white">
           Our Product
           <br />
           Development Process

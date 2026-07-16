@@ -19,9 +19,9 @@ export default function Home() {
       <SuccessStories />
       <ServicesSection />
       <ProductProcessSection />
-      {/* <Technologies />
+      <Technologies />
       <TestimonialSlider />
-      <IndustriesSection /> */}
+      <IndustriesSection />
     </div>
   );
 }

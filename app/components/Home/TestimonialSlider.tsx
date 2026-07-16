@@ -36,7 +36,7 @@ export default function TestimonialSlider() {
     setActive((p) => (p === 0 ? testimonials.length - 1 : p - 1));
 
   return (
-    <section className="w-full bg-white py-20">
+    <section className="w-full bg-white pb-20">
       <div className="mx-auto max-w-6xl px-5">
         <div className="text-center">
           <h2 className="text-3xl md:text-5xl font-semibold">

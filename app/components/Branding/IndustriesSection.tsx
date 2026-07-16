@@ -53,10 +53,21 @@ export default function IndustriesSection() {
     <section className="relative overflow-hidden bg-[#1C1C1C]">
       {/* Top Curve */}
       <div className="absolute top-0 left-0 z-30 w-full overflow-hidden leading-none">
+        {/* Mobile */}
+        <svg
+          viewBox="0 0 1440 40"
+          preserveAspectRatio="none"
+          className="block h-10 w-full md:hidden"
+          style={{ transform: "scaleY(-1)" }}
+        >
+          <rect width="1440" height="40" fill="#fff" />
+        </svg>
+
+        {/* Desktop */}
         <svg
           viewBox="0 0 1440 140"
           preserveAspectRatio="none"
-          className="block h-28 w-full"
+          className="hidden h-28 w-full md:block"
           style={{ transform: "scaleY(-1)" }}
         >
           <path
@@ -65,7 +76,6 @@ export default function IndustriesSection() {
           />
         </svg>
       </div>
-
       {/* Bottom Purple Glow */}
       <div
         className="pointer-events-none absolute -bottom-52 left-1/2 -translate-x-1/2 z-0"
@@ -115,10 +125,20 @@ export default function IndustriesSection() {
 
       {/* Bottom Curve */}
       <div className="absolute bottom-0 left-0 z-30 w-full overflow-hidden leading-none">
+        {/* Mobile */}
+        <svg
+          viewBox="0 0 1440 40"
+          preserveAspectRatio="none"
+          className="block h-10 w-full md:hidden"
+        >
+          <rect width="1440" height="40" fill="#fff" />
+        </svg>
+
+        {/* Desktop */}
         <svg
           viewBox="0 0 1440 140"
           preserveAspectRatio="none"
-          className="block h-28 w-full"
+          className="hidden h-28 w-full md:block"
         >
           <path
             fill="#fff"

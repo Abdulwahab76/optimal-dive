@@ -20,8 +20,8 @@ export function TestimonialCard({ item }: Props) {
       max-w-3xl
       rounded-xl
       bg-gradient-to-r
-      from-indigo-500
-      to-indigo-400
+      from-primary-1
+      to-primary-2
       px-8
       py-10
       text-white
