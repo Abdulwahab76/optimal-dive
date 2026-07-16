@@ -23,16 +23,16 @@ export default function SuccessStories() {
     <section className="py-28 bg-white">
       <div className="max-w-[1380px] mx-auto px-6">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <h2 className="text-6xl font-bold tracking-tight">
+          <h2 className="text-3xl lg:text-6xl font-bold tracking-tight">
             Our Success Stories
           </h2>
 
-          <div className="flex gap-4">
-            <button className="h-12 flex items-center gap-2   rounded-full border border-black px-8 text-base font-medium">
+          <div className="flex gap-4 flex-wrap items-center">
+            <button className="h-10 flex items-center gap-2   rounded-full border border-black px-8 text-base font-medium">
               View More <ArrowRight size={12} />
             </button>
 
-            <div className="flex items-center gap-2 bg-linear-to-b from-primary-1 to-primary-2 text-white px-6 py-2   rounded-full">
+            <div className="flex items-center gap-2 bg-linear-to-b from-primary-1 to-primary-2 text-white px-6 py-2.5   rounded-full">
               <button className="text-base font-medium ">
                 Start Your Project
               </button>

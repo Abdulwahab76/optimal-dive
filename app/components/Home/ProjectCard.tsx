@@ -12,7 +12,7 @@ export default function ProjectCard({ title, category, image, large }: Props) {
     <article>
       <div
         className={`relative overflow-hidden rounded-[28px]
-        ${large ? "h-[560px]" : "h-[560px]"}`}
+        ${large ? "h-140" : "h-140"}`}
       >
         <Image
           src={image}
