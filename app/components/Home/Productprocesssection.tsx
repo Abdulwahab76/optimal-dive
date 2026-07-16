@@ -1,21 +1,4 @@
-import { TimelineStep } from "./Timelinestep";
-
-export type StepVariant = "textLeft" | "textRight";
-
-export interface ProcessStep {
-  id: string;
-  title: string;
-  description: string;
-  icon: string;
-}
-import {
-  Lightbulb,
-  PenTool,
-  Code2,
-  ShieldCheck,
-  Rocket,
-  Headphones,
-} from "lucide-react";
+import { TimelineStep, ProcessStep } from "./Timelinestep";
 
 export const PROCESS_STEPS: ProcessStep[] = [
   {
@@ -87,44 +70,43 @@ export function ProductProcessSection() {
           width: "2200px",
           height: "700px",
           background: `
-        radial-gradient(
-          ellipse at center,
-          rgba(109,123,248,.55) 0%,
-          rgba(81,87,247,.35) 28%,
-          rgba(81,87,247,.18) 52%,
-          rgba(81,87,247,.08) 68%,
-          transparent 100%
-        )
-      `,
+            radial-gradient(
+              ellipse at center,
+              rgba(109,123,248,.55) 0%,
+              rgba(81,87,247,.35) 28%,
+              rgba(81,87,247,.18) 52%,
+              rgba(81,87,247,.08) 68%,
+              transparent 100%
+            )
+          `,
           filter: "blur(120px)",
         }}
       />
 
       <div className="relative z-20 mx-auto max-w-7xl px-6 pt-32 pb-32">
-        {/* Heading */}
-        <h2 className="text-center text-5xl font-semibold leading-tight text-white">
+        <h2 className="text-center text-3xl sm:text-6xl font-semibold leading-tight text-white">
           Our Product
           <br />
           Development Process
         </h2>
 
         {/* Timeline */}
-        <div className="relative mx-auto mt-20 max-w-6xl">
-          {/* Gray Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2">
+        <div className="relative mx-auto mt-16 md:mt-20 max-w-6xl">
+          {/* Gray Line — desktop centered, mobile left-aligned to icon rail */}
+          <div className="absolute left-7 md:left-1/2 top-0 bottom-0 md:-translate-x-1/2">
             <div className="h-full w-px bg-[#505050]" />
           </div>
 
-          {/* Purple Line */}
+          {/* Purple accent line */}
           <div
-            className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 rounded-full"
+            className="absolute top-0 left-7 md:left-1/2 md:-translate-x-1/2 w-px h-24 rounded-full"
             style={{
-              background: "linear-gradient(180deg,  #1A1A1A  0%, #5157F7 100%)",
+              background: "linear-gradient(180deg, #1A1A1A 0%, #5157F7 100%)",
             }}
           />
 
           {/* Steps */}
-          <div className="space-y-16">
+          <div className="md:space-y-16">
             {PROCESS_STEPS.map((step, index) => (
               <TimelineStep
                 key={step.id}
@@ -139,7 +121,7 @@ export function ProductProcessSection() {
       </div>
 
       {/* Bottom Curve */}
-      <div className="absolute bottom-0 left-0 z-30 w-full overflow-hidden leading-none  ">
+      <div className="absolute bottom-0 left-0 z-30 w-full overflow-hidden leading-none">
         <svg
           viewBox="0 0 1440 140"
           preserveAspectRatio="none"

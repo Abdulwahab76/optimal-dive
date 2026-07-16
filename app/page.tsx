@@ -18,8 +18,8 @@ export default function Home() {
       <CompanySection />
       <SuccessStories />
       <ServicesSection />
-      {/* <ProductProcessSection />
-      <Technologies />
+      <ProductProcessSection />
+      {/* <Technologies />
       <TestimonialSlider />
       <IndustriesSection /> */}
     </div>

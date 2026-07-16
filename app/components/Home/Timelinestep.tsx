@@ -1,4 +1,3 @@
-import type { LucideIcon } from "lucide-react";
 import Image from "next/image";
 
 export type StepVariant = "textLeft" | "textRight";
@@ -9,6 +8,7 @@ export interface ProcessStep {
   description: string;
   icon: string;
 }
+
 interface TimelineStepProps {
   step: ProcessStep;
   variant: StepVariant;
@@ -16,10 +16,13 @@ interface TimelineStepProps {
   index: number;
 }
 
-function IconBubble({ icon: Icon }: Pick<ProcessStep, "icon">) {
+function IconBubble({
+  icon: Icon,
+  size = 100,
+}: Pick<ProcessStep, "icon"> & { size?: number }) {
   return (
-    <div className="relative  ">
-      <Image src={Icon} width={100} height={100} alt="icons" />
+    <div className="relative">
+      <Image src={Icon} width={size} height={size} alt="icons" />
     </div>
   );
 }
@@ -32,22 +35,21 @@ function StepText({
 }: {
   title: string;
   description: string;
-  align: "left" | "right";
+  align: "left" | "right" | "start";
   index: number;
 }) {
+  const alignClass =
+    align === "right"
+      ? "items-end text-right"
+      : align === "left"
+      ? "items-start text-left"
+      : "items-start text-left";
+
   return (
-    <div
-      className={
-        align === "right"
-          ? "flex max-w-md flex-col items-end text-right"
-          : "flex max-w-md flex-col items-start text-left"
-      }
-    >
+    <div className={`flex max-w-md flex-col ${alignClass}`}>
       <p className="text-primary-1">0{index + 1}</p>
-      <h3 className="text-2xl  font-semibold text-white">{title}</h3>
-      <p className="mt-1.5 text-lg text-white leading-relaxed  ">
-        {description}
-      </p>
+      <h3 className="text-2xl font-semibold text-white">{title}</h3>
+      <p className="mt-1.5 text-lg leading-relaxed text-white">{description}</p>
     </div>
   );
 }
@@ -61,43 +63,55 @@ export function TimelineStep({
   const isTextLeft = variant === "textLeft";
 
   return (
-    <div
-      className={`grid grid-cols-[1fr_80px_1fr] items-center ${
-        isLast ? "" : "pb-10"
-      }`}
-    >
-      {/* Left */}
-      <div className="flex justify-end pr-10">
-        {isTextLeft ? (
-          <StepText
-            title={step.title}
-            description={step.description}
-            align="right"
-            index={index}
-          />
-        ) : (
-          <IconBubble icon={step.icon} />
-        )}
+    <>
+      {/* ── Desktop: unchanged alternating grid ── */}
+      <div
+        className={`hidden md:grid grid-cols-[1fr_80px_1fr] items-center ${
+          isLast ? "" : "pb-10"
+        }`}
+      >
+        <div className="flex justify-end pr-10">
+          {isTextLeft ? (
+            <StepText
+              title={step.title}
+              description={step.description}
+              align="right"
+              index={index}
+            />
+          ) : (
+            <IconBubble icon={step.icon} />
+          )}
+        </div>
+
+        <div className="flex justify-center" />
+
+        <div className="flex justify-start pl-10">
+          {isTextLeft ? (
+            <IconBubble icon={step.icon} />
+          ) : (
+            <StepText
+              title={step.title}
+              description={step.description}
+              align="left"
+              index={index}
+            />
+          )}
+        </div>
       </div>
 
-      {/* Center (timeline space) */}
-      <div className="flex justify-center">
-        {/* Empty - line is rendered outside */}
-      </div>
+      {/* ── Mobile: single-column, left-aligned rail ── */}
+      <div className={`flex md:hidden gap-4 ${isLast ? "" : "pb-12"}`}>
+        <div className="relative z-10 flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-full bg-[#1C1C1C] ring-2 ring-primary-1/40">
+          <IconBubble icon={step.icon} size={36} />
+        </div>
 
-      {/* Right */}
-      <div className="flex justify-start pl-10">
-        {isTextLeft ? (
-          <IconBubble icon={step.icon} />
-        ) : (
-          <StepText
-            title={step.title}
-            description={step.description}
-            align="left"
-            index={index}
-          />
-        )}
+        <StepText
+          title={step.title}
+          description={step.description}
+          align="start"
+          index={index}
+        />
       </div>
-    </div>
+    </>
   );
 }
