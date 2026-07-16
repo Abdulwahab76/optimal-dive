@@ -13,7 +13,7 @@ export default function Footer() {
         alt=""
         width={360}
         height={360}
-        className="pointer-events-none absolute bottom-0 right-0   opacity-100 "
+        className="pointer-events-none absolute bottom-0 right-0   opacity-100 lg:block hidden"
       />
 
       <div className="relative z-10 mx-auto max-w-7xl px-6  pb-2 pt-6">
@@ -32,18 +32,18 @@ export default function Footer() {
               Subscribe Newsletter
             </p>
 
-            <form className="flex h-12 max-w-md overflow-hidden rounded-full border border-[#6D7BF8] bg-white">
+            <form className="flex h-12 w-full max-w-md overflow-hidden rounded-full border border-primary-1 bg-white">
               <input
                 type="email"
                 placeholder="Enter Email"
-                className="flex-1 bg-transparent px-5 text-sm outline-none placeholder:text-[#9E9E9E]"
+                className="min-w-0 flex-1 bg-transparent px-3 sm:px-5 text-sm outline-none placeholder:text-[#9E9E9E]"
               />
 
               <button
                 type="submit"
-                className="m-1 flex items-center gap-2 rounded-full bg-gradient-to-r from-primary-1 to-primary-2 px-6 text-sm font-medium text-white"
+                className="m-1 flex shrink-0 items-center gap-1 rounded-full bg-gradient-to-r from-primary-1 to-primary-2 px-3 sm:px-6 text-xs sm:text-sm font-medium text-white"
               >
-                Subscribe
+                <span>Subscribe</span>
                 <ChevronRight size={14} />
               </button>
             </form>

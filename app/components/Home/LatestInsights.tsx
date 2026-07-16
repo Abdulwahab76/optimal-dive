@@ -31,13 +31,13 @@ export default function LatestInsights() {
     <section className="py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-10 flex items-center justify-between">
-          <h2 className="text-3xl lg:text-6xl font-bold text-black">
+          <h2 className="text-2xl lg:text-6xl font-bold text-black">
             Latest Insights
           </h2>
 
           <Link
             href="/blog"
-            className="inline-flex items-center gap-2 rounded-full bg-linear-to-b from-primary-1 to-primary-2  px-6 py-3 text-sm font-medium text-white transition hover:bg-indigo-700"
+            className="inline-flex items-center gap-2 rounded-full bg-linear-to-b from-primary-1 to-primary-2  px-6 py-3 text-xs lg:text-sm font-medium text-white transition hover:bg-indigo-700"
           >
             View All
             <ArrowRight size={16} />
