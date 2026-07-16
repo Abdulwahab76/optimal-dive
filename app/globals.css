@@ -6,9 +6,32 @@
   --color-primary-1: #6D7BF8;
   --color-primary-2: #5157F7;
   --font-sans: var(--font-poppins);
+  --animate-marquee-left: marquee-left 28s linear infinite;
+  --animate-marquee-right: marquee-right 28s linear infinite;
  }
 
 body {
   background: white;
   font-family: var(--font-sans);
+}
+
+
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 12px));
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(calc(-50% - 12px));
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }

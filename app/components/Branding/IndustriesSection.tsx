@@ -93,7 +93,7 @@ export default function IndustriesSection() {
             Industries We Serve
           </h2>
 
-          <p className="max-w-md text-sm leading-7 text-white/65">
+          <p className="max-w-md text-base leading-7 text-white">
             We provide tailored solutions that address the unique demands across
             various industries, delivering transformative experiences to drive
             significant impact.
