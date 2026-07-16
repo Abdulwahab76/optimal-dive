@@ -1,137 +1,158 @@
+import { TimelineStep } from "./Timelinestep";
+
+export type StepVariant = "textLeft" | "textRight";
+
+export interface ProcessStep {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+}
 import {
-  Car,
-  Landmark,
-  Building2,
-  Utensils,
-  GraduationCap,
-  HeartPulse,
+  Lightbulb,
+  PenTool,
+  Code2,
+  ShieldCheck,
+  Rocket,
+  Headphones,
 } from "lucide-react";
 
-const industries = [
+export const PROCESS_STEPS: ProcessStep[] = [
   {
-    title: "Automotive",
-    icon: Car,
+    id: "ideate",
+    title: "Ideate",
     description:
-      "Enhance vehicle management, driver experience, and connected mobility with secure software solutions.",
+      "We analyze your vision thoroughly to ensure the roadmap aligns perfectly with your end goals.",
+    icon: "/images/product-1.png",
   },
   {
-    title: "Finance",
-    icon: Landmark,
-    active: true,
+    id: "design",
+    title: "Design",
     description:
-      "Build reliable digital banking, fintech platforms, and payment systems with security at their core.",
+      "We craft MVPs that balance stunning design with core functionality.",
+    icon: "/images/product-2.png",
   },
   {
-    title: "Real Estate",
-    icon: Building2,
+    id: "develop",
+    title: "Develop",
     description:
-      "CRM, property management, online portals, and modern real-estate solutions.",
+      "We build end-to-end solutions using agile processes and robust architecture.",
+    icon: "/images/product-3.png",
   },
   {
-    title: "Food",
-    icon: Utensils,
+    id: "test",
+    title: "Test",
     description:
-      "Restaurant systems, online ordering, inventory management, and delivery platforms.",
+      "We ensure quality and reliability through extensive QA across every touchpoint.",
+    icon: "/images/product-4.png",
   },
   {
-    title: "Education",
-    icon: GraduationCap,
+    id: "launch",
+    title: "Launch",
     description:
-      "E-learning platforms, LMS solutions, student portals, and digital education experiences.",
+      "We execute smooth rollouts with tailored deployment plans and dedicated support.",
+    icon: "/images/product-5.png",
   },
   {
-    title: "Healthcare",
-    icon: HeartPulse,
+    id: "support",
+    title: "Support",
     description:
-      "Healthcare applications, EMR systems, appointment booking, and patient management.",
+      "We provide ongoing enhancements to ensure your product continues to succeed.",
+    icon: "/images/product-6.png",
   },
 ];
 
-export default function IndustriesSection() {
+export function ProductProcessSection() {
   return (
-    <section className="relative overflow-hidden bg-[#1F1F1F]">
+    <section className="relative overflow-hidden bg-[#1C1C1C]">
       {/* Top Curve */}
-      <div className="absolute top-0 left-0 w-full">
+      <div className="absolute top-0 left-0 z-30 w-full overflow-hidden leading-none">
         <svg
           viewBox="0 0 1440 140"
           preserveAspectRatio="none"
-          className="block h-20 w-full md:h-28"
+          className="block h-28 w-full"
+          style={{ transform: "scaleY(-1)" }}
         >
           <path
-            fill="#ffffff"
-            d="M0,0 L1440,0 L1440,38 C1080,105 360,105 0,38 Z"
+            fill="#fff"
+            d="M0,40 C360,120 1080,120 1440,40 L1440,140 L0,140 Z"
           />
         </svg>
       </div>
 
-      {/* Bottom Curve */}
-      <div className="absolute bottom-0 left-0 w-full">
-        <svg
-          viewBox="0 0 1440 140"
-          preserveAspectRatio="none"
-          className="block h-20 w-full md:h-28"
-        >
-          <path
-            fill="#ffffff"
-            d="M0,100 C360,35 1080,35 1440,100 L1440,140 L0,140 Z"
-          />
-        </svg>
-      </div>
-
-      {/* Purple Glow */}
+      {/* Top Glow */}
       <div
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2
-          h-[420px] w-[900px] rounded-full pointer-events-none"
+        className="pointer-events-none absolute left-1/2 -top-[280px] -translate-x-1/2"
         style={{
-          background:
-            "radial-gradient(ellipse, rgba(92,79,255,.32) 0%, rgba(92,79,255,.15) 45%, transparent 80%)",
-          filter: "blur(90px)",
+          width: "2200px",
+          height: "700px",
+          background: `
+        radial-gradient(
+          ellipse at center,
+          rgba(109,123,248,.55) 0%,
+          rgba(81,87,247,.35) 28%,
+          rgba(81,87,247,.18) 52%,
+          rgba(81,87,247,.08) 68%,
+          transparent 100%
+        )
+      `,
+          filter: "blur(120px)",
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-6xl px-6 py-36">
+      <div className="relative z-20 mx-auto max-w-7xl px-6 pt-32 pb-32">
         {/* Heading */}
-        <div className="mb-16 grid gap-6 md:grid-cols-2 md:items-start">
-          <h2 className="text-4xl font-bold text-white md:text-5xl">
-            Industries We Serve
-          </h2>
+        <h2 className="text-center text-5xl font-semibold leading-tight text-white">
+          Our Product
+          <br />
+          Development Process
+        </h2>
 
-          <p className="max-w-md text-sm leading-7 text-white/70">
-            We provide tailored solutions that address the unique demands across
-            various industries, delivering transformative experiences to drive
-            significant impact.
-          </p>
+        {/* Timeline */}
+        <div className="relative mx-auto mt-20 max-w-6xl">
+          {/* Gray Line */}
+          <div className="absolute left-1/2 top-0 bottom-0 -translate-x-1/2">
+            <div className="h-full w-px bg-[#505050]" />
+          </div>
+
+          {/* Purple Line */}
+          <div
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 rounded-full"
+            style={{
+              background: "linear-gradient(180deg,  #1A1A1A  0%, #5157F7 100%)",
+            }}
+          />
+
+          {/* Steps */}
+          <div className="space-y-16">
+            {PROCESS_STEPS.map((step, index) => (
+              <TimelineStep
+                key={step.id}
+                index={index}
+                step={step}
+                variant={index % 2 === 0 ? "textLeft" : "textRight"}
+                isLast={index === PROCESS_STEPS.length - 1}
+              />
+            ))}
+          </div>
         </div>
+      </div>
 
-        {/* Grid */}
-        <div className="grid gap-x-12 gap-y-12 md:grid-cols-2 lg:grid-cols-3">
-          {industries.map((item) => {
-            const Icon = item.icon;
-
-            return (
-              <div key={item.title}>
-                <div
-                  className={`mb-5 inline-flex h-11 w-11 items-center justify-center rounded-xl ${
-                    item.active
-                      ? "bg-gradient-to-b from-[#6D7BF8] to-[#5157F7]"
-                      : "bg-white/5"
-                  }`}
-                >
-                  <Icon size={20} className="text-white" />
-                </div>
-
-                <h3 className="mb-3 text-xl font-semibold text-white">
-                  {item.title}
-                </h3>
-
-                <p className="text-sm leading-7 text-white/60">
-                  {item.description}
-                </p>
-              </div>
-            );
-          })}
-        </div>
+      {/* Bottom Curve */}
+      <div className="absolute bottom-0 left-0 z-30 w-full overflow-hidden leading-none">
+        <svg
+          viewBox="0 0 1440 140"
+          preserveAspectRatio="none"
+          className="block h-28 w-full"
+        >
+          <path
+            fill="#fff"
+            d="M0,40 C360,120 1080,120 1440,40 L1440,140 L0,140 Z"
+          />
+        </svg>
       </div>
     </section>
   );
 }
+
+export default ProductProcessSection;
