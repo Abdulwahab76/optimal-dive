@@ -139,7 +139,7 @@ export function ProductProcessSection() {
       </div>
 
       {/* Bottom Curve */}
-      <div className="absolute bottom-0 left-0 z-30 w-full overflow-hidden leading-none">
+      <div className="absolute bottom-0 left-0 z-30 w-full overflow-hidden leading-none  ">
         <svg
           viewBox="0 0 1440 140"
           preserveAspectRatio="none"
