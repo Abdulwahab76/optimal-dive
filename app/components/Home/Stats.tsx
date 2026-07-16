@@ -27,7 +27,7 @@ export default function Stats() {
           ${index === 1 || index === 2 ? "lg:mt-8" : ""}
         `}
         >
-          <h3 className="text-6xl font-bold">{item.value}</h3>
+          <h3 className="text-3xl lg:text-6xl font-bold">{item.value}</h3>
 
           <p className="mt-3 text-sm tracking-wider">{item.label}</p>
         </div>

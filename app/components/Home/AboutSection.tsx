@@ -3,7 +3,7 @@ import Stats from "./Stats";
 
 export default function AboutSection() {
   return (
-    <section className=" relative overflow-hidden bg-[#1D1D1D] text-white">
+    <section className="mt-6  lg:mt-0   relative overflow-hidden bg-[#1D1D1D] text-white">
       <div
         className="absolute -bottom-56 left-1/2 -translate-x-1/2 w-[1600px] h-125 pointer-events-none"
         style={{

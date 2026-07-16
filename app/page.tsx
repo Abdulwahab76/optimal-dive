@@ -11,10 +11,11 @@ import IndustriesSection from "./components/Branding/IndustriesSection";
 
 export default function Home() {
   return (
-    <div>
+    <div className="relative">
       <Header />
-      {/* <AboutSection />
-      <CompanySection />
+      <AboutSection />
+
+      {/* <CompanySection />
       <SuccessStories />
       <ServicesSection />
       <ProductProcessSection />
