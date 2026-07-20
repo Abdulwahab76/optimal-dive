@@ -4,14 +4,26 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
+type Category = {
+  slug: string;
+  label: string;
+};
 
-type Blog = {
-  id: number;
+type BlogDate = {
+  day: string;
+  month: string;
+};
+
+export type Blog = {
+  id: string;
+  slug: string;
   title: string;
   image: string;
   author: string;
-  category: string;
-  slug: string;
+  category: Category;
+  date: BlogDate;
+  excerpt: string;
+  createdAt: string;
 };
 
 export default function LatestInsights() {
@@ -19,13 +31,14 @@ export default function LatestInsights() {
 
   useEffect(() => {
     const fetchBlogs = async () => {
-      const res = await fetch("/api/blogs");
+      const res = await fetch("/api/blogs?limit=3");
       const data = await res.json();
-      setBlogs(data);
+      setBlogs(data.data);
     };
 
     fetchBlogs();
   }, []);
+  console.log(blogs, "blogs");
 
   return (
     <section className="py-20">
@@ -58,8 +71,10 @@ export default function LatestInsights() {
                   className="object-cover"
                 />
 
-                <div className="absolute right-4 top-4 flex h-12 w-12 text-center font-bold text-xs items-center justify-center rounded-full bg-linear-to-b from-primary-1 to-primary-2 text-white">
-                  18 <br /> june
+                {/* Date Badge */}
+                <div className="absolute right-4 top-4 flex h-12 w-12 flex-col items-center justify-center rounded-full bg-gradient-to-b from-primary-1 to-primary-2 text-center text-xs font-bold text-white">
+                  <span>{blog.date.day}</span>
+                  <span className="capitalize">{blog.date.month}</span>
                 </div>
               </div>
 
@@ -68,7 +83,7 @@ export default function LatestInsights() {
                   <span className="text-gray-500">By {blog.author}</span>
 
                   <span className="font-medium text-indigo-600">
-                    {blog.category}
+                    {blog.category.label}
                   </span>
                 </div>
 
@@ -76,11 +91,15 @@ export default function LatestInsights() {
                   {blog.title}
                 </h3>
 
+                <p className="mt-3 line-clamp-3 text-sm leading-6 text-gray-600">
+                  {blog.excerpt}
+                </p>
+
                 <Link
                   href={`/blog/${blog.slug}`}
-                  className="mt-8 flex items-center gap-x-3 justify-end pt-5 text-sm font-medium text-black"
+                  className="mt-8 flex items-center justify-end gap-x-3 border-t border-gray-100 pt-5 text-sm font-medium text-black"
                 >
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-linear-to-b from-primary-1 to-primary-2 text-white">
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-b from-primary-1 to-primary-2 text-white">
                     <ChevronRight size={14} />
                   </span>
                   Read More
