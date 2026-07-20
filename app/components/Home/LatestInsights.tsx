@@ -62,12 +62,12 @@ export default function LatestInsights() {
               key={blog.id}
               className="overflow-hidden rounded-2xl  bg-[#F5F6FFB2]  transition hover:-translate-y-1 hover:shadow-lg"
             >
-              <div className="relative h-52">
+              <div className="relative h-52 ">
                 <Image
                   src={blog.image}
                   alt={blog.title}
                   fill
-                  className="object-cover"
+                  className="object-cover p-4 rounded-3xl"
                 />
 
                 {/* Date Badge */}

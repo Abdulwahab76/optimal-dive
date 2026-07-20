@@ -99,7 +99,7 @@ export default function Hero() {
             width={1100}
             height={900}
             priority
-            className="h-auto w-full"
+            className="h-auto w-full  pt-10"
           />
         </div>
       </div>

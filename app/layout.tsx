@@ -5,11 +5,6 @@ import Footer from "./components/Footer/FooterSection";
 import VisionCta from "./components/Footer/VisionCta";
 import Navbar from "./components/Home/Navbar";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
 const poppins = Poppins({
   variable: "--font-poppins",
   weight: ["400", "500", "600", "700", "800"],
