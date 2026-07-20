@@ -30,7 +30,7 @@ export default function Hero() {
     sm:px-5
     sm:pt-4
 
-    lg:pt-10
+    lg:pt-24
   "
       >
         {/* Text */}
