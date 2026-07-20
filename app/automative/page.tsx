@@ -6,6 +6,8 @@ import ServicesSection from "../components/Home/ServicesSection";
 import SuccessStories from "../components/Home/SuccessStories";
 import Technologies from "../components/Home/Technologies";
 import TestimonialSlider from "../components/Home/TestimonialSlider";
+import IndustriesSection from "../components/Branding/IndustriesSection";
+import BrandingFAQ from "../components/Branding/BrandingFAQ";
 const solutions = [
   {
     id: 1,
@@ -67,6 +69,8 @@ const Automative = () => {
       <SuccessStories />
       <Technologies />
       <TestimonialSlider />
+      <IndustriesSection />
+      <BrandingFAQ />
     </div>
   );
 };
