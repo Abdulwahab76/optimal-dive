@@ -14,7 +14,7 @@ interface TimelineStepProps {
   variant: StepVariant;
   isLast: boolean;
   index: number;
-  isDarkText: boolean;
+  isDarkText?: boolean;
 }
 
 function IconBubble({
