@@ -17,8 +17,8 @@ export default function Navbar() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="relative z-50">
-      <div className="mx-auto flex max-w-7xl items-center justify-between rounded-b-3xl border border-gray-100 bg-white px-5 py-4 shadow-[0px_-26px_15px_0px_#2A4CE0]">
+    <nav className="fixed w-full mx-auto z-50">
+      <div className="mx-auto flex max-w-7xl items-center justify-between lg:rounded-b-3xl border border-gray-100 bg-white px-5 py-4 shadow-[0px_-26px_15px_0px_#2A4CE0]">
         <Link href="/">
           <Image
             src="/images/logo.png"

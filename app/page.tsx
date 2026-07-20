@@ -15,7 +15,6 @@ export default function Home() {
     <div className="relative">
       <Header />
       <AboutSection />
-
       <CompanySection />
       <SuccessStories />
       <ServicesSection />

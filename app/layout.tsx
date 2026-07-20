@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Poppins } from "next/font/google";
 import "./globals.css";
 import Footer from "./components/Footer/FooterSection";
 import VisionCta from "./components/Footer/VisionCta";
+import Navbar from "./components/Home/Navbar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en" className={`  ${poppins.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">
         <div>
+          <Navbar />
           {children}
           <VisionCta />
           <Footer />
