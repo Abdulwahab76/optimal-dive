@@ -38,13 +38,12 @@ export default function LatestInsights() {
 
     fetchBlogs();
   }, []);
-  console.log(blogs, "blogs");
 
   return (
     <section className="py-20">
       <div className="mx-auto max-w-7xl px-6">
         <div className="mb-10 flex items-center justify-between">
-          <h2 className="text-2xl lg:text-6xl font-bold text-black">
+          <h2 className="text-2xl lg:text-5xl font-bold text-black">
             Latest Insights
           </h2>
 
@@ -61,7 +60,7 @@ export default function LatestInsights() {
           {blogs.map((blog) => (
             <article
               key={blog.id}
-              className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+              className="overflow-hidden rounded-2xl  bg-[#F5F6FFB2]  transition hover:-translate-y-1 hover:shadow-lg"
             >
               <div className="relative h-52">
                 <Image
@@ -80,27 +79,31 @@ export default function LatestInsights() {
 
               <div className="p-5">
                 <div className="mb-4 flex items-center justify-between text-xs">
-                  <span className="text-gray-500">By {blog.author}</span>
+                  <span className="text-[#121212] text-sm font-medium">
+                    By {blog.author}
+                  </span>
 
                   <span className="font-medium text-indigo-600">
                     {blog.category.label}
                   </span>
                 </div>
 
-                <h3 className="line-clamp-2 text-xl font-semibold leading-7 text-gray-900">
-                  {blog.title}
+                <h3 className="text-xl font-medium leading-7 text-gray-900">
+                  {blog.title.length > 50
+                    ? `${blog.title.slice(0, 50)}...`
+                    : blog.title}
                 </h3>
 
-                <p className="mt-3 line-clamp-3 text-sm leading-6 text-gray-600">
+                {/* <p className="mt-3 line-clamp-3 text-sm leading-6 text-gray-600">
                   {blog.excerpt}
-                </p>
+                </p> */}
 
                 <Link
                   href={`/blog/${blog.slug}`}
-                  className="mt-8 flex items-center justify-end gap-x-3 border-t border-gray-100 pt-5 text-sm font-medium text-black"
+                  className="  flex items-center justify-end gap-x-3  pt-5 text-sm font-medium text-black"
                 >
                   <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-b from-primary-1 to-primary-2 text-white">
-                    <ChevronRight size={14} />
+                    <ChevronRight size={24} strokeWidth={4} />
                   </span>
                   Read More
                 </Link>

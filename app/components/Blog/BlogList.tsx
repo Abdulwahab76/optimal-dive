@@ -64,6 +64,7 @@ export default function BlogList() {
     setCategory(next);
     setPage(1); // always reset to page 1 on a new filter
   };
+  console.log(blogs, "blogs==");
 
   return (
     <div className="space-y-10">
