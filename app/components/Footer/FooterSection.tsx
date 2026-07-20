@@ -36,7 +36,7 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Enter Email"
-                className="min-w-0 flex-1 bg-transparent px-3 sm:px-5 text-sm outline-none placeholder:text-[#9E9E9E]"
+                className="min-w-0 flex-1 bg-[#F8F8FF] px-3 sm:px-5 text-sm outline-none placeholder:text-[#9E9E9E]"
               />
 
               <button

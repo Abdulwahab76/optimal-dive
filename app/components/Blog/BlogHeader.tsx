@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CalendarDays, Clock3, User2 } from "lucide-react";
+import { CalendarDays, CircleUserRound, Clock3, User2 } from "lucide-react";
 
 interface BlogHeaderProps {
   post: {
@@ -58,7 +58,9 @@ export default function SingleBlogHeader({ post }: BlogHeaderProps) {
             alt="gemini"
             className="h-auto w-auto "
           />
-          <p className="font-medium text-sm uppercase text-white">{post.category.label}</p>
+          <p className="font-medium text-sm uppercase text-white">
+            {post.category.label}
+          </p>
         </div>
         {/* Title */}
 
@@ -70,17 +72,17 @@ export default function SingleBlogHeader({ post }: BlogHeaderProps) {
 
         <div className="mt-8 flex flex-wrap justify-center sm:justify-start items-center gap-x-8 gap-y-3 text-sm text-white/80">
           <div className="flex items-center gap-2">
-            <User2 size={16} className="text-primary-1" />
+            <CircleUserRound size={22} className="text-primary-1" />
             <span>{post.author}</span>
           </div>
 
           <div className="flex items-center gap-2">
-            <CalendarDays size={16} className="text-primary-1" />
+            <CalendarDays size={22} className="text-primary-1" />
             <span>{formattedDate}</span>
           </div>
 
           <div className="flex items-center gap-2">
-            <Clock3 size={16} className="text-primary-1" />
+            <Clock3 size={22} className="text-primary-1" />
             <span>{post.readTime ?? "8 min read"}</span>
           </div>
         </div>

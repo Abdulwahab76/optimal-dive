@@ -17,6 +17,10 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
+  robots: {
+    index: false,
+    follow: false,
+  },
   title: "Optimal Dive",
   description:
     "Optimal Dive is a leading digital agency that specializes in creating innovative and effective digital solutions for businesses of all sizes. We offer a wide range of services, including web design and development, digital marketing, branding, and more. Our team of experts is dedicated to helping our clients achieve their goals and grow their businesses in the digital world.",
