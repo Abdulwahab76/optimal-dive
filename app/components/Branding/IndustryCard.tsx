@@ -1,9 +1,9 @@
-import { LucideIcon } from "lucide-react";
+import Image from "next/image";
 
 type Props = {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: string;
 };
 
 export default function IndustryCard({
@@ -45,10 +45,7 @@ export default function IndustryCard({
       {/* Content */}
       <div className="relative z-10">
         <div className="mb-5 text-white">
-          <Icon
-            size={24}
-            className="transition-colors duration-300 group-hover:text-[#6D7BF8]"
-          />
+          <Image src={Icon} alt="icon" width={45} height={45} />
         </div>
 
         <h3 className="mb-3 text-2xl font-semibold text-white">{title}</h3>

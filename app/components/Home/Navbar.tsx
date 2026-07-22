@@ -6,9 +6,9 @@ import Image from "next/image";
 import { ArrowRight, Menu, X } from "lucide-react";
 
 const navLinks = [
-  { title: "Services", href: "/services" },
-  { title: "Industries", href: "/industries" },
-  { title: "About", href: "/about" },
+  { title: "Home", href: "/" },
+  { title: "Branding", href: "/branding" },
+  { title: "Automative", href: "/automative" },
   { title: "Portfolio", href: "/portfolio" },
   { title: "Blog", href: "/blog" },
 ];

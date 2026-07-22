@@ -11,38 +11,42 @@ import IndustryCard from "./IndustryCard";
 const industries = [
   {
     title: "Automotive",
-    icon: Car,
+    icon: "/icons/icon-2.png",
     description:
       "Enhance vehicle management, driver experience, and connected mobility with secure software solutions.",
   },
   {
     title: "Finance",
-    icon: Landmark,
+    icon: "/icons/icon-5.png",
     active: true,
     description:
       "Build reliable digital banking, fintech platforms, and payment systems with security at their core.",
   },
   {
     title: "Real Estate",
-    icon: Building2,
+    icon: "/icons/icon-4.png",
+
     description:
       "CRM, property management, online portals, and modern real-estate solutions.",
   },
   {
     title: "Food",
-    icon: Utensils,
+    icon: "/icons/icon-6.png",
+
     description:
       "Restaurant systems, online ordering, inventory management, and delivery platforms.",
   },
   {
     title: "Education",
-    icon: GraduationCap,
+    icon: "/icons/icon-3.png",
+
     description:
       "E-learning platforms, LMS solutions, student portals, and digital education experiences.",
   },
   {
     title: "Healthcare",
-    icon: HeartPulse,
+    icon: "/icons/icon-1.png",
+
     description:
       "Healthcare applications, EMR systems, appointment booking, and patient management.",
   },
