@@ -7,6 +7,7 @@ import CategoryFilter from "./CategoryFilter";
 import BlogCard from "./BlogCard";
 import BlogCardSkeleton from "./BlogCardSkeleton";
 import Pagination from "./Pagination";
+import { ChevronRight, Search } from "lucide-react";
 
 const PAGE_SIZE = 6;
 
@@ -18,7 +19,8 @@ export default function BlogList() {
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
+  const [searchInput, setSearchInput] = useState("");
+  const [titleSearch, setTitleSearch] = useState("");
   useEffect(() => {
     const controller = new AbortController();
 
@@ -33,6 +35,10 @@ export default function BlogList() {
           limit: String(PAGE_SIZE),
         });
 
+        if (titleSearch.trim()) {
+          params.set("title", titleSearch.trim());
+        }
+
         const res = await fetch(`/api/blogs?${params.toString()}`, {
           signal: controller.signal,
         });
@@ -43,9 +49,6 @@ export default function BlogList() {
         setBlogs(json.data);
         setTotalPages(json.pagination.totalPages);
 
-        // If the requested page came back out of range (e.g. a category
-        // switch shrank the result set), snap back to what the server
-        // actually gave us.
         if (json.pagination.page !== page) setPage(json.pagination.page);
       } catch (err) {
         if ((err as Error).name !== "AbortError") {
@@ -58,15 +61,36 @@ export default function BlogList() {
 
     fetchBlogs();
     return () => controller.abort();
-  }, [category, page]);
+  }, [category, page, titleSearch]);
 
   const handleCategoryChange = (next: CategorySlug) => {
     setCategory(next);
     setPage(1); // always reset to page 1 on a new filter
   };
+  const handleSearch = (e: React.FormEvent<HTMLButtonElement>) => {
+    setPage(1);
+    setTitleSearch(searchInput);
+  };
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-10 mt-5">
+      <div className="flex h-10 w-full max-w-lg overflow-hidden rounded-full border mx-auto border-primary-1 bg-white">
+        <input
+          type="text"
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+          placeholder="Search Blog..."
+          className="min-w-0 flex-1 bg-[#F8F8FF] px-3 sm:px-5 text-sm outline-none placeholder:text-[#9E9E9E]"
+        />
+
+        <button
+          onClick={handleSearch}
+          className="m-1 cursor-pointer flex shrink-0 items-center gap-1 rounded-full bg-gradient-to-r from-primary-1 to-primary-2 px-3 sm:px-6 text-xs sm:text-sm font-medium text-white"
+        >
+          <Search size={14} />
+        </button>
+      </div>
+
       <CategoryFilter
         activeCategory={category}
         onChange={handleCategoryChange}

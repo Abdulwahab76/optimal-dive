@@ -6,10 +6,7 @@ import { Blog } from "@/types/blog";
 export default function BlogCard({ blog }: { blog: Blog }) {
   return (
     <article className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-      <Link
-        href={`/blog/${blog.slug}`}
-        className="mt-8 flex items-center justify-end gap-x-3 pt-5 text-sm font-medium text-black"
-      >
+      <Link href={`/blog/${blog.slug}`}>
         <div className="relative h-52">
           <Image
             src={blog.image}
@@ -34,10 +31,12 @@ export default function BlogCard({ blog }: { blog: Blog }) {
           <h3 className="line-clamp-2 text-xl font-semibold leading-7 text-gray-900">
             {blog.title}
           </h3>
-          <span className="flex h-8 w-8 items-center justify-center rounded-full bg-linear-to-b from-primary-1 to-primary-2 text-white">
-            <ChevronRight size={14} />
-          </span>
-          Read More
+          <div className="mt-8 flex items-center justify-end gap-x-3 pt-5 text-sm font-medium text-black">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-linear-to-b from-primary-1 to-primary-2 text-white">
+              <ChevronRight size={14} />
+            </span>
+            Read More
+          </div>
         </div>
       </Link>
     </article>
