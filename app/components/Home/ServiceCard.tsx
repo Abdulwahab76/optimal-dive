@@ -47,7 +47,7 @@ export default function ServiceCard({
  
         ${
           active
-            ? "bg-[#1F1F1F] text-white min-h-[390px] md:h-[450px]"
+            ? "bg-[#1F1F1F] text-white min-h-[340px] md:h-[420px]"
             : "bg-white shadow-[0_15px_60px_rgba(0,0,0,.08)] min-h-[220px] md:h-[350px]"
         }
       `}
@@ -58,8 +58,8 @@ export default function ServiceCard({
             text-3xl
             leading-tight
             font-semibold
-
-            md:text-[52px]
+ 
+            md:text-[42px]
           "
         >
           {title}
@@ -83,6 +83,7 @@ export default function ServiceCard({
             className={`
               text-sm
               leading-7
+              font-normal
 
               md:text-lg
               md:leading-8
@@ -148,10 +149,10 @@ export default function ServiceCard({
 
                 md:absolute
                 md:right-8
-                md:bottom-10
+                md:bottom-0
                 md:mx-0
                 md:mt-0
-                md:w-[330px]
+                md:w-[350px]
               `
               : `
                 absolute

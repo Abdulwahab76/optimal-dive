@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { Minus, Plus } from "lucide-react";
 
 interface FAQItem {
   id: number;
@@ -109,10 +109,14 @@ export default function BrandingFAQ() {
                       transition-transform
                       duration-300
 
-                      ${open ? "rotate-45" : ""}
+                      
                     `}
                   >
-                    <Plus size={14} strokeWidth={3} />
+                    {open ? (
+                      <Minus size={14} strokeWidth={3} />
+                    ) : (
+                      <Plus size={14} strokeWidth={3} />
+                    )}
                   </div>
                 </button>
 

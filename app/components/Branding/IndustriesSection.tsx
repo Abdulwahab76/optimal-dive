@@ -1,11 +1,5 @@
-import {
-  Car,
-  Landmark,
-  Building2,
-  Utensils,
-  GraduationCap,
-  HeartPulse,
-} from "lucide-react";
+"use client";
+import { useState } from "react";
 import IndustryCard from "./IndustryCard";
 
 const industries = [
@@ -18,7 +12,6 @@ const industries = [
   {
     title: "Finance",
     icon: "/icons/icon-5.png",
-    active: true,
     description:
       "Build reliable digital banking, fintech platforms, and payment systems with security at their core.",
   },
@@ -53,6 +46,8 @@ const industries = [
 ];
 
 export default function IndustriesSection() {
+  const [activeIndustry, setActiveIndustry] = useState("Finance");
+
   return (
     <section className="relative overflow-hidden bg-[#1C1C1C]">
       {/* Top Curve */}
@@ -122,6 +117,8 @@ export default function IndustriesSection() {
               title={item.title}
               description={item.description}
               icon={item.icon}
+              active={activeIndustry === item.title}
+              onClick={() => setActiveIndustry(item.title)}
             />
           ))}
         </div>

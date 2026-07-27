@@ -131,7 +131,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 border-t border-[#E8E8E8] pt-6 text-left text-sm text-black">
+        <div className="mt-14   pt-6 text-left text-sm text-black">
           © 2026 Optimal Dive. All Rights Reserved.
         </div>
       </div>

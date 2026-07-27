@@ -22,6 +22,30 @@ const services: Service[] = [
     description:
       "Custom, high-performance websites built for speed, scale, and user experience. From sleek landing pages to complex platforms—we engineer digital presence that converts.",
   },
+  {
+    title: "Digital Marketing",
+    image: "/images/digital-marketing.png",
+    description:
+      "Strategic digital campaigns that turn attention into action. From content to paid media, we drive engagement, leads, and conversions.",
+  },
+  {
+    title: "Search Engine Optimization",
+    image: "/images/seo.png",
+    description:
+      "Data-driven search optimization that puts your business in front of the right audience. Higher rankings, organic growth, and measurable ROI.",
+  },
+  {
+    title: "Mobile Application Development",
+    image: "/images/mobile.png",
+    description:
+      "Native and cross-platform apps built for iOS and Android. Intuitive design, robust architecture, and seamless performance—right in your users' pockets.",
+  },
+  {
+    title: "AI Solution",
+    image: "/images/ai-solution.png",
+    description:
+      "Intelligent automation and machine learning solutions that streamline operations, unlock insights, and give your business a competitive edge.",
+  },
   // 👉 add more service objects here — the stack scales automatically
 ];
 
@@ -35,14 +59,26 @@ export default function ServicesSection() {
 
   useEffect(() => {
     const updateActive = () => {
-      let current = 0;
+      const viewportCenter = window.innerHeight / 2;
+
+      let closestIndex = 0;
+      let closestDistance = Infinity;
+
       cardRefs.current.forEach((el, index) => {
         if (!el) return;
-        const top = el.getBoundingClientRect().top;
-        // a card becomes "active" once it has scrolled up to its sticky slot
-        if (top <= STICKY_TOP + index * PEEK + 4) current = index;
+
+        const rect = el.getBoundingClientRect();
+        const cardCenter = rect.top + rect.height / 2;
+
+        const distance = Math.abs(viewportCenter - cardCenter);
+
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
       });
-      setActive(current);
+
+      setActive(closestIndex);
       ticking.current = false;
     };
 
@@ -54,8 +90,10 @@ export default function ServicesSection() {
     };
 
     updateActive();
+
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("resize", onScroll);
+
     return () => {
       window.removeEventListener("scroll", onScroll);
       window.removeEventListener("resize", onScroll);
@@ -75,8 +113,8 @@ export default function ServicesSection() {
             return (
               <div
                 key={service.title}
-                className="relative"
-                style={{ height: isLast ? undefined : "60vh" }}
+                className="relative my-5"
+                style={{ height: isLast ? undefined : "65vh" }}
               >
                 <div
                   ref={(el) => {

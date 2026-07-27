@@ -15,7 +15,17 @@ body {
   font-family: var(--font-sans);
 }
 
-
+.blue-icon {
+  filter:
+    brightness(0)
+    saturate(100%)
+    invert(52%)
+    sepia(87%)
+    saturate(1800%)
+    hue-rotate(205deg)
+    brightness(100%)
+    contrast(95%);
+}
 @keyframes marquee-left {
   from {
     transform: translateX(0);

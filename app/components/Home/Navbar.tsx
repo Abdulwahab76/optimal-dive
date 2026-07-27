@@ -20,13 +20,16 @@ export default function Navbar() {
     <nav className="fixed w-full mx-auto z-50">
       <div className="mx-auto flex max-w-7xl items-center justify-between lg:rounded-b-3xl border border-gray-100 bg-white px-5 py-4 shadow-[0px_-26px_15px_0px_#2A4CE0]">
         <Link href="/">
-          <Image
-            src="/images/logo.png"
-            alt="Logo"
-            width={140}
-            height={40}
-            priority
-          />
+          <div className="relative h-10 w-44">
+            <Image
+              src="/images/logo.png"
+              alt="Logo"
+              fill
+              priority
+              sizes="176px"
+              className="object-contain"
+            />
+          </div>
         </Link>
 
         <ul className="hidden items-center gap-8 rounded-full border  border-primary-1 px-8 py-2 text-sm md:flex">

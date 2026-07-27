@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 const firstRow = ["sony", "amazon", "deloitte", "walmart", "starbucks"];
 
-const secondRow = ["allianz", "unitedhealthcare", "shell", "visa", "att"];
+const secondRow = ["allianz", "Healthcare", "shell", "visa", "att"];
 
 const mobileLogos = [...firstRow, ...secondRow];
 
@@ -116,8 +116,8 @@ function ClientCard({ logo }: { logo: string }) {
           src={`/images/${logo}.png`}
           alt={logo}
           width={120}
-          height={50}
-          className="h-auto w-28 object-contain opacity-60"
+          height={120}
+          className="h-auto w-32 object-contain  "
         />
       </div>
     </div>
