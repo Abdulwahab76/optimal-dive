@@ -78,17 +78,25 @@ export default function Footer() {
                 </span>
               </div>
 
-              <div className="flex items-start gap-3">
+              <a
+                href="tel:03001234567"
+                className="flex items-start gap-3 transition hover:text-primary-1"
+              >
                 <Phone size={18} className="mt-1 text-primary-1" />
-                <span className="text-[15px] text-black">0300 1234567</span>
-              </div>
+                <span className="text-[15px] text-black hover:text-primary-1">
+                  0300 1234567
+                </span>
+              </a>
 
-              <div className="flex items-start gap-3">
+              <a
+                href="mailto:info@optimaldive.com"
+                className="flex items-start gap-3 transition hover:text-primary-1"
+              >
                 <Mail size={18} className="mt-1 text-primary-1" />
-                <span className="text-[15px] text-black">
+                <span className="text-[15px] text-black hover:text-primary-1">
                   info@optimaldive.com
                 </span>
-              </div>
+              </a>
             </div>
 
             <div className="mt-8 flex gap-3">

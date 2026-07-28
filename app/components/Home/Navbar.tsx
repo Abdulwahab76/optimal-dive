@@ -277,10 +277,10 @@ export default function Navbar() {
 
         <div className="hidden md:flex">
           <Link
-            href="/contact"
+            href="/contact-us"
             className="flex items-center gap-2 rounded-full bg-gradient-to-b from-primary-1 to-primary-2 px-6 py-2 text-white"
           >
-            <span className="text-sm font-semibold">Contact</span>
+            <span className="text-sm font-semibold">contact</span>
             <ArrowRight size={12} />
           </Link>
         </div>
@@ -359,11 +359,11 @@ export default function Navbar() {
             ))}
 
           <Link
-            href="/contact"
+            href="/contact-us"
             onClick={() => setOpen(false)}
             className="flex w-fit items-center gap-2 rounded-full bg-gradient-to-b from-primary-1 to-primary-2 px-6 py-3 text-white"
           >
-            Contact
+            contact
             <ArrowRight size={14} />
           </Link>
         </div>
