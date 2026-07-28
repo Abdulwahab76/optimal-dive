@@ -1,5 +1,6 @@
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 const technologies = [
   { name: "github", x: 70, y: 10, size: 66 },
@@ -95,11 +96,12 @@ export default function Technologies() {
             <h2 className="text-center text-2xl font-semibold tracking-[-0.02em] text-[#111] md:text-left lg:text-4xl lg:leading-none">
               Ready to build something lasting?
             </h2>
-
-            <button className="flex h-12 items-center gap-2 rounded-full bg-gradient-to-r from-primary-1 to-primary-2 px-6 text-sm font-medium text-white transition-transform duration-300 hover:scale-105">
-              Start Your Project
-              <ArrowRight size={14} />
-            </button>
+            <Link href="/contact-us">
+              <button className="flex cursor-pointer h-12 items-center gap-2 rounded-full bg-gradient-to-r from-primary-1 to-primary-2 px-6 text-sm font-medium text-white transition-transform duration-300 hover:scale-105">
+                Start Your Project
+                <ArrowRight size={14} />
+              </button>
+            </Link>
           </div>
         </div>
       </div>

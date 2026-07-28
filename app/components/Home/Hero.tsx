@@ -58,7 +58,7 @@ export default function Hero() {
             </h1>
 
             <Link
-              href="/contact"
+              href="/contact-us"
               className="mx-auto mt-6 flex w-fit items-center gap-2 rounded-full bg-gradient-to-b from-primary-1 to-primary-2 px-5 py-3 text-white sm:mt-8 sm:px-6"
             >
               Start Your Project

@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface Props {
   title: string;
@@ -93,10 +94,10 @@ export default function ServiceCard({
           >
             {description}
           </p>
-
-          <button
-            onClick={(e) => e.stopPropagation()}
-            className="
+          <Link href='/contact-us'>
+            <button
+              onClick={(e) => e.stopPropagation()}
+              className="
       mt-8
       md:mt-10
       md:mr-auto
@@ -121,10 +122,11 @@ export default function ServiceCard({
       font-medium
       text-white
     "
-          >
-            Start Your Project
-            <ArrowRight size={15} />
-          </button>
+            >
+              Start Your Project
+              <ArrowRight size={15} />
+            </button>
+          </Link>
         </div>
       </div>
 

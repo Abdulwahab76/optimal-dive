@@ -1,4 +1,5 @@
 import { ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function VisionCta() {
   return (
@@ -57,9 +58,9 @@ export default function VisionCta() {
             <br />
             Vision to life
           </h2>
-
-          <button
-            className="
+          <Link href='/contact-us'>
+            <button
+              className="
         mt-7
         flex
         items-center
@@ -72,10 +73,11 @@ export default function VisionCta() {
         font-normal
         text-white
       "
-          >
-            Start Your Project
-            <ArrowRight size={14} />
-          </button>
+            >
+              Start Your Project
+              <ArrowRight size={14} />
+            </button>
+          </Link>
         </div>
       </div>
     </section>

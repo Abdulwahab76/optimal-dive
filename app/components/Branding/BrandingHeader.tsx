@@ -47,7 +47,7 @@ const BrandingHeader = () => {
             your audience.
           </p>
           <Link
-            href="/contact"
+            href="/contact-us"
             className="lg:mx-0 mx-auto mt-6 sm:mt-10 flex w-fit items-center gap-2 rounded-full bg-gradient-to-b from-primary-1 to-primary-2 px-5 py-3 sm:px-6 text-white"
           >
             Start Your Project

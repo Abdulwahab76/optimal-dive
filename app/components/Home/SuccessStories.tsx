@@ -1,3 +1,4 @@
+import Link from "next/link";
 import ProjectCard from "./ProjectCard";
 import { ArrowRight } from "lucide-react";
 const projects = [
@@ -31,11 +32,12 @@ export default function SuccessStories() {
             <button className="flex h-10 shrink-0 items-center gap-2 rounded-full border border-black px-3 sm:px-4 lg:px-8 text-sm sm:text-base font-medium whitespace-nowrap">
               View More <ArrowRight size={12} />
             </button>
-
-            <button className="flex shrink-0 items-center gap-2 rounded-full bg-linear-to-b from-primary-1 to-primary-2 px-4 sm:px-6 py-2.5 text-sm sm:text-base font-medium text-white whitespace-nowrap">
-              Start Your Project
-              <ArrowRight size={10} />
-            </button>
+            <Link href="/contact-us">
+              <button className="flex cursor-pointer shrink-0 items-center gap-2 rounded-full bg-linear-to-b from-primary-1 to-primary-2 px-4 sm:px-6 py-2.5 text-sm sm:text-base font-medium text-white whitespace-nowrap">
+                Start Your Project
+                <ArrowRight size={10} />
+              </button>
+            </Link>
           </div>
         </div>
 
