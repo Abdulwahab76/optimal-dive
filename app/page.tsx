@@ -12,7 +12,7 @@ import LatestInsights from "./components/Home/LatestInsights";
 
 export default function Home() {
   return (
-    <div className="relative">
+    <div className=" ">
       <Header />
       <AboutSection />
       <CompanySection />

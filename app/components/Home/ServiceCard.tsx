@@ -55,7 +55,7 @@ export default function ServiceCard({
       <div className="relative z-10 max-w-xl ">
         <h3
           className="
-            text-3xl
+            text-2xl
             leading-tight
             font-semibold
  

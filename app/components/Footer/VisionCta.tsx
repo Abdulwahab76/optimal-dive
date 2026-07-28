@@ -46,7 +46,7 @@ export default function VisionCta() {
             className="
         max-w-[500px]
         text-center
-        text-4xl
+        text-3xl
         font-semibold
         leading-tight
         text-white

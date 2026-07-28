@@ -27,17 +27,15 @@ export default function SuccessStories() {
             Our Success Stories
           </h2>
 
-          <div className="flex gap-4 flex-wrap items-center">
-            <button className="h-10 flex items-center gap-2   rounded-full border border-black px-8 text-base font-medium">
+          <div className="flex flex-nowrap items-center gap-2 sm:gap-4">
+            <button className="flex h-10 shrink-0 items-center gap-2 rounded-full border border-black px-3 sm:px-4 lg:px-8 text-sm sm:text-base font-medium whitespace-nowrap">
               View More <ArrowRight size={12} />
             </button>
 
-            <div className="flex items-center gap-2 bg-linear-to-b from-primary-1 to-primary-2 text-white px-6 py-2.5   rounded-full">
-              <button className="text-base font-medium ">
-                Start Your Project
-              </button>
+            <button className="flex shrink-0 items-center gap-2 rounded-full bg-linear-to-b from-primary-1 to-primary-2 px-4 sm:px-6 py-2.5 text-sm sm:text-base font-medium text-white whitespace-nowrap">
+              Start Your Project
               <ArrowRight size={10} />
-            </div>
+            </button>
           </div>
         </div>
 

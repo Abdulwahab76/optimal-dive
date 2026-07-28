@@ -104,7 +104,7 @@ export default function BrandingFAQ() {
                       items-center
                       justify-center
                       rounded-full
-                      bg-primary-1
+                      bg-[#5157F7]
                       text-white
                       transition-transform
                       duration-300
@@ -113,9 +113,9 @@ export default function BrandingFAQ() {
                     `}
                   >
                     {open ? (
-                      <Minus size={14} strokeWidth={3} />
+                      <Minus size={14} strokeWidth={6} />
                     ) : (
-                      <Plus size={14} strokeWidth={3} />
+                      <Plus size={14} strokeWidth={6} />
                     )}
                   </div>
                 </button>
