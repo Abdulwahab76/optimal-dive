@@ -1,10 +1,11 @@
-import type { NextConfig } from "next";
+// next.config.ts
+import type { NextConfig } from 'next'
+import { withPayload } from '@payloadcms/next/withPayload'
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  images:{
+  images: {
     domains: ['images.unsplash.com', 'cdn.sanity.io', 'lh3.googleusercontent.com'],
-  }
-};
+  },
+}
 
-export default nextConfig;
+export default withPayload(nextConfig)
