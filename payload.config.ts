@@ -9,13 +9,14 @@ import sharp from "sharp";
 import path from "path";
 import { fileURLToPath } from "url";
 import { HomePage } from "./globals/HomePage";
-import { AutomotivePage } from './globals/AutomotivePage'
+import { AutomotivePage } from "./globals/AutomotivePage";
 
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
 import { Categories } from "./collections/Categories";
 import { Posts } from "./collections/Posts";
 import { Pages } from "./collections/Pages";
+import { BrandingPage } from "./globals/BrandingPage";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -25,7 +26,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Users, Media, Categories, Posts, Pages],
-  globals: [HomePage, AutomotivePage],
+  globals: [HomePage, AutomotivePage, BrandingPage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
@@ -41,7 +42,7 @@ export default buildConfig({
   plugins: [
     seoPlugin({
       collections: ["posts", "pages"],
-      globals: ["home-page", "automotive-page"], // adds SEO tab to the home page global too
+      globals: ["home-page", "automotive-page", "branding-page"],
       uploadsCollection: "media",
       tabbedUI: true,
 

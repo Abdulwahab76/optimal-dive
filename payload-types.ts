@@ -96,10 +96,12 @@ export interface Config {
   globals: {
     'home-page': HomePage;
     'automotive-page': AutomotivePage;
+    'branding-page': BrandingPage;
   };
   globalsSelect: {
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
     'automotive-page': AutomotivePageSelect<false> | AutomotivePageSelect<true>;
+    'branding-page': BrandingPageSelect<false> | BrandingPageSelect<true>;
   };
   locale: null;
   widgets: {
@@ -897,6 +899,111 @@ export interface AutomotivePage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "branding-page".
+ */
+export interface BrandingPage {
+  id: number;
+  brandHero?: {
+    brandHeroBadgeLabel?: string | null;
+    brandHeroTitleLine1?: string | null;
+    brandHeroTitleHighlight?: string | null;
+    brandHeroDescription?: string | null;
+    brandHeroCtaLabel?: string | null;
+    brandHeroCtaLink?: string | null;
+    brandHeroImage?: (number | null) | Media;
+  };
+  brandShowcase?: {
+    showcaseSideImage?: (number | null) | Media;
+    showcaseHeading?: string | null;
+    showcaseDescription?: string | null;
+    showcaseImageOne?: (number | null) | Media;
+    showcaseImageTwo?: (number | null) | Media;
+  };
+  brandServices?: {
+    brandServicesHeading?: string | null;
+    brandServicesDescription?: string | null;
+    brandServiceItems?:
+      | {
+          bsTitle: string;
+          bsIcon?: ('BadgeCheck' | 'Palette' | 'MessageSquare' | 'BookOpen' | 'RefreshCw' | 'LayoutGrid') | null;
+          bsDescription: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  brandProcess?: {
+    processHeading?: string | null;
+    processSubheading?: string | null;
+    processStepsList?:
+      | {
+          bpTitle: string;
+          bpDescription: string;
+          bpIcon?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  brandStats?: {
+    statsHeading?: string | null;
+    statsDescription?: string | null;
+    statsItems?:
+      | {
+          bStatValue: string;
+          bStatLabel: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    /**
+     * Override canonical URL if needed.
+     */
+    canonicalURL?: string | null;
+    robots?: {
+      noIndex?: boolean | null;
+      noFollow?: boolean | null;
+    };
+    social?: {
+      ogTitle?: string | null;
+      ogDescription?: string | null;
+      ogImage?: (number | null) | Media;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      twitterImage?: (number | null) | Media;
+      twitterCard?: ('summary_large_image' | 'summary') | null;
+    };
+    schema?: {
+      schemaType?:
+        ('WebPage' | 'Article' | 'BlogPosting' | 'Service' | 'FAQPage' | 'MedicalOrganization' | 'Physician') | null;
+      /**
+       * Optional custom JSON-LD schema.
+       */
+      customSchema?:
+        | {
+            [k: string]: unknown;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    };
+    /**
+     * Comma separated keywords.
+     */
+    keywords?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home-page_select".
  */
 export interface HomePageSelect<T extends boolean = true> {
@@ -1134,6 +1241,108 @@ export interface AutomotivePageSelect<T extends boolean = true> {
           | {
               faqQuestion?: T;
               faqAnswer?: T;
+              id?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        canonicalURL?: T;
+        robots?:
+          | T
+          | {
+              noIndex?: T;
+              noFollow?: T;
+            };
+        social?:
+          | T
+          | {
+              ogTitle?: T;
+              ogDescription?: T;
+              ogImage?: T;
+              twitterTitle?: T;
+              twitterDescription?: T;
+              twitterImage?: T;
+              twitterCard?: T;
+            };
+        schema?:
+          | T
+          | {
+              schemaType?: T;
+              customSchema?: T;
+            };
+        keywords?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "branding-page_select".
+ */
+export interface BrandingPageSelect<T extends boolean = true> {
+  brandHero?:
+    | T
+    | {
+        brandHeroBadgeLabel?: T;
+        brandHeroTitleLine1?: T;
+        brandHeroTitleHighlight?: T;
+        brandHeroDescription?: T;
+        brandHeroCtaLabel?: T;
+        brandHeroCtaLink?: T;
+        brandHeroImage?: T;
+      };
+  brandShowcase?:
+    | T
+    | {
+        showcaseSideImage?: T;
+        showcaseHeading?: T;
+        showcaseDescription?: T;
+        showcaseImageOne?: T;
+        showcaseImageTwo?: T;
+      };
+  brandServices?:
+    | T
+    | {
+        brandServicesHeading?: T;
+        brandServicesDescription?: T;
+        brandServiceItems?:
+          | T
+          | {
+              bsTitle?: T;
+              bsIcon?: T;
+              bsDescription?: T;
+              id?: T;
+            };
+      };
+  brandProcess?:
+    | T
+    | {
+        processHeading?: T;
+        processSubheading?: T;
+        processStepsList?:
+          | T
+          | {
+              bpTitle?: T;
+              bpDescription?: T;
+              bpIcon?: T;
+              id?: T;
+            };
+      };
+  brandStats?:
+    | T
+    | {
+        statsHeading?: T;
+        statsDescription?: T;
+        statsItems?:
+          | T
+          | {
+              bStatValue?: T;
+              bStatLabel?: T;
               id?: T;
             };
       };

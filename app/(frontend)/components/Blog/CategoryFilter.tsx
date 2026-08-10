@@ -1,6 +1,6 @@
 // components/blog/CategoryFilter.tsx
-import { categories } from "@/app/lib/categories";
-import { CategorySlug } from "@/types/blog";
+ import { CategorySlug } from "@/types/blog";
+import { categories } from "../../lib/categories";
  
 
 interface CategoryFilterProps {
