@@ -93,8 +93,12 @@ export interface Config {
     defaultIDType: number;
   };
   fallbackLocale: null;
-  globals: {};
-  globalsSelect: {};
+  globals: {
+    'home-page': HomePage;
+  };
+  globalsSelect: {
+    'home-page': HomePageSelect<false> | HomePageSelect<true>;
+  };
   locale: null;
   widgets: {
     collections: CollectionsWidget;
@@ -473,6 +477,265 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
   batch?: T;
   updatedAt?: T;
   createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page".
+ */
+export interface HomePage {
+  id: number;
+  hero?: {
+    heroTitleLine1?: string | null;
+    heroTitleHighlight?: string | null;
+    heroCtaLabel?: string | null;
+    heroCtaLink?: string | null;
+    heroBackgroundImage?: (number | null) | Media;
+    heroForegroundImage?: (number | null) | Media;
+  };
+  about?: {
+    aboutHeading?: string | null;
+    aboutHighlightText?: string | null;
+    aboutBodyText?: string | null;
+  };
+  stats?:
+    | {
+        statValue: string;
+        statLabel: string;
+        id?: string | null;
+      }[]
+    | null;
+  clients?: {
+    clientsHeading?: string | null;
+    clientLogos?:
+      | {
+          clientName: string;
+          clientLogo?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  successStories?: {
+    successHeading?: string | null;
+    successViewMoreLabel?: string | null;
+    successCtaLabel?: string | null;
+    successCtaLink?: string | null;
+    projects?:
+      | {
+          projectTitle: string;
+          projectCategory: string;
+          projectImage?: (number | null) | Media;
+          projectLarge?: boolean | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  services?: {
+    servicesHeading?: string | null;
+    serviceItems?:
+      | {
+          serviceTitle: string;
+          serviceDescription: string;
+          serviceImage?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  process?: {
+    processHeading?: string | null;
+    processSteps?:
+      | {
+          stepTitle: string;
+          stepDescription: string;
+          stepIcon?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  technologies?: {
+    techHeading?: string | null;
+    techDescription?: string | null;
+    techCtaHeading?: string | null;
+    techCtaLabel?: string | null;
+    techCtaLink?: string | null;
+  };
+  testimonials?: {
+    testimonialsHeading1?: string | null;
+    testimonialsHeading2?: string | null;
+    testimonialItems?:
+      | {
+          testimonialName: string;
+          testimonialReview: string;
+          testimonialRating?: number | null;
+          testimonialAvatar?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  industries?: {
+    industriesHeading?: string | null;
+    industriesDescription?: string | null;
+    industryItems?:
+      | {
+          industryTitle: string;
+          industryDescription: string;
+          industryIcon?: (number | null) | Media;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  latestInsights?: {
+    insightsHeading?: string | null;
+    insightsCtaLabel?: string | null;
+  };
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "home-page_select".
+ */
+export interface HomePageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        heroTitleLine1?: T;
+        heroTitleHighlight?: T;
+        heroCtaLabel?: T;
+        heroCtaLink?: T;
+        heroBackgroundImage?: T;
+        heroForegroundImage?: T;
+      };
+  about?:
+    | T
+    | {
+        aboutHeading?: T;
+        aboutHighlightText?: T;
+        aboutBodyText?: T;
+      };
+  stats?:
+    | T
+    | {
+        statValue?: T;
+        statLabel?: T;
+        id?: T;
+      };
+  clients?:
+    | T
+    | {
+        clientsHeading?: T;
+        clientLogos?:
+          | T
+          | {
+              clientName?: T;
+              clientLogo?: T;
+              id?: T;
+            };
+      };
+  successStories?:
+    | T
+    | {
+        successHeading?: T;
+        successViewMoreLabel?: T;
+        successCtaLabel?: T;
+        successCtaLink?: T;
+        projects?:
+          | T
+          | {
+              projectTitle?: T;
+              projectCategory?: T;
+              projectImage?: T;
+              projectLarge?: T;
+              id?: T;
+            };
+      };
+  services?:
+    | T
+    | {
+        servicesHeading?: T;
+        serviceItems?:
+          | T
+          | {
+              serviceTitle?: T;
+              serviceDescription?: T;
+              serviceImage?: T;
+              id?: T;
+            };
+      };
+  process?:
+    | T
+    | {
+        processHeading?: T;
+        processSteps?:
+          | T
+          | {
+              stepTitle?: T;
+              stepDescription?: T;
+              stepIcon?: T;
+              id?: T;
+            };
+      };
+  technologies?:
+    | T
+    | {
+        techHeading?: T;
+        techDescription?: T;
+        techCtaHeading?: T;
+        techCtaLabel?: T;
+        techCtaLink?: T;
+      };
+  testimonials?:
+    | T
+    | {
+        testimonialsHeading1?: T;
+        testimonialsHeading2?: T;
+        testimonialItems?:
+          | T
+          | {
+              testimonialName?: T;
+              testimonialReview?: T;
+              testimonialRating?: T;
+              testimonialAvatar?: T;
+              id?: T;
+            };
+      };
+  industries?:
+    | T
+    | {
+        industriesHeading?: T;
+        industriesDescription?: T;
+        industryItems?:
+          | T
+          | {
+              industryTitle?: T;
+              industryDescription?: T;
+              industryIcon?: T;
+              id?: T;
+            };
+      };
+  latestInsights?:
+    | T
+    | {
+        insightsHeading?: T;
+        insightsCtaLabel?: T;
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema

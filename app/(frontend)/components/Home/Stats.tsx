@@ -1,35 +1,21 @@
-const stats = [
-  {
-    value: "500+",
-    label: "Projects Delivered",
-  },
-  {
-    value: "98%",
-    label: "Client Satisfaction",
-  },
-  {
-    value: "10+",
-    label: "Years Experience",
-  },
-  {
-    value: "50M+",
-    label: "Revenue Generated",
-  },
+// app/(frontend)/components/Home/Stats.tsx
+import type { HomePage } from "@/payload-types";
+
+const defaultStats = [
+  { statValue: "500+", statLabel: "Projects Delivered" },
+  { statValue: "98%", statLabel: "Client Satisfaction" },
+  { statValue: "10+", statLabel: "Years Experience" },
+  { statValue: "50M+", statLabel: "Revenue Generated" },
 ];
 
-export default function Stats() {
+export default function Stats({ stats }: { stats?: HomePage["stats"] }) {
+  const items = stats?.length ? stats : defaultStats;
   return (
     <div className="mt-24 grid grid-cols-2 gap-12 text-center lg:grid-cols-4">
-      {stats.map((item, index) => (
-        <div
-          key={item.value}
-          className={`
-          ${index === 1 || index === 2 ? "lg:mt-8" : ""}
-        `}
-        >
-          <h3 className="text-3xl lg:text-6xl font-bold">{item.value}</h3>
-
-          <p className="mt-3 text-sm tracking-wider">{item.label}</p>
+      {items.map((item, index) => (
+        <div key={item.statValue + index} className={index === 1 || index === 2 ? "lg:mt-8" : ""}>
+          <h3 className="text-3xl lg:text-6xl font-bold">{item.statValue}</h3>
+          <p className="mt-3 text-sm tracking-wider">{item.statLabel}</p>
         </div>
       ))}
     </div>
