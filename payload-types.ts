@@ -95,9 +95,11 @@ export interface Config {
   fallbackLocale: null;
   globals: {
     'home-page': HomePage;
+    'automotive-page': AutomotivePage;
   };
   globalsSelect: {
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
+    'automotive-page': AutomotivePageSelect<false> | AutomotivePageSelect<true>;
   };
   locale: null;
   widgets: {
@@ -218,6 +220,43 @@ export interface Post {
      * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
      */
     image?: (number | null) | Media;
+    /**
+     * Override canonical URL if needed.
+     */
+    canonicalURL?: string | null;
+    robots?: {
+      noIndex?: boolean | null;
+      noFollow?: boolean | null;
+    };
+    social?: {
+      ogTitle?: string | null;
+      ogDescription?: string | null;
+      ogImage?: (number | null) | Media;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      twitterImage?: (number | null) | Media;
+      twitterCard?: ('summary_large_image' | 'summary') | null;
+    };
+    schema?: {
+      schemaType?:
+        ('WebPage' | 'Article' | 'BlogPosting' | 'Service' | 'FAQPage' | 'MedicalOrganization' | 'Physician') | null;
+      /**
+       * Optional custom JSON-LD schema.
+       */
+      customSchema?:
+        | {
+            [k: string]: unknown;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    };
+    /**
+     * Comma separated keywords.
+     */
+    keywords?: string | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -253,6 +292,43 @@ export interface Page {
      * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
      */
     image?: (number | null) | Media;
+    /**
+     * Override canonical URL if needed.
+     */
+    canonicalURL?: string | null;
+    robots?: {
+      noIndex?: boolean | null;
+      noFollow?: boolean | null;
+    };
+    social?: {
+      ogTitle?: string | null;
+      ogDescription?: string | null;
+      ogImage?: (number | null) | Media;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      twitterImage?: (number | null) | Media;
+      twitterCard?: ('summary_large_image' | 'summary') | null;
+    };
+    schema?: {
+      schemaType?:
+        ('WebPage' | 'Article' | 'BlogPosting' | 'Service' | 'FAQPage' | 'MedicalOrganization' | 'Physician') | null;
+      /**
+       * Optional custom JSON-LD schema.
+       */
+      customSchema?:
+        | {
+            [k: string]: unknown;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    };
+    /**
+     * Comma separated keywords.
+     */
+    keywords?: string | null;
   };
   updatedAt: string;
   createdAt: string;
@@ -414,6 +490,31 @@ export interface PostsSelect<T extends boolean = true> {
         title?: T;
         description?: T;
         image?: T;
+        canonicalURL?: T;
+        robots?:
+          | T
+          | {
+              noIndex?: T;
+              noFollow?: T;
+            };
+        social?:
+          | T
+          | {
+              ogTitle?: T;
+              ogDescription?: T;
+              ogImage?: T;
+              twitterTitle?: T;
+              twitterDescription?: T;
+              twitterImage?: T;
+              twitterCard?: T;
+            };
+        schema?:
+          | T
+          | {
+              schemaType?: T;
+              customSchema?: T;
+            };
+        keywords?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -433,6 +534,31 @@ export interface PagesSelect<T extends boolean = true> {
         title?: T;
         description?: T;
         image?: T;
+        canonicalURL?: T;
+        robots?:
+          | T
+          | {
+              noIndex?: T;
+              noFollow?: T;
+            };
+        social?:
+          | T
+          | {
+              ogTitle?: T;
+              ogDescription?: T;
+              ogImage?: T;
+              twitterTitle?: T;
+              twitterDescription?: T;
+              twitterImage?: T;
+              twitterCard?: T;
+            };
+        schema?:
+          | T
+          | {
+              schemaType?: T;
+              customSchema?: T;
+            };
+        keywords?: T;
       };
   updatedAt?: T;
   createdAt?: T;
@@ -594,6 +720,152 @@ export interface HomePage {
      * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
      */
     image?: (number | null) | Media;
+    /**
+     * Override canonical URL if needed.
+     */
+    canonicalURL?: string | null;
+    robots?: {
+      noIndex?: boolean | null;
+      noFollow?: boolean | null;
+    };
+    social?: {
+      ogTitle?: string | null;
+      ogDescription?: string | null;
+      ogImage?: (number | null) | Media;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      twitterImage?: (number | null) | Media;
+      twitterCard?: ('summary_large_image' | 'summary') | null;
+    };
+    schema?: {
+      schemaType?:
+        ('WebPage' | 'Article' | 'BlogPosting' | 'Service' | 'FAQPage' | 'MedicalOrganization' | 'Physician') | null;
+      /**
+       * Optional custom JSON-LD schema.
+       */
+      customSchema?:
+        | {
+            [k: string]: unknown;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    };
+    /**
+     * Comma separated keywords.
+     */
+    keywords?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "automotive-page".
+ */
+export interface AutomotivePage {
+  id: number;
+  autoHero?: {
+    autoHeroBadgeLabel?: string | null;
+    autoHeroTitleLine1?: string | null;
+    autoHeroTitleHighlight?: string | null;
+    autoHeroDescription?: string | null;
+    autoHeroCtaLabel?: string | null;
+    autoHeroCtaLink?: string | null;
+    autoHeroImage?: (number | null) | Media;
+    autoHeroStats?:
+      | {
+          autoStatValue: string;
+          autoStatLabel: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  autoSolutions?: {
+    autoSolutionsTitle?: string | null;
+    autoSolutionsHighlight?: string | null;
+    autoSolutionsItems?:
+      | {
+          autoSolutionNumber: string;
+          autoSolutionTitle: string;
+          autoSolutionDescription: string;
+          autoSolutionFeatures?:
+            | {
+                featureText: string;
+                id?: string | null;
+              }[]
+            | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  autoWhyChooseUs?: {
+    autoWhyTitle?: string | null;
+    autoWhyItems?:
+      | {
+          whyTitle: string;
+          whyIcon?: ('UserRound' | 'Cog' | 'ShieldCheck' | 'ClipboardCheck' | 'LayoutDashboard' | 'Megaphone') | null;
+          whyDescription: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  autoFaq?: {
+    autoFaqHeading?: string | null;
+    autoFaqItems?:
+      | {
+          faqQuestion: string;
+          faqAnswer: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    /**
+     * Override canonical URL if needed.
+     */
+    canonicalURL?: string | null;
+    robots?: {
+      noIndex?: boolean | null;
+      noFollow?: boolean | null;
+    };
+    social?: {
+      ogTitle?: string | null;
+      ogDescription?: string | null;
+      ogImage?: (number | null) | Media;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      twitterImage?: (number | null) | Media;
+      twitterCard?: ('summary_large_image' | 'summary') | null;
+    };
+    schema?: {
+      schemaType?:
+        ('WebPage' | 'Article' | 'BlogPosting' | 'Service' | 'FAQPage' | 'MedicalOrganization' | 'Physician') | null;
+      /**
+       * Optional custom JSON-LD schema.
+       */
+      customSchema?:
+        | {
+            [k: string]: unknown;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    };
+    /**
+     * Comma separated keywords.
+     */
+    keywords?: string | null;
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -732,6 +1004,135 @@ export interface HomePageSelect<T extends boolean = true> {
         title?: T;
         description?: T;
         image?: T;
+        canonicalURL?: T;
+        robots?:
+          | T
+          | {
+              noIndex?: T;
+              noFollow?: T;
+            };
+        social?:
+          | T
+          | {
+              ogTitle?: T;
+              ogDescription?: T;
+              ogImage?: T;
+              twitterTitle?: T;
+              twitterDescription?: T;
+              twitterImage?: T;
+              twitterCard?: T;
+            };
+        schema?:
+          | T
+          | {
+              schemaType?: T;
+              customSchema?: T;
+            };
+        keywords?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "automotive-page_select".
+ */
+export interface AutomotivePageSelect<T extends boolean = true> {
+  autoHero?:
+    | T
+    | {
+        autoHeroBadgeLabel?: T;
+        autoHeroTitleLine1?: T;
+        autoHeroTitleHighlight?: T;
+        autoHeroDescription?: T;
+        autoHeroCtaLabel?: T;
+        autoHeroCtaLink?: T;
+        autoHeroImage?: T;
+        autoHeroStats?:
+          | T
+          | {
+              autoStatValue?: T;
+              autoStatLabel?: T;
+              id?: T;
+            };
+      };
+  autoSolutions?:
+    | T
+    | {
+        autoSolutionsTitle?: T;
+        autoSolutionsHighlight?: T;
+        autoSolutionsItems?:
+          | T
+          | {
+              autoSolutionNumber?: T;
+              autoSolutionTitle?: T;
+              autoSolutionDescription?: T;
+              autoSolutionFeatures?:
+                | T
+                | {
+                    featureText?: T;
+                    id?: T;
+                  };
+              id?: T;
+            };
+      };
+  autoWhyChooseUs?:
+    | T
+    | {
+        autoWhyTitle?: T;
+        autoWhyItems?:
+          | T
+          | {
+              whyTitle?: T;
+              whyIcon?: T;
+              whyDescription?: T;
+              id?: T;
+            };
+      };
+  autoFaq?:
+    | T
+    | {
+        autoFaqHeading?: T;
+        autoFaqItems?:
+          | T
+          | {
+              faqQuestion?: T;
+              faqAnswer?: T;
+              id?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        canonicalURL?: T;
+        robots?:
+          | T
+          | {
+              noIndex?: T;
+              noFollow?: T;
+            };
+        social?:
+          | T
+          | {
+              ogTitle?: T;
+              ogDescription?: T;
+              ogImage?: T;
+              twitterTitle?: T;
+              twitterDescription?: T;
+              twitterImage?: T;
+              twitterCard?: T;
+            };
+        schema?:
+          | T
+          | {
+              schemaType?: T;
+              customSchema?: T;
+            };
+        keywords?: T;
       };
   updatedAt?: T;
   createdAt?: T;

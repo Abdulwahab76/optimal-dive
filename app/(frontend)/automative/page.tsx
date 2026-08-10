@@ -8,69 +8,35 @@ import Technologies from "../components/Home/Technologies";
 import TestimonialSlider from "../components/Home/TestimonialSlider";
 import IndustriesSection from "../components/Branding/IndustriesSection";
 import BrandingFAQ from "../components/Branding/BrandingFAQ";
-const solutions = [
-  {
-    id: 1,
-    number: "01",
-    title: "Autonomous Driving Systems",
-    description:
-      "Autonomous Driving Systems enhance safety and efficiency by enabling self-navigation using AI, sensors, and real-time data for precision.",
-    features: [
-      "Smart Navigation",
-      "Adaptive Cruise Control",
-      "Automatic Parking",
-      "Night Vision Assistance",
-      "Real-time Object Detection",
-      "Traffic Signal Recognition",
-    ],
-  },
-  {
-    id: 2,
-    number: "02",
-    title: "Predictive Maintenance",
-    description:
-      "Predictive Maintenance uses AI to detect issues before breakdowns, ensuring smooth and safe vehicle operation.",
-    features: [
-      "AI-driven Diagnostics",
-      "Automated Alerts",
-      "Early Issue Detection",
-      "Data-driven Maintenance",
-      "Performance Monitoring",
-      "Improved Vehicle Longevity",
-    ],
-  },
-  {
-    id: 3,
-    number: "03",
-    title: "AI-powered Safety Features",
-    description:
-      "AI-powered safety features improve autonomous driving by detecting hazards and preventing collisions using real-time sensor data.",
-    features: [
-      "Collision Prevention",
-      "Emergency Braking",
-      "Blind Spot Detection",
-      "Weather Condition Alerts",
-      "Cross Traffic Alerts",
-      "Lane Keeping Assistance",
-    ],
-  },
-];
-const Automative = () => {
+import { getAutomotivePage } from "@/lib/getAutomotivePage";
+import { getHomePage } from "@/lib/getHomePage";
+import type { Metadata } from "next";
+import { generateSEOMetadata, generateJsonLD } from "@/lib/seo";
+
+import JsonLd from "../components/JsonLd";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const page = await getAutomotivePage();
+
+  return generateSEOMetadata(page.meta);
+}
+
+const Automative = async () => {
+  const autoData = await getAutomotivePage();
+  const homeData = await getHomePage(); // for shared sections
+
   return (
     <div>
-      <AutoHeader />
-      <SolutionsSection
-        title="Software Solutions for"
-        highlight="Automotive Industry"
-        solutions={solutions}
-      />
-      <WhyChooseUs />
-      <ServicesSection />
-      <SuccessStories />
-      <Technologies />
-      <TestimonialSlider />
-      <IndustriesSection />
-      <BrandingFAQ />
+      <JsonLd data={generateJsonLD(autoData?.meta)} />
+      <AutoHeader autoHero={autoData.autoHero} />
+      <SolutionsSection autoSolutions={autoData.autoSolutions} />
+      <WhyChooseUs autoWhyChooseUs={autoData.autoWhyChooseUs} />
+      <ServicesSection services={homeData.services} />
+      <SuccessStories successStories={homeData.successStories} />
+      <Technologies technologies={homeData.technologies} />
+      <TestimonialSlider testimonials={homeData.testimonials} />
+      <IndustriesSection industries={homeData.industries} />
+      <BrandingFAQ autoFaq={autoData.autoFaq} />
     </div>
   );
 };

@@ -9,6 +9,7 @@ import sharp from "sharp";
 import path from "path";
 import { fileURLToPath } from "url";
 import { HomePage } from "./globals/HomePage";
+import { AutomotivePage } from './globals/AutomotivePage'
 
 import { Users } from "./collections/Users";
 import { Media } from "./collections/Media";
@@ -24,7 +25,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Users, Media, Categories, Posts, Pages],
-  globals: [HomePage],
+  globals: [HomePage, AutomotivePage],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
@@ -40,10 +41,130 @@ export default buildConfig({
   plugins: [
     seoPlugin({
       collections: ["posts", "pages"],
-      globals: ["home-page"], // adds SEO tab to the home page global too
+      globals: ["home-page", "automotive-page"], // adds SEO tab to the home page global too
       uploadsCollection: "media",
+      tabbedUI: true,
+
       generateTitle: ({ doc }) => `${doc?.title} | Optimal Dive`,
       generateDescription: ({ doc }) => doc?.excerpt,
+      fields: ({ defaultFields }) => [
+        ...defaultFields,
+
+        {
+          name: "canonicalURL",
+          label: "Canonical URL",
+          type: "text",
+          admin: {
+            description: "Override canonical URL if needed.",
+          },
+        },
+
+        {
+          name: "robots",
+          type: "group",
+          fields: [
+            {
+              name: "noIndex",
+              type: "checkbox",
+              defaultValue: false,
+            },
+            {
+              name: "noFollow",
+              type: "checkbox",
+              defaultValue: false,
+            },
+          ],
+        },
+
+        {
+          name: "social",
+          type: "group",
+          fields: [
+            {
+              name: "ogTitle",
+              label: "Open Graph Title",
+              type: "text",
+            },
+            {
+              name: "ogDescription",
+              label: "Open Graph Description",
+              type: "textarea",
+            },
+            {
+              name: "ogImage",
+              label: "Open Graph Image",
+              type: "upload",
+              relationTo: "media",
+            },
+
+            {
+              name: "twitterTitle",
+              type: "text",
+            },
+            {
+              name: "twitterDescription",
+              type: "textarea",
+            },
+            {
+              name: "twitterImage",
+              type: "upload",
+              relationTo: "media",
+            },
+            {
+              name: "twitterCard",
+              type: "select",
+              defaultValue: "summary_large_image",
+              options: [
+                {
+                  label: "Summary Large Image",
+                  value: "summary_large_image",
+                },
+                {
+                  label: "Summary",
+                  value: "summary",
+                },
+              ],
+            },
+          ],
+        },
+
+        {
+          name: "schema",
+          type: "group",
+          fields: [
+            {
+              name: "schemaType",
+              type: "select",
+              defaultValue: "WebPage",
+              options: [
+                { label: "Web Page", value: "WebPage" },
+                { label: "Article", value: "Article" },
+                { label: "Blog Posting", value: "BlogPosting" },
+                { label: "Service", value: "Service" },
+                { label: "FAQ Page", value: "FAQPage" },
+                { label: "Medical Organization", value: "MedicalOrganization" },
+                { label: "Physician", value: "Physician" },
+              ],
+            },
+
+            {
+              name: "customSchema",
+              type: "json",
+              admin: {
+                description: "Optional custom JSON-LD schema.",
+              },
+            },
+          ],
+        },
+
+        {
+          name: "keywords",
+          type: "text",
+          admin: {
+            description: "Comma separated keywords.",
+          },
+        },
+      ],
     }),
     vercelBlobStorage({
       enabled: !!process.env.BLOB_READ_WRITE_TOKEN,
