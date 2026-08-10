@@ -3,34 +3,37 @@ import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import type { HomePage } from "@/payload-types";
+import { mediaUrl } from "@/lib/media";
 
-const technologies = [
-  { name: "github", x: 70, y: 10, size: 66 },
-  { name: "html", x: 205, y: -5, size: 62 },
-  { name: "mysql", x: 330, y: -18, size: 66 },
-  { name: "unreal", x: 440, y: -5, size: 68 },
-  { name: "mongodb", x: 540, y: 10, size: 60 },
-  { name: "slack", x: 620, y: -18, size: 58 },
-  { name: "java", x: 20, y: 95, size: 68 },
-  { name: "css", x: 150, y: 65, size: 66 },
-  { name: "react", x: 260, y: 55, size: 70 },
-  { name: "python", x: 340, y: 98, size: 54 },
-  { name: "unity", x: 430, y: 85, size: 56 },
-  { name: "docker", x: 500, y: 105, size: 60 },
-  { name: "firebase", x: 590, y: 82, size: 62 },
-  { name: "kotlin", x: 50, y: 185, size: 54 },
-  { name: "laravel", x: 160, y: 170, size: 70 },
-  { name: "next", x: 250, y: 150, size: 74 },
-  { name: "wordpress", x: 360, y: 170, size: 58 },
-  { name: "node", x: 460, y: 175, size: 66 },
-  { name: "vercel", x: 560, y: 170, size: 58 },
-  { name: "notion", x: 120, y: 245, size: 56 },
-  { name: "figma", x: 230, y: 230, size: 54 },
-  { name: "shopify", x: 330, y: 228, size: 56 },
-  { name: "openai", x: 540, y: 235, size: 56 },
+const defaultIcons = [
+  { techName: "github", techLogo: null, techX: 70, techY: 10, techSize: 66 },
+  { techName: "html", techLogo: null, techX: 205, techY: -5, techSize: 62 },
+  { techName: "mysql", techLogo: null, techX: 330, techY: -18, techSize: 66 },
+  { techName: "unreal", techLogo: null, techX: 440, techY: -5, techSize: 68 },
+  { techName: "mongodb", techLogo: null, techX: 540, techY: 10, techSize: 60 },
+  { techName: "slack", techLogo: null, techX: 620, techY: -18, techSize: 58 },
+  { techName: "java", techLogo: null, techX: 20, techY: 95, techSize: 68 },
+  { techName: "css", techLogo: null, techX: 150, techY: 65, techSize: 66 },
+  { techName: "react", techLogo: null, techX: 260, techY: 55, techSize: 70 },
+  { techName: "python", techLogo: null, techX: 340, techY: 98, techSize: 54 },
+  { techName: "unity", techLogo: null, techX: 430, techY: 85, techSize: 56 },
+  { techName: "docker", techLogo: null, techX: 500, techY: 105, techSize: 60 },
+  { techName: "firebase", techLogo: null, techX: 590, techY: 82, techSize: 62 },
+  { techName: "kotlin", techLogo: null, techX: 50, techY: 185, techSize: 54 },
+  { techName: "laravel", techLogo: null, techX: 160, techY: 170, techSize: 70 },
+  { techName: "next", techLogo: null, techX: 250, techY: 150, techSize: 74 },
+  { techName: "wordpress", techLogo: null, techX: 360, techY: 170, techSize: 58 },
+  { techName: "node", techLogo: null, techX: 460, techY: 175, techSize: 66 },
+  { techName: "vercel", techLogo: null, techX: 560, techY: 170, techSize: 58 },
+  { techName: "notion", techLogo: null, techX: 120, techY: 245, techSize: 56 },
+  { techName: "figma", techLogo: null, techX: 230, techY: 230, techSize: 54 },
+  { techName: "shopify", techLogo: null, techX: 330, techY: 228, techSize: 56 },
+  { techName: "openai", techLogo: null, techX: 540, techY: 235, techSize: 56 },
 ];
 
 export default function Technologies({ technologies: tech }: { technologies?: HomePage["technologies"] }) {
+  const icons = tech?.techIcons?.length ? tech.techIcons : defaultIcons;
+
   return (
     <section className="bg-white py-24">
       <div className="mx-auto max-w-7xl px-6">
@@ -43,24 +46,36 @@ export default function Technologies({ technologies: tech }: { technologies?: Ho
             "Hire from our pool of 350+ specialized experts in web, mobile and software engineering, specializing in the latest technologies and frameworks ready to scale your development team effortlessly."}
         </p>
 
+        {/* Desktop */}
         <div className="relative mx-auto mt-20 hidden h-[480px] max-w-[1100px] lg:block">
-          {technologies.map((t) => (
-            <div
-              key={t.name}
-              className="absolute flex items-center justify-center rounded-full border border-[#1E1E1E] bg-white transition-all duration-300 hover:-translate-y-1"
-              style={{ left: t.x * 1.4, top: t.y * 1.4, width: t.size * 1.3, height: t.size * 1.3 }}
-            >
-              <Image src={`/images/tech/${t.name}.svg`} alt={t.name} width={t.size * 0.55} height={t.size * 0.55} className="object-contain" />
-            </div>
-          ))}
+          {icons.map((t, i) => {
+            const size = t.techSize ?? 60;
+            const x = t.techX ?? 0;
+            const y = t.techY ?? 0;
+            const src = mediaUrl(t.techLogo, `/images/tech/${t.techName}.svg`);
+
+            return (
+              <div
+                key={t.techName + i}
+                className="absolute flex items-center justify-center rounded-full border border-[#1E1E1E] bg-white transition-all duration-300 hover:-translate-y-1"
+                style={{ left: x * 1.4, top: y * 1.4, width: size * 1.3, height: size * 1.3 }}
+              >
+                <Image src={src} alt={t.techName} width={size * 0.55} height={size * 0.55} className="object-contain" />
+              </div>
+            );
+          })}
         </div>
 
+        {/* Mobile */}
         <div className="mt-14 grid grid-cols-4 place-items-center gap-5 sm:grid-cols-5 lg:hidden">
-          {technologies.map((t) => (
-            <div key={t.name} className="flex items-center justify-center rounded-full border border-[#1E1E1E] bg-white" style={{ width: 58, height: 58 }}>
-              <Image src={`/images/tech/${t.name}.svg`} alt={t.name} width={26} height={26} />
-            </div>
-          ))}
+          {icons.map((t, i) => {
+            const src = mediaUrl(t.techLogo, `/images/tech/${t.techName}.svg`);
+            return (
+              <div key={t.techName + i} className="flex items-center justify-center rounded-full border border-[#1E1E1E] bg-white" style={{ width: 58, height: 58 }}>
+                <Image src={src} alt={t.techName} width={26} height={26} />
+              </div>
+            );
+          })}
         </div>
       </div>
 

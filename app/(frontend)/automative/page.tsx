@@ -24,8 +24,7 @@ export async function generateMetadata(): Promise<Metadata> {
 const Automative = async () => {
   const autoData = await getAutomotivePage();
   const homeData = await getHomePage(); // for shared sections
-
-  return (
+   return (
     <div>
       <JsonLd data={generateJsonLD(autoData?.meta)} />
       <AutoHeader autoHero={autoData.autoHero} />

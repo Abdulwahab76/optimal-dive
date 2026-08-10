@@ -683,6 +683,31 @@ export interface HomePage {
     techCtaHeading?: string | null;
     techCtaLabel?: string | null;
     techCtaLink?: string | null;
+    techIcons?:
+      | {
+          /**
+           * Used as fallback filename if no custom logo uploaded (e.g. /images/tech/react.svg)
+           */
+          techName: string;
+          /**
+           * Upload a custom logo — overrides the default icon
+           */
+          techLogo?: (number | null) | Media;
+          /**
+           * Horizontal position (desktop layout)
+           */
+          techX?: number | null;
+          /**
+           * Vertical position (desktop layout)
+           */
+          techY?: number | null;
+          /**
+           * Icon size in px
+           */
+          techSize?: number | null;
+          id?: string | null;
+        }[]
+      | null;
   };
   testimonials?: {
     testimonialsHeading1?: string | null;
@@ -962,6 +987,16 @@ export interface HomePageSelect<T extends boolean = true> {
         techCtaHeading?: T;
         techCtaLabel?: T;
         techCtaLink?: T;
+        techIcons?:
+          | T
+          | {
+              techName?: T;
+              techLogo?: T;
+              techX?: T;
+              techY?: T;
+              techSize?: T;
+              id?: T;
+            };
       };
   testimonials?:
     | T
