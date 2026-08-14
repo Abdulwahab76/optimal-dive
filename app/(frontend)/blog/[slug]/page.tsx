@@ -12,6 +12,7 @@ import JsonLd from '../../components/JsonLd'
 import { getContactFormData } from '@/lib/getContactForm'
 import { extractTOC } from '../../lib/extractTOC'
 import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
+import { Metadata } from 'next'
  
 
 
@@ -19,7 +20,7 @@ export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<Metadata> {
   const { slug } = await params;
 
   const post = await getPost(slug);
@@ -90,7 +91,7 @@ export default async function Page({
       <BlogContent
         image={image?.url ?? ''}
         title={post.title}
-        content={post.content}
+        content={post.content as SerializedEditorState}
         formConfig={formConfig}
          toc={toc}
       />

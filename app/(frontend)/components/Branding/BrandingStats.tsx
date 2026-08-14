@@ -48,7 +48,7 @@ export default function BrandingStats() {
           </h2>
 
           <p className="mx-auto mt-4 max-w-xl text-lg leading-7 text-white">
-            Branding isn't just about aesthetics; it's a measurable driver of
+            Branding isn&apos;t just about aesthetics; it&apos;s a measurable driver of
             business growth.
           </p>
         </div>

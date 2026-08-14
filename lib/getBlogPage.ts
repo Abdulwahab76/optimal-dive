@@ -1,11 +1,8 @@
-// lib/getPost.ts
-
-import { getPayload } from "payload";
-import config from "@payload-config";
-
-const payload = await getPayload({ config });
+import { getPayloadClient } from "./payload";
 
 export async function getPost(slug: string) {
+  const payload = await getPayloadClient();
+
   const { docs } = await payload.find({
     collection: "posts",
     where: {

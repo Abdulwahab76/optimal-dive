@@ -20,7 +20,7 @@ const jsxConverters: JSXConvertersFunction = ({ defaultConverters }) => ({
 
     const title =
       node.children
-        ?.map((child: any) => ("text" in child ? child.text : ""))
+        ?.map((child) => ("text" in child ? child.text : ""))
         .join("") ?? "";
 
     const id = slugify(title);
@@ -51,7 +51,7 @@ interface TOCItem {
 interface Props {
   image: string;
   title: string;
-  content: any;
+  content: SerializedEditorState;
   toc?: TOCItem[];
   formConfig: BlogContactForm;
 }
