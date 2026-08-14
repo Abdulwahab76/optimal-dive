@@ -6,6 +6,8 @@ import Footer from "./components/Footer/FooterSection";
 import VisionCta from "./components/Footer/VisionCta";
 import Navbar from "./components/Home/Navbar";
 import { getNavbarData } from "@/lib/getNavbar";
+import { getFooter } from "@/lib/footer";
+import { getVisionCTA } from "@/lib/vision";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -24,6 +26,8 @@ export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const navbarData = await getNavbarData();
+const footer = await getFooter();
+const visionCTA = await getVisionCTA();
 
   return (
     <html lang="en" className={`${poppins.variable} h-full antialiased`}>
@@ -31,8 +35,8 @@ export default async function RootLayout({
         <div>
           <Navbar data={navbarData} />
           {children}
-          <VisionCta />
-          <Footer />
+         <VisionCta visionCTA={visionCTA} />
+          <Footer footer={footer} />
         </div>
       </body>
     </html>

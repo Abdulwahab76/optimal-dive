@@ -98,12 +98,16 @@ export interface Config {
     'automotive-page': AutomotivePage;
     'branding-page': BrandingPage;
     navbar: Navbar;
+    footer: Footer;
+    'vision-cta': VisionCta;
   };
   globalsSelect: {
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
     'automotive-page': AutomotivePageSelect<false> | AutomotivePageSelect<true>;
     'branding-page': BrandingPageSelect<false> | BrandingPageSelect<true>;
     navbar: NavbarSelect<false> | NavbarSelect<true>;
+    footer: FooterSelect<false> | FooterSelect<true>;
+    'vision-cta': VisionCtaSelect<false> | VisionCtaSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1050,6 +1054,51 @@ export interface Navbar {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer".
+ */
+export interface Footer {
+  id: number;
+  logo?: (number | null) | Media;
+  newsletter?: {
+    title?: string | null;
+    placeholder?: string | null;
+    buttonLabel?: string | null;
+  };
+  companyLinks?:
+    | {
+        label: string;
+        url: string;
+        id?: string | null;
+      }[]
+    | null;
+  contact?: {
+    workingHours?: string | null;
+    phone?: string | null;
+    email?: string | null;
+  };
+  socialLinks?: {
+    facebook?: string | null;
+    instagram?: string | null;
+    linkedin?: string | null;
+  };
+  copyright?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vision-cta".
+ */
+export interface VisionCta {
+  id: number;
+  heading: string;
+  buttonLabel?: string | null;
+  buttonLink?: string | null;
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home-page_select".
  */
 export interface HomePageSelect<T extends boolean = true> {
@@ -1472,6 +1521,57 @@ export interface NavbarSelect<T extends boolean = true> {
               id?: T;
             };
       };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "footer_select".
+ */
+export interface FooterSelect<T extends boolean = true> {
+  logo?: T;
+  newsletter?:
+    | T
+    | {
+        title?: T;
+        placeholder?: T;
+        buttonLabel?: T;
+      };
+  companyLinks?:
+    | T
+    | {
+        label?: T;
+        url?: T;
+        id?: T;
+      };
+  contact?:
+    | T
+    | {
+        workingHours?: T;
+        phone?: T;
+        email?: T;
+      };
+  socialLinks?:
+    | T
+    | {
+        facebook?: T;
+        instagram?: T;
+        linkedin?: T;
+      };
+  copyright?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "vision-cta_select".
+ */
+export interface VisionCtaSelect<T extends boolean = true> {
+  heading?: T;
+  buttonLabel?: T;
+  buttonLink?: T;
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

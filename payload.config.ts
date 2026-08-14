@@ -18,7 +18,9 @@ import { Posts } from "./collections/Posts";
 import { Pages } from "./collections/Pages";
 import { BrandingPage } from "./globals/BrandingPage";
 import { NavbarGlobal } from "./globals/Navbar";
-
+import { Footer } from "./globals/Footer";
+import { VisionCTA } from "./globals/VisionCTA";
+ 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
@@ -27,7 +29,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Users, Media, Categories, Posts, Pages],
-  globals: [HomePage, AutomotivePage, BrandingPage,NavbarGlobal],
+  globals: [HomePage, AutomotivePage, BrandingPage,NavbarGlobal,Footer,VisionCTA],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
