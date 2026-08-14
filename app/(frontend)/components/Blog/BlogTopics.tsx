@@ -26,7 +26,7 @@ export default function BlogTopics({ items }: Props) {
       },
       {
         rootMargin: "-20% 0px -60% 0px",
-      }
+      },
     );
 
     items.forEach((item) => {
@@ -50,11 +50,18 @@ export default function BlogTopics({ items }: Props) {
             <li key={item.id}>
               <a
                 href={`#${item.id}`}
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.getElementById(item.id)?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                }}
                 className={clsx(
                   "block rounded-xl px-3 py-3 text-lg font-medium transition-all duration-300",
                   activeId === item.id
                     ? "bg-[#528AC81F] font-semibold text-black"
-                    : "hover:bg-gray-100"
+                    : "hover:bg-gray-100",
                 )}
               >
                 {item.title}

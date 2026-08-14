@@ -10,6 +10,8 @@ import { generateSEOMetadata, generateJsonLD } from "@/lib/seo";
 import { getPost } from '@/lib/getBlogPage'
 import JsonLd from '../../components/JsonLd'
 import { getContactFormData } from '@/lib/getContactForm'
+import { extractTOC } from '../../lib/extractTOC'
+import { SerializedEditorState } from '@payloadcms/richtext-lexical/lexical'
  
 
 
@@ -67,6 +69,7 @@ export default async function Page({
       ? post.category
       : { slug: '', label: '' }
   const formConfig = await getContactFormData();
+  const toc = extractTOC(post.content as SerializedEditorState);
 
   return (
     <div>
@@ -89,6 +92,7 @@ export default async function Page({
         title={post.title}
         content={post.content}
         formConfig={formConfig}
+         toc={toc}
       />
 
       <LatestInsights />
