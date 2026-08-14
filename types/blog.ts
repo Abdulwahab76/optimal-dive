@@ -14,19 +14,38 @@ export interface Category {
   label: string;
 }
 
-export interface Blog {
+ export interface Blog {
   id: string;
   slug: string;
   title: string;
-  image: string;
   author: string;
-  category: Category; // display label + slug, so cards don't need a lookup
-  date: {
-    day: string; // "18"
-    month: string; // "june"
+
+  category: Category;
+
+  image: {
+    id: number;
+    url: string;
+    alt?: string;
   };
-  excerpt?: string;
-  createdAt: string; // ISO date, used for sorting later when this is real data
+
+  publishedAt: string;
+  createdAt: string;
+  updatedAt: string;
+
+  excerpt?: string | null;
+
+  meta?: {
+    title?: string;
+    description?: string;
+    image?: {
+      id: number;
+      url: string;
+      alt?: string;
+    };
+    canonicalURL?: string | null;
+  };
+
+  status?: string;
 }
 
 // Shape returned by GET /api/blogs — mirrors a typical paginated REST response

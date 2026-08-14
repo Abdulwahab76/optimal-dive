@@ -71,7 +71,7 @@ export default function BlogList() {
     setPage(1);
     setTitleSearch(searchInput);
   };
-
+ 
   return (
     <div className="space-y-10 mt-5">
       <div className="flex h-10 w-full max-w-lg overflow-hidden rounded-full border mx-auto border-primary-1 bg-white">

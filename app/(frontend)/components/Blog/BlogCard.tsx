@@ -4,19 +4,24 @@ import { ChevronRight } from "lucide-react";
 import { Blog } from "@/types/blog";
 
 export default function BlogCard({ blog }: { blog: Blog }) {
+  console.log(blog?.image, "blogs");
+
   return (
     <article className="overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
       <Link href={`/blog/${blog.slug}`}>
         <div className="relative h-52">
           <Image
-            src={blog.image}
+            src={blog.image.url}
             alt={blog.title}
             fill
             className="object-cover"
           />
 
           <div className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-b from-primary-1 to-primary-2 text-center text-xs font-bold text-white">
-            {blog.date.day} <br /> {blog.date.month}
+            {new Date(blog.publishedAt).getDate()} <br />
+            {new Date(blog.publishedAt).toLocaleString("en-US", {
+              month: "short",
+            })}
           </div>
         </div>
 

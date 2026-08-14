@@ -6,23 +6,18 @@ import Link from "next/link";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import type { HomePage } from "@/payload-types";
+import { Blog } from "@/types/blog";
 
 type Category = { slug: string; label: string };
 type BlogDate = { day: string; month: string };
 
-export type Blog = {
-  id: string;
-  slug: string;
-  title: string;
-  image: string;
-  author: string;
-  category: Category;
-  date: BlogDate;
-  excerpt: string;
-  createdAt: string;
-};
+ 
 
-export default function LatestInsights({ latestInsights }: { latestInsights?: HomePage["latestInsights"] }) {
+export default function LatestInsights({
+  latestInsights,
+}: {
+  latestInsights?: HomePage["latestInsights"];
+}) {
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
   useEffect(() => {
@@ -52,22 +47,40 @@ export default function LatestInsights({ latestInsights }: { latestInsights?: Ho
 
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
           {blogs.map((blog) => (
-            <article key={blog.id} className="overflow-hidden rounded-2xl bg-[#F5F6FFB2] transition hover:-translate-y-1 hover:shadow-lg">
+            <article
+              key={blog.id}
+              className="overflow-hidden rounded-2xl bg-[#F5F6FFB2] transition hover:-translate-y-1 hover:shadow-lg"
+            >
               <Link href={`/blog/${blog.slug}`}>
                 <div className="relative h-52">
-                  <Image src={blog.image} alt={blog.title} fill className="object-cover p-4 rounded-3xl" />
+                  <Image
+                    src={blog.image.url}
+                    alt={blog.title}
+                    fill
+                    className="object-cover p-4 rounded-3xl"
+                  />
                   <div className="absolute right-4 top-4 flex h-12 w-12 flex-col items-center justify-center rounded-full bg-gradient-to-b from-primary-1 to-primary-2 text-center text-xs font-bold text-white">
-                    <span>{blog.date.day}</span>
-                    <span className="capitalize">{blog.date.month}</span>
+                    <div className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-b from-primary-1 to-primary-2 text-center text-xs font-bold text-white">
+                      {new Date(blog.publishedAt).getDate()} <br />
+                      {new Date(blog.publishedAt).toLocaleString("en-US", {
+                        month: "short",
+                      })}
+                    </div>
                   </div>
                 </div>
                 <div className="p-5">
                   <div className="mb-4 flex items-center justify-between text-xs">
-                    <span className="text-[#121212] text-sm font-medium">By {blog.author}</span>
-                    <span className="font-medium text-indigo-600">{blog.category.label}</span>
+                    <span className="text-[#121212] text-sm font-medium">
+                      By {blog.author}
+                    </span>
+                    <span className="font-medium text-indigo-600">
+                      {blog.category.label}
+                    </span>
                   </div>
                   <h3 className="text-xl font-medium leading-7 text-gray-900">
-                    {blog.title.length > 50 ? `${blog.title.slice(0, 50)}...` : blog.title}
+                    {blog.title.length > 50
+                      ? `${blog.title.slice(0, 50)}...`
+                      : blog.title}
                   </h3>
                   <div className="flex items-center justify-end gap-x-3 pt-5 text-sm font-medium text-black">
                     <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-to-b from-primary-1 to-primary-2 text-white">
