@@ -8,15 +8,12 @@ import { useEffect, useState } from "react";
 import type { HomePage } from "@/payload-types";
 import { Blog } from "@/types/blog";
 
-type Category = { slug: string; label: string };
-type BlogDate = { day: string; month: string };
-
- 
-
 export default function LatestInsights({
   latestInsights,
+  showViewAll = true,
 }: {
   latestInsights?: HomePage["latestInsights"];
+  showViewAll?: boolean;
 }) {
   const [blogs, setBlogs] = useState<Blog[]>([]);
 
@@ -32,17 +29,24 @@ export default function LatestInsights({
   return (
     <section className="py-20">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="mb-10 flex items-center justify-between">
+        <div
+          className={`mb-10 flex items-center ${
+            showViewAll ? "justify-between" : "justify-center"
+          }`}
+        >
           <h2 className="text-2xl lg:text-5xl font-bold text-black">
-            {latestInsights?.insightsHeading ?? "Latest Insights"}
+            {latestInsights?.insightsHeading ?? "Related Blogs"}
           </h2>
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-2 rounded-full bg-linear-to-b from-primary-1 to-primary-2 px-6 py-3 text-xs lg:text-sm font-medium text-white transition hover:bg-indigo-700"
-          >
-            {latestInsights?.insightsCtaLabel ?? "View All"}
-            <ArrowRight size={16} />
-          </Link>
+
+          {showViewAll && (
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 rounded-full bg-linear-to-b from-primary-1 to-primary-2 px-6 py-3 text-xs lg:text-sm font-medium text-white transition hover:bg-indigo-700"
+            >
+              {latestInsights?.insightsCtaLabel ?? "View All"}
+              <ArrowRight size={16} />
+            </Link>
+          )}
         </div>
 
         <div className="grid gap-7 md:grid-cols-2 lg:grid-cols-3">
@@ -57,15 +61,13 @@ export default function LatestInsights({
                     src={blog.image.url}
                     alt={blog.title}
                     fill
-                    className="object-cover p-4 rounded-3xl"
+                    className="object-cover p-2 rounded-3xl"
                   />
-                  <div className="absolute right-4 top-4 flex h-12 w-12 flex-col items-center justify-center rounded-full bg-gradient-to-b from-primary-1 to-primary-2 text-center text-xs font-bold text-white">
-                    <div className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-b from-primary-1 to-primary-2 text-center text-xs font-bold text-white">
-                      {new Date(blog.publishedAt).getDate()} <br />
-                      {new Date(blog.publishedAt).toLocaleString("en-US", {
-                        month: "short",
-                      })}
-                    </div>
+                  <div className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-b from-primary-1 to-primary-2 text-center text-xs font-bold text-white">
+                    {new Date(blog.publishedAt).getDate()} <br />
+                    {new Date(blog.publishedAt).toLocaleString("en-US", {
+                      month: "short",
+                    })}
                   </div>
                 </div>
                 <div className="p-5">

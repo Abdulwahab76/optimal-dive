@@ -96,7 +96,7 @@ export default async function Page({
          toc={toc}
       />
 
-      <LatestInsights />
+      <LatestInsights showViewAll={false}/>
     </div>
   )
 }

@@ -34,7 +34,7 @@ export default async function Home() {
       <Technologies technologies={data.technologies} />
       <TestimonialSlider testimonials={data.testimonials} />
       <IndustriesSection industries={data.industries} />
-      <LatestInsights latestInsights={data.latestInsights} />
+      <LatestInsights latestInsights={data.latestInsights} showViewAll={true}/>
     </div>
   );
 }
