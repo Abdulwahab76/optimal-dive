@@ -4,8 +4,9 @@
 import Image from "next/image";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import type { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
-import ContactForm from "./ContactForm";
-import BlogTopics from "./BlogTopics";
+ import BlogTopics from "./BlogTopics";
+import ContactForm from "./BlogContactForm";
+import { ContactForm as BlogContactForm } from "@/payload-types";
 
 interface TOCItem {
   id: string;
@@ -17,9 +18,10 @@ interface Props {
   title: string;
   content: any;
   toc?: TOCItem[];
+  formConfig:BlogContactForm
 }
 
-export default function BlogContent({ image, title, content, toc = [] }: Props) {
+export default function BlogContent({ image, title, content, toc = [],formConfig }: Props) {
   return (
     <section className="bg-white py-16">
       <div className="mx-auto max-w-7xl px-5">
@@ -44,11 +46,11 @@ export default function BlogContent({ image, title, content, toc = [] }: Props) 
 
           <aside className="hidden space-y-6 lg:block lg:col-span-4">
             {toc.length > 0 && <BlogTopics items={toc} />}
-            <ContactForm />
+            <ContactForm  formConfig={formConfig} />
           </aside>
 
           <div className="lg:hidden">
-            <ContactForm />
+            <ContactForm formConfig={formConfig}/>
           </div>
         </div>
       </div>

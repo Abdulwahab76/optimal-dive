@@ -6,6 +6,30 @@ import type { Media } from '@/payload-types'
 import SingleBlogHeader from '@/app/(frontend)/components/Blog/BlogHeader'
 import BlogContent from '@/app/(frontend)/components/Blog/BlogContent'
 import LatestInsights from '@/app/(frontend)/components/Home/LatestInsights'
+import { generateSEOMetadata, generateJsonLD } from "@/lib/seo";
+import { getPost } from '@/lib/getBlogPage'
+import JsonLd from '../../components/JsonLd'
+import { getContactFormData } from '@/lib/getContactForm'
+ 
+
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+
+  const post = await getPost(slug);
+
+  if (!post) {
+    return {};
+  }
+
+  return generateSEOMetadata(post.meta);
+}
+
+
 
 export default async function Page({
   params,
@@ -42,9 +66,11 @@ export default async function Page({
     typeof post.category === 'object'
       ? post.category
       : { slug: '', label: '' }
+  const formConfig = await getContactFormData();
 
   return (
     <div>
+      <JsonLd data={generateJsonLD(post.meta)} />
       <SingleBlogHeader
         post={{
           title: post.title,
@@ -62,6 +88,7 @@ export default async function Page({
         image={image?.url ?? ''}
         title={post.title}
         content={post.content}
+        formConfig={formConfig}
       />
 
       <LatestInsights />
