@@ -97,11 +97,13 @@ export interface Config {
     'home-page': HomePage;
     'automotive-page': AutomotivePage;
     'branding-page': BrandingPage;
+    navbar: Navbar;
   };
   globalsSelect: {
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
     'automotive-page': AutomotivePageSelect<false> | AutomotivePageSelect<true>;
     'branding-page': BrandingPageSelect<false> | BrandingPageSelect<true>;
+    navbar: NavbarSelect<false> | NavbarSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1004,6 +1006,50 @@ export interface BrandingPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navbar".
+ */
+export interface Navbar {
+  id: number;
+  logo?: (number | null) | Media;
+  navLinks?:
+    | {
+        navLabel: string;
+        navHref: string;
+        id?: string | null;
+      }[]
+    | null;
+  contactCtaLabel?: string | null;
+  contactCtaLink?: string | null;
+  servicesMenu?: {
+    highlightTitle?: string | null;
+    highlightDescription?: string | null;
+    highlightLink?: string | null;
+    highlightCtaLabel?: string | null;
+    serviceMenuItems?:
+      | {
+          smTitle: string;
+          smDesc: string;
+          smHref: string;
+          smIcon?: ('PenTool' | 'Code2' | 'Smartphone' | 'Sparkles' | 'Megaphone' | 'Search' | 'ShoppingCart') | null;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  industriesMenu?: {
+    industriesMenuItems?:
+      | {
+          imTitle: string;
+          imDesc: string;
+          imHref: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home-page_select".
  */
 export interface HomePageSelect<T extends boolean = true> {
@@ -1377,6 +1423,54 @@ export interface BrandingPageSelect<T extends boolean = true> {
               customSchema?: T;
             };
         keywords?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "navbar_select".
+ */
+export interface NavbarSelect<T extends boolean = true> {
+  logo?: T;
+  navLinks?:
+    | T
+    | {
+        navLabel?: T;
+        navHref?: T;
+        id?: T;
+      };
+  contactCtaLabel?: T;
+  contactCtaLink?: T;
+  servicesMenu?:
+    | T
+    | {
+        highlightTitle?: T;
+        highlightDescription?: T;
+        highlightLink?: T;
+        highlightCtaLabel?: T;
+        serviceMenuItems?:
+          | T
+          | {
+              smTitle?: T;
+              smDesc?: T;
+              smHref?: T;
+              smIcon?: T;
+              id?: T;
+            };
+      };
+  industriesMenu?:
+    | T
+    | {
+        industriesMenuItems?:
+          | T
+          | {
+              imTitle?: T;
+              imDesc?: T;
+              imHref?: T;
+              id?: T;
+            };
       };
   updatedAt?: T;
   createdAt?: T;

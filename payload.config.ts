@@ -17,6 +17,7 @@ import { Categories } from "./collections/Categories";
 import { Posts } from "./collections/Posts";
 import { Pages } from "./collections/Pages";
 import { BrandingPage } from "./globals/BrandingPage";
+import { NavbarGlobal } from "./globals/Navbar";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -26,18 +27,17 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Users, Media, Categories, Posts, Pages],
-  globals: [HomePage, AutomotivePage, BrandingPage],
+  globals: [HomePage, AutomotivePage, BrandingPage,NavbarGlobal],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URI!,
-    },
-    push: process.env.NODE_ENV === "development",
-  }),
+ 
+db: postgresAdapter({
+  pool: { connectionString: process.env.DATABASE_URI },
+  push: process.env.NODE_ENV === 'development', // confirm yeh true hai
+}),
   sharp,
   plugins: [
     seoPlugin({
