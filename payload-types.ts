@@ -100,6 +100,8 @@ export interface Config {
     navbar: Navbar;
     footer: Footer;
     'vision-cta': VisionCta;
+    'contact-form': ContactForm;
+    'contact-page': ContactPage;
   };
   globalsSelect: {
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
@@ -108,6 +110,8 @@ export interface Config {
     navbar: NavbarSelect<false> | NavbarSelect<true>;
     footer: FooterSelect<false> | FooterSelect<true>;
     'vision-cta': VisionCtaSelect<false> | VisionCtaSelect<true>;
+    'contact-form': ContactFormSelect<false> | ContactFormSelect<true>;
+    'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1099,6 +1103,128 @@ export interface VisionCta {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-form".
+ */
+export interface ContactForm {
+  id: number;
+  showForm?: boolean | null;
+  heading: string;
+  submitButtonLabel: string;
+  successMessage?: string | null;
+  firstName?: {
+    placeholder?: string | null;
+    requiredMessage?: string | null;
+  };
+  lastName?: {
+    placeholder?: string | null;
+    requiredMessage?: string | null;
+  };
+  email?: {
+    placeholder?: string | null;
+    requiredMessage?: string | null;
+    invalidMessage?: string | null;
+  };
+  phone?: {
+    placeholder?: string | null;
+    requiredMessage?: string | null;
+    invalidMessage?: string | null;
+  };
+  message?: {
+    placeholder?: string | null;
+    requiredMessage?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page".
+ */
+export interface ContactPage {
+  id: number;
+  hero?: {
+    badgeLabel?: string | null;
+    titleLine1?: string | null;
+    titleHighlight?: string | null;
+    description?: string | null;
+  };
+  formPanel?: {
+    panelImage?: (number | null) | Media;
+    panelEyebrow?: string | null;
+    panelTitleLine1?: string | null;
+    panelTitleHighlight?: string | null;
+    panelDescription?: string | null;
+  };
+  contactCards?:
+    | {
+        ccTitle: string;
+        ccValue: string;
+        ccIcon?: ('Phone' | 'Send' | 'MapPin') | null;
+        id?: string | null;
+      }[]
+    | null;
+  process?: {
+    processEyebrow?: string | null;
+    processHeading?: string | null;
+    processSteps?:
+      | {
+          psTitle: string;
+          psIcon?: ('Video' | 'PhoneCall' | 'TrendingUp') | null;
+          psDescription: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    /**
+     * Override canonical URL if needed.
+     */
+    canonicalURL?: string | null;
+    robots?: {
+      noIndex?: boolean | null;
+      noFollow?: boolean | null;
+    };
+    social?: {
+      ogTitle?: string | null;
+      ogDescription?: string | null;
+      ogImage?: (number | null) | Media;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      twitterImage?: (number | null) | Media;
+      twitterCard?: ('summary_large_image' | 'summary') | null;
+    };
+    schema?: {
+      schemaType?:
+        ('WebPage' | 'Article' | 'BlogPosting' | 'Service' | 'FAQPage' | 'MedicalOrganization' | 'Physician') | null;
+      /**
+       * Optional custom JSON-LD schema.
+       */
+      customSchema?:
+        | {
+            [k: string]: unknown;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    };
+    /**
+     * Comma separated keywords.
+     */
+    keywords?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home-page_select".
  */
 export interface HomePageSelect<T extends boolean = true> {
@@ -1572,6 +1698,131 @@ export interface VisionCtaSelect<T extends boolean = true> {
   heading?: T;
   buttonLabel?: T;
   buttonLink?: T;
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-form_select".
+ */
+export interface ContactFormSelect<T extends boolean = true> {
+  showForm?: T;
+  heading?: T;
+  submitButtonLabel?: T;
+  successMessage?: T;
+  firstName?:
+    | T
+    | {
+        placeholder?: T;
+        requiredMessage?: T;
+      };
+  lastName?:
+    | T
+    | {
+        placeholder?: T;
+        requiredMessage?: T;
+      };
+  email?:
+    | T
+    | {
+        placeholder?: T;
+        requiredMessage?: T;
+        invalidMessage?: T;
+      };
+  phone?:
+    | T
+    | {
+        placeholder?: T;
+        requiredMessage?: T;
+        invalidMessage?: T;
+      };
+  message?:
+    | T
+    | {
+        placeholder?: T;
+        requiredMessage?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "contact-page_select".
+ */
+export interface ContactPageSelect<T extends boolean = true> {
+  hero?:
+    | T
+    | {
+        badgeLabel?: T;
+        titleLine1?: T;
+        titleHighlight?: T;
+        description?: T;
+      };
+  formPanel?:
+    | T
+    | {
+        panelImage?: T;
+        panelEyebrow?: T;
+        panelTitleLine1?: T;
+        panelTitleHighlight?: T;
+        panelDescription?: T;
+      };
+  contactCards?:
+    | T
+    | {
+        ccTitle?: T;
+        ccValue?: T;
+        ccIcon?: T;
+        id?: T;
+      };
+  process?:
+    | T
+    | {
+        processEyebrow?: T;
+        processHeading?: T;
+        processSteps?:
+          | T
+          | {
+              psTitle?: T;
+              psIcon?: T;
+              psDescription?: T;
+              id?: T;
+            };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        canonicalURL?: T;
+        robots?:
+          | T
+          | {
+              noIndex?: T;
+              noFollow?: T;
+            };
+        social?:
+          | T
+          | {
+              ogTitle?: T;
+              ogDescription?: T;
+              ogImage?: T;
+              twitterTitle?: T;
+              twitterDescription?: T;
+              twitterImage?: T;
+              twitterCard?: T;
+            };
+        schema?:
+          | T
+          | {
+              schemaType?: T;
+              customSchema?: T;
+            };
+        keywords?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

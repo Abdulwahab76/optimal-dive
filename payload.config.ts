@@ -20,6 +20,8 @@ import { BrandingPage } from "./globals/BrandingPage";
 import { NavbarGlobal } from "./globals/Navbar";
 import { Footer } from "./globals/Footer";
 import { VisionCTA } from "./globals/VisionCTA";
+import { ContactForm } from "./globals/ContactForm";
+import { ContactPage } from "./globals/ContactPage";
  
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -29,7 +31,7 @@ export default buildConfig({
     user: Users.slug,
   },
   collections: [Users, Media, Categories, Posts, Pages],
-  globals: [HomePage, AutomotivePage, BrandingPage,NavbarGlobal,Footer,VisionCTA],
+  globals: [HomePage, AutomotivePage, BrandingPage,NavbarGlobal,Footer,VisionCTA,  ContactForm, ContactPage ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
   typescript: {
@@ -44,7 +46,7 @@ db: postgresAdapter({
   plugins: [
     seoPlugin({
       collections: ["posts", "pages"],
-      globals: ["home-page", "automotive-page", "branding-page"],
+      globals: ["home-page", "automotive-page", "branding-page",'contact-page'],
       uploadsCollection: "media",
       tabbedUI: true,
 
