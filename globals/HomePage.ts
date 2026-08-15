@@ -1,5 +1,6 @@
 // globals/HomePage.ts
 import type { GlobalConfig } from "payload";
+import { revalidatePath } from 'next/cache'   // 👈 static import (top pe)
 
 export const HomePage: GlobalConfig = {
   slug: "home-page",
@@ -641,4 +642,12 @@ export const HomePage: GlobalConfig = {
       ],
     },
   ],
+
+   hooks: {
+    afterChange: [
+      async () => {
+        revalidatePath('/')
+      },
+    ],
+  },
 };

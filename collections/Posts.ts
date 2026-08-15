@@ -1,7 +1,7 @@
 // collections/Posts.ts
 import type { CollectionConfig } from 'payload'
 import { lexicalEditor } from '@payloadcms/richtext-lexical'
-
+import { revalidatePath } from "next/cache";
 export const Posts: CollectionConfig = {
   slug: 'posts',
   labels: { singular: 'Blog Post', plural: 'Blog Posts' },
@@ -59,4 +59,19 @@ export const Posts: CollectionConfig = {
     },
     // SEO plugin injects a "meta" group automatically — see Step 5
   ],
+  hooks: {
+  afterChange: [
+    async ({ doc }) => {
+      revalidatePath("/blog");
+      revalidatePath(`/blog/${doc.slug}`);
+    },
+  ],
+
+  afterDelete: [
+    async ({ doc }) => {
+      revalidatePath("/blog");
+      revalidatePath(`/blog/${doc.slug}`);
+    },
+  ],
+},
 }

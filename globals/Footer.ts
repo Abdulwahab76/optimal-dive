@@ -1,5 +1,5 @@
 import type { GlobalConfig } from "payload";
-
+ 
 export const Footer: GlobalConfig = {
   slug: "footer",
 
@@ -105,4 +105,12 @@ export const Footer: GlobalConfig = {
       defaultValue: "© 2026 Optimal Dive. All Rights Reserved.",
     },
   ],
+   hooks: {
+    afterChange: [
+      async () => {
+        const { revalidatePath } = await import('next/cache')
+        revalidatePath('/', 'layout') // navbar is global — revalidate every page
+      },
+    ],
+  },
 };

@@ -1,6 +1,7 @@
 // globals/ContactForm.ts
 
 import type { GlobalConfig } from "payload";
+import { revalidatePath } from 'next/cache'   // 👈 static import (top pe)
 
 export const ContactForm: GlobalConfig = {
   slug: "contact-form",
@@ -160,4 +161,12 @@ export const ContactForm: GlobalConfig = {
       ],
     },
   ],
+  hooks: {
+  afterChange: [
+    async () => {
+      revalidatePath("/contact-us");
+      revalidatePath("/", "layout");
+    },
+  ],
+},
 };

@@ -1,6 +1,6 @@
 // globals/Navbar.ts
 import type { GlobalConfig } from 'payload'
-
+ 
 export const NavbarGlobal: GlobalConfig = {
   slug: 'navbar',
   label: 'Navbar / Mega Menu',

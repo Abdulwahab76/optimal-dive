@@ -1,5 +1,6 @@
 // globals/AutomotivePage.ts
 import type { GlobalConfig } from 'payload'
+import { revalidatePath } from 'next/cache'   // 👈 static import (top pe)
 
 export const AutomotivePage: GlobalConfig = {
   slug: 'automotive-page',
@@ -173,4 +174,12 @@ export const AutomotivePage: GlobalConfig = {
       ],
     },
   ],
+   hooks: {
+      afterChange: [
+        async () => {
+          revalidatePath('/automative')
+        },
+      ],
+    },
+  
 }

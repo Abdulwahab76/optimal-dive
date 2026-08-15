@@ -1,4 +1,5 @@
 import type { GlobalConfig } from "payload";
+import { revalidatePath } from 'next/cache'   // 👈 static import (top pe)
 
 export const VisionCTA: GlobalConfig = {
   slug: "vision-cta",
@@ -32,4 +33,11 @@ export const VisionCTA: GlobalConfig = {
       defaultValue: "/contact-us",
     },
   ],
+  hooks: {
+      afterChange: [
+        async () => {
+          revalidatePath('/')
+        },
+      ],
+    },
 };
