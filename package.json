@@ -19,6 +19,7 @@
     "@payloadcms/richtext-lexical": "^3.87.1",
     "@payloadcms/storage-vercel-blob": "^3.87.1",
     "@tailwindcss/typography": "^0.5.20",
+    "@vercel/blob": "^2.8.0",
     "clsx": "^2.1.1",
     "lucide-react": "^1.24.0",
     "next": "16.2.10",
