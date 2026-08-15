@@ -31,6 +31,42 @@ const defaultIcons = [
   { techName: "openai", techLogo: null, techX: 540, techY: 235, techSize: 56 },
 ];
 
+ 
+ function resolvePosition(
+  entry: { techName: string; techX?: number | null; techY?: number | null; techSize?: number | null },
+  fallbackIndex: number
+) {
+  const hasCustomPosition = !!entry.techX || !!entry.techY;
+
+  if (hasCustomPosition) {
+    return {
+      x: entry.techX ?? 0,
+      y: entry.techY ?? 0,
+      size: entry.techSize || 60,
+    };
+  }
+
+  const matchedDefault = defaultIcons.find(
+    (d) => d.techName.toLowerCase() === entry.techName?.trim().toLowerCase()
+  );
+
+  if (matchedDefault) {
+    return {
+      x: matchedDefault.techX,
+      y: matchedDefault.techY,
+      size: entry.techSize || matchedDefault.techSize,
+    };
+  }
+
+  const col = fallbackIndex % 6;
+  const row = Math.floor(fallbackIndex / 6);
+  return {
+    x: col * 130,
+    y: row * 130,
+    size: entry.techSize || 60,
+  };
+}
+
 export default function Technologies({ technologies: tech }: { technologies?: HomePage["technologies"] }) {
   const icons = tech?.techIcons?.length ? tech.techIcons : defaultIcons;
 
@@ -49,9 +85,7 @@ export default function Technologies({ technologies: tech }: { technologies?: Ho
         {/* Desktop */}
         <div className="relative mx-auto mt-20 hidden h-[480px] max-w-[1100px] lg:block">
           {icons.map((t, i) => {
-            const size = t.techSize ?? 60;
-            const x = t.techX ?? 0;
-            const y = t.techY ?? 0;
+            const { x, y, size } = resolvePosition(t, i);
             const src = mediaUrl(t.techLogo, `/images/tech/${t.techName}.svg`);
 
             return (
