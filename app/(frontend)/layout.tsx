@@ -16,7 +16,13 @@ const poppins = Poppins({
 });
 
 export const metadata: Metadata = {
-  robots: { index: false, follow: false },
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://optimal-dive.vercel.app",
+  ),
+  robots: {
+    index: process.env.NEXT_PUBLIC_ENABLE_INDEXING === "true",
+    follow: process.env.NEXT_PUBLIC_ENABLE_INDEXING === "true",
+  },
   title: "Optimal Dive",
   description:
     "Optimal Dive is a leading digital agency that specializes in creating innovative and effective digital solutions for businesses of all sizes. We offer a wide range of services, including web design and development, digital marketing, branding, and more. Our team of experts is dedicated to helping our clients achieve their goals and grow their businesses in the digital world.",
@@ -26,8 +32,8 @@ export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   const navbarData = await getNavbarData();
-const footer = await getFooter();
-const visionCTA = await getVisionCTA();
+  const footer = await getFooter();
+  const visionCTA = await getVisionCTA();
 
   return (
     <html lang="en" className={`${poppins.variable} h-full antialiased`}>
@@ -35,7 +41,7 @@ const visionCTA = await getVisionCTA();
         <div>
           <Navbar data={navbarData} />
           {children}
-         <VisionCta visionCTA={visionCTA} />
+          <VisionCta visionCTA={visionCTA} />
           <Footer footer={footer} />
         </div>
       </body>
