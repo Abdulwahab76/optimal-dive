@@ -58,10 +58,10 @@ export default function LatestInsights({
               <Link href={`/blog/${blog.slug}`}>
                 <div className="relative h-52">
                   <Image
-                    src={blog.image.url}
+                    src={blog.image} // 👈 fix — pehle "blog.image.url" tha
                     alt={blog.title}
                     fill
-                    className="object-cover p-2 rounded-3xl"
+                    className="object-cover p-4 rounded-3xl"
                   />
                   <div className="absolute right-4 top-4 flex h-12 w-12 items-center justify-center rounded-full bg-linear-to-b from-primary-1 to-primary-2 text-center text-xs font-bold text-white">
                     {new Date(blog.publishedAt).getDate()} <br />

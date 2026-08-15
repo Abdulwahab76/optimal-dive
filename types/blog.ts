@@ -20,13 +20,11 @@ export interface Category {
   title: string;
   author: string;
 
-  category: Category;
-
-  image: {
-    id: number;
-    url: string;
-    alt?: string;
-  };
+ date: {
+   day: string;
+  month: string;
+    },
+  image:  string,
 
   publishedAt: string;
   createdAt: string;
@@ -44,7 +42,10 @@ export interface Category {
     };
     canonicalURL?: string | null;
   };
-
+ category: {
+      slug:string,
+      label: string,
+    },
   status?: string;
 }
 

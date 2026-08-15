@@ -102,6 +102,7 @@ export interface Config {
     'vision-cta': VisionCta;
     'contact-form': ContactForm;
     'contact-page': ContactPage;
+    'blog-page': BlogPage;
   };
   globalsSelect: {
     'home-page': HomePageSelect<false> | HomePageSelect<true>;
@@ -112,6 +113,7 @@ export interface Config {
     'vision-cta': VisionCtaSelect<false> | VisionCtaSelect<true>;
     'contact-form': ContactFormSelect<false> | ContactFormSelect<true>;
     'contact-page': ContactPageSelect<false> | ContactPageSelect<true>;
+    'blog-page': BlogPageSelect<false> | BlogPageSelect<true>;
   };
   locale: null;
   widgets: {
@@ -1225,6 +1227,66 @@ export interface ContactPage {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-page".
+ */
+export interface BlogPage {
+  id: number;
+  blogHero?: {
+    blogBadgeLabel?: string | null;
+    blogTitleLine1?: string | null;
+    blogTitleHighlight?: string | null;
+    blogHeroImage?: (number | null) | Media;
+  };
+  meta?: {
+    title?: string | null;
+    description?: string | null;
+    /**
+     * Maximum upload file size: 12MB. Recommended file size for images is <500KB.
+     */
+    image?: (number | null) | Media;
+    /**
+     * Override canonical URL if needed.
+     */
+    canonicalURL?: string | null;
+    robots?: {
+      noIndex?: boolean | null;
+      noFollow?: boolean | null;
+    };
+    social?: {
+      ogTitle?: string | null;
+      ogDescription?: string | null;
+      ogImage?: (number | null) | Media;
+      twitterTitle?: string | null;
+      twitterDescription?: string | null;
+      twitterImage?: (number | null) | Media;
+      twitterCard?: ('summary_large_image' | 'summary') | null;
+    };
+    schema?: {
+      schemaType?:
+        ('WebPage' | 'Article' | 'BlogPosting' | 'Service' | 'FAQPage' | 'MedicalOrganization' | 'Physician') | null;
+      /**
+       * Optional custom JSON-LD schema.
+       */
+      customSchema?:
+        | {
+            [k: string]: unknown;
+          }
+        | unknown[]
+        | string
+        | number
+        | boolean
+        | null;
+    };
+    /**
+     * Comma separated keywords.
+     */
+    keywords?: string | null;
+  };
+  updatedAt?: string | null;
+  createdAt?: string | null;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "home-page_select".
  */
 export interface HomePageSelect<T extends boolean = true> {
@@ -1790,6 +1852,55 @@ export interface ContactPageSelect<T extends boolean = true> {
               psDescription?: T;
               id?: T;
             };
+      };
+  meta?:
+    | T
+    | {
+        title?: T;
+        description?: T;
+        image?: T;
+        canonicalURL?: T;
+        robots?:
+          | T
+          | {
+              noIndex?: T;
+              noFollow?: T;
+            };
+        social?:
+          | T
+          | {
+              ogTitle?: T;
+              ogDescription?: T;
+              ogImage?: T;
+              twitterTitle?: T;
+              twitterDescription?: T;
+              twitterImage?: T;
+              twitterCard?: T;
+            };
+        schema?:
+          | T
+          | {
+              schemaType?: T;
+              customSchema?: T;
+            };
+        keywords?: T;
+      };
+  updatedAt?: T;
+  createdAt?: T;
+  globalType?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "blog-page_select".
+ */
+export interface BlogPageSelect<T extends boolean = true> {
+  blogHero?:
+    | T
+    | {
+        blogBadgeLabel?: T;
+        blogTitleLine1?: T;
+        blogTitleHighlight?: T;
+        blogHeroImage?: T;
       };
   meta?:
     | T

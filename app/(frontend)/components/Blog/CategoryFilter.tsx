@@ -1,23 +1,33 @@
-// components/blog/CategoryFilter.tsx
- import { CategorySlug } from "@/types/blog";
-import { categories } from "../../lib/categories";
- 
+// app/(frontend)/components/Blog/CategoryFilter.tsx
+"use client";
+
+import { useEffect, useState } from "react";
+import type { CategorySlug, Category } from "@/types/blog";
 
 interface CategoryFilterProps {
   activeCategory: CategorySlug;
   onChange: (category: CategorySlug) => void;
 }
 
-export default function CategoryFilter({
-  activeCategory,
-  onChange,
-}: CategoryFilterProps) {
+export default function CategoryFilter({ activeCategory, onChange }: CategoryFilterProps) {
+  const [categories, setCategories] = useState<Category[]>([{ slug: "all", label: "All" }]);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+      const res = await fetch("/api/blog-categories");  
+        const json = await res.json();
+        setCategories(json.data);
+      } catch {
+        // fallback stays just "All"
+        
+      }
+    };
+    fetchCategories();
+  }, []);
+
   return (
-    <div
-      role="tablist"
-      aria-label="Filter blogs by category"
-      className="flex flex-wrap items-center justify-center gap-3"
-    >
+    <div role="tablist" aria-label="Filter blogs by category" className="flex flex-wrap items-center justify-center gap-3">
       {categories.map((category) => {
         const isActive = category.slug === activeCategory;
         return (
