@@ -1,15 +1,18 @@
 // next.config.ts
-import type { NextConfig } from 'next'
-import { withPayload } from '@payloadcms/next/withPayload'
+import type { NextConfig } from "next";
+import { withPayload } from "@payloadcms/next/withPayload";
 
 const nextConfig: NextConfig = {
+  serverExternalPackages: ["sharp"], // 👈 add karein
   images: {
-    domains: ['images.unsplash.com', 'cdn.sanity.io', 'lh3.googleusercontent.com'],
+    remotePatterns: [
+      { protocol: "https", hostname: "*.public.blob.vercel-storage.com" },  
+    ],
   },
 
-   typescript: {
+  typescript: {
     ignoreBuildErrors: true,
   },
-}
+};
 
-export default withPayload(nextConfig)
+export default withPayload(nextConfig);

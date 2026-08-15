@@ -5,8 +5,8 @@ export const Media: CollectionConfig = {
   slug: 'media',
   access: { read: () => true },
   upload: {
-    // if you're on Vercel Blob storage (you already have the package installed)
-    // otherwise this just stores locally in /media
+    disableLocalStorage: true, // 👈 production/Vercel ke liye MANDATORY
+    mimeTypes: ['image/*'],
   },
   fields: [
     { name: 'alt', type: 'text', required: true },
