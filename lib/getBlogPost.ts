@@ -1,6 +1,6 @@
 import { getPayloadClient } from "./payload";
 
-export async function getPost(slug: string) {
+export async function getBlogPost(slug: string) {
   const payload = await getPayloadClient();
 
   const { docs } = await payload.find({

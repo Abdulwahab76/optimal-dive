@@ -7,7 +7,7 @@ import SingleBlogHeader from '@/app/(frontend)/components/Blog/BlogHeader'
 import BlogContent from '@/app/(frontend)/components/Blog/BlogContent'
 import LatestInsights from '@/app/(frontend)/components/Home/LatestInsights'
 import { generateSEOMetadata, generateJsonLD } from "@/lib/seo";
-import { getPost } from '@/lib/getBlogPage'
+import { getBlogPost } from '@/lib/getBlogPost'
 import JsonLd from '../../components/JsonLd'
 import { getContactFormData } from '@/lib/getContactForm'
 import { extractTOC } from '../../lib/extractTOC'
@@ -23,7 +23,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
 
-  const post = await getPost(slug);
+  const post = await getBlogPost(slug);
 
   if (!post) {
     return {};
