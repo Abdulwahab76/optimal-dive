@@ -23,7 +23,9 @@ import { VisionCTA } from "./globals/VisionCTA";
 import { ContactForm } from "./globals/ContactForm";
 import { ContactPage } from "./globals/ContactPage";
 import { BlogPage } from "./globals/BlogPage";
- 
+import { Submissions } from "./collections/Submissions";
+ import { resendAdapter } from '@payloadcms/email-resend'
+
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
 
@@ -31,7 +33,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  collections: [Users, Media, Categories, Posts, Pages],
+  collections: [Users, Media, Categories, Posts, Pages,Submissions],
   globals: [HomePage, AutomotivePage, BrandingPage,NavbarGlobal,Footer,VisionCTA,  ContactForm, ContactPage,BlogPage ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
@@ -178,4 +180,9 @@ db: postgresAdapter({
       token: process.env.BLOB_READ_WRITE_TOKEN || "",
     }),
   ],
+   email: resendAdapter({
+    defaultFromAddress: 'noreply@optimaldive.com',
+    defaultFromName: 'Optimal Dive',
+    apiKey: process.env.RESEND_API_KEY || '',
+  }),
 });
