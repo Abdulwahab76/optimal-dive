@@ -1,6 +1,7 @@
 // globals/HomePage.ts
 import type { GlobalConfig } from "payload";
 import { revalidatePath } from 'next/cache'   // 👈 static import (top pe)
+import { lightTextEditor } from '@/lib/lightRichText'
 
 export const HomePage: GlobalConfig = {
   slug: "home-page",
@@ -44,10 +45,31 @@ export const HomePage: GlobalConfig = {
             "Optimal Dive is a full-cycle product development company",
         },
         {
-          name: "aboutBodyText",
-          type: "textarea",
-          defaultValue:
-            "built on one simple belief: great software should solve real problems and drive lasting business growth. We combine creative thinking with deep technical expertise to turn ambitious ideas into products that generate a profitable, sustainable impact.",
+          name: 'aboutBodyText',
+          type: 'richText',
+          editor: lightTextEditor,
+          defaultValue: {
+            root: {
+              type: 'root',
+              children: [
+                {
+                  type: 'paragraph',
+                  children: [
+                    {
+                      type: 'text',
+                      text: 'built on one simple belief: great software should solve real problems and drive lasting business growth. We combine creative thinking with deep technical expertise to turn ambitious ideas into products that generate a profitable, sustainable impact.',
+                      version: 1,
+                    },
+                  ],
+                  version: 1,
+                },
+              ],
+              direction: 'ltr',
+              format: '',
+              indent: 0,
+              version: 1,
+            },
+          },
         },
       ],
     },
@@ -643,7 +665,7 @@ export const HomePage: GlobalConfig = {
     },
   ],
 
-   hooks: {
+  hooks: {
     afterChange: [
       async () => {
         revalidatePath('/')
