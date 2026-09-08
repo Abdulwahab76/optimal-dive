@@ -1,4 +1,6 @@
 // globals/ContactPage.ts
+import { lightTextEditor } from '@/lib/lightRichText'
+import { toLexicalDefault } from '@/lib/toLexicalDefault'
 import type { GlobalConfig } from 'payload'
 
 export const ContactPage: GlobalConfig = {
@@ -15,12 +17,13 @@ export const ContactPage: GlobalConfig = {
         { name: 'badgeLabel', type: 'text', defaultValue: 'Contact Us' },
         { name: 'titleLine1', type: 'text', defaultValue: "Let's Build Something" },
         { name: 'titleHighlight', type: 'text', defaultValue: 'Amazing Together' },
-        {
-          name: 'description',
-          type: 'textarea',
-          defaultValue:
-            'Have a project in mind? Tell us about your goals and our team will help turn your ideas into powerful digital solutions.',
-        },
+        // {
+        //   name: 'description',
+        //   type: 'textarea',
+        //   defaultValue:
+        //     'Have a project in mind? Tell us about your goals and our team will help turn your ideas into powerful digital solutions.',
+        // },
+        { name: 'description', type: 'richText', editor: lightTextEditor, defaultValue: toLexicalDefault('...') },
       ],
     },
 
@@ -34,11 +37,13 @@ export const ContactPage: GlobalConfig = {
         { name: 'panelEyebrow', type: 'text', defaultValue: 'Contact Optimal Dive' },
         { name: 'panelTitleLine1', type: 'text', defaultValue: "Let's build your next" },
         { name: 'panelTitleHighlight', type: 'text', defaultValue: 'digital solution' },
-        {
-          name: 'panelDescription',
-          type: 'textarea',
-          defaultValue: "Share your idea with our team and let's create something powerful together.",
-        },
+        // {
+        //   name: 'panelDescription',
+        //   type: 'textarea',
+        //   defaultValue: "Share your idea with our team and let's create something powerful together.",
+        // },
+        { name: 'panelDescription', type: 'richText', editor: lightTextEditor, defaultValue: toLexicalDefault('...') },
+
       ],
     },
 
@@ -91,7 +96,8 @@ export const ContactPage: GlobalConfig = {
               defaultValue: 'Video',
               options: ['Video', 'PhoneCall', 'TrendingUp'],
             },
-            { name: 'psDescription', type: 'textarea', required: true },
+            // { name: 'psDescription', type: 'textarea', required: true },
+            { name: 'psDescription', type: 'richText', editor: lightTextEditor, defaultValue: toLexicalDefault('...') },
           ],
         },
       ],

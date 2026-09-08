@@ -8,6 +8,8 @@ import { generateSEOMetadata, generateJsonLD,   } from "@/lib/seo";
 import { mediaUrl } from "@/lib/media";
 import type { Metadata } from "next";
 import JsonLd from "../components/JsonLd";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import {  SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 const cardIconMap: Record<string, LucideIcon> = { Phone, Send, MapPin };
 const stepIconMap: Record<string, LucideIcon> = { Video, PhoneCall, TrendingUp };
@@ -60,8 +62,9 @@ export default async function ContactPage() {
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-gray-300 md:text-lg">
-            {hero?.description ??
-              "Have a project in mind? Tell us about your goals and our team will help turn your ideas into powerful digital solutions."}
+            {/* {hero?.description ??
+              "Have a project in mind? Tell us about your goals and our team will help turn your ideas into powerful digital solutions."} */}
+            <RichText data={hero?.description as SerializedEditorState} />
           </p>
         </div>
       </section>
@@ -80,7 +83,8 @@ export default async function ContactPage() {
                 </span>
               </h2>
               <p className="mt-4 max-w-md text-gray-300">
-                {panel?.panelDescription ?? "Share your idea with our team and let's create something powerful together."}
+                {/* {panel?.panelDescription ?? "Share your idea with our team and let's create something powerful together."} */}
+                <RichText data={panel?.panelDescription as SerializedEditorState} />
               </p>
             </div>
           </div>
@@ -132,7 +136,9 @@ export default async function ContactPage() {
                     <Icon size={30} className="text-white" strokeWidth={2} />
                   </div>
                   <h3 className="text-2xl font-semibold text-[#181818]">{step.psTitle}</h3>
-                  <p className="mt-4 text-sm leading-6 text-gray-600">{step.psDescription}</p>
+                  {/* <p className="mt-4 text-sm leading-6 text-gray-600">/ */}
+                    <RichText data={step.psDescription as SerializedEditorState} />
+                  {/* </p> */}
                 </div>
               );
             })}

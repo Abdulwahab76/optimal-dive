@@ -1426,14 +1426,42 @@ export interface ContactPage {
     badgeLabel?: string | null;
     titleLine1?: string | null;
     titleHighlight?: string | null;
-    description?: string | null;
+    description?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
   };
   formPanel?: {
     panelImage?: (number | null) | Media;
     panelEyebrow?: string | null;
     panelTitleLine1?: string | null;
     panelTitleHighlight?: string | null;
-    panelDescription?: string | null;
+    panelDescription?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
   };
   contactCards?:
     | {
@@ -1450,7 +1478,21 @@ export interface ContactPage {
       | {
           psTitle: string;
           psIcon?: ('Video' | 'PhoneCall' | 'TrendingUp') | null;
-          psDescription: string;
+          psDescription?: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          } | null;
           id?: string | null;
         }[]
       | null;
