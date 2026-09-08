@@ -1,6 +1,8 @@
 import Image from "next/image";
 import type { BrandingPage } from "@/payload-types";
 import { mediaUrl } from "@/lib/media";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 export default function BrandingShowcase({ brandShowcase }: { brandShowcase?: BrandingPage["brandShowcase"] }) {
   const sideImage = mediaUrl(brandShowcase?.showcaseSideImage, "/images/br-3.png");
@@ -20,8 +22,7 @@ export default function BrandingShowcase({ brandShowcase }: { brandShowcase?: Br
             </h2>
             <hr className="w-20 border-0 h-1 my-4 bg-primary-1 rounded-full" />
             <p className="mt-3 max-w-3xl text-sm leading-7 text-[#4A5565] lg:text-base">
-              {brandShowcase?.showcaseDescription ??
-                "Branding is the strategic process of creating a unique identity for your business. It encompasses everything from your visual identity and tone of voice to your values and customer experience. At Optimal Dev, we believe great branding tells a story that connects, converts, and creates loyalty."}
+              <RichText data={brandShowcase?.showcaseDescription as SerializedEditorState} />
             </p>
           </div>
         </div>

@@ -1,4 +1,6 @@
 // globals/BrandingPage.ts
+import { lightTextEditor } from '@/lib/lightRichText'
+import { toLexicalDefault } from '@/lib/toLexicalDefault'
 import type { GlobalConfig } from 'payload'
 
 export const BrandingPage: GlobalConfig = {
@@ -15,12 +17,7 @@ export const BrandingPage: GlobalConfig = {
         { name: 'brandHeroBadgeLabel', type: 'text', defaultValue: 'Brand Identity Design' },
         { name: 'brandHeroTitleLine1', type: 'text', defaultValue: 'Crafting Identities' },
         { name: 'brandHeroTitleHighlight', type: 'text', defaultValue: 'That Resonate' },
-        {
-          name: 'brandHeroDescription',
-          type: 'textarea',
-          defaultValue:
-            'We design iconic brand identities that work via visual design, messaging, and positioning. We help you convey your value, build trust, and become a brand that performs well and is remembered by your audience.',
-        },
+        { name: 'brandHeroDescription', type: 'richText', editor: lightTextEditor, defaultValue: toLexicalDefault('We design iconic brand identities that work via visual design, messaging, and positioning. We help you convey your value, build trust, and become a brand that performs well and is remembered by your audience.')},
         { name: 'brandHeroCtaLabel', type: 'text', defaultValue: 'Start Your Project' },
         { name: 'brandHeroCtaLink', type: 'text', defaultValue: '/contact-us' },
         { name: 'brandHeroImage', type: 'upload', relationTo: 'media' },
@@ -35,12 +32,14 @@ export const BrandingPage: GlobalConfig = {
       fields: [
         { name: 'showcaseSideImage', type: 'upload', relationTo: 'media' },
         { name: 'showcaseHeading', type: 'text', defaultValue: 'More Than Just a Logo' },
-        {
-          name: 'showcaseDescription',
-          type: 'textarea',
-          defaultValue:
-            'Branding is the strategic process of creating a unique identity for your business. It encompasses everything from your visual identity and tone of voice to your values and customer experience. At Optimal Dev, we believe great branding tells a story that connects, converts, and creates loyalty.',
-        },
+        // {
+        //   name: 'showcaseDescription',
+        //   type: 'textarea',
+        //   defaultValue:
+        //     'Branding is the strategic process of creating a unique identity for your business. It encompasses everything from your visual identity and tone of voice to your values and customer experience. At Optimal Dev, we believe great branding tells a story that connects, converts, and creates loyalty.',
+        // },
+        { name: 'showcaseDescription', type: 'richText', editor: lightTextEditor, defaultValue: toLexicalDefault('...') },
+
         { name: 'showcaseImageOne', type: 'upload', relationTo: 'media' },
         { name: 'showcaseImageTwo', type: 'upload', relationTo: 'media' },
       ],
@@ -53,11 +52,13 @@ export const BrandingPage: GlobalConfig = {
       label: 'Branding Services Section',
       fields: [
         { name: 'brandServicesHeading', type: 'text', defaultValue: 'Our Branding Services' },
-        {
-          name: 'brandServicesDescription',
-          type: 'textarea',
-          defaultValue: 'From strategic foundations to visual execution, we provide end-to-end branding solutions.',
-        },
+        // {
+        //   name: 'brandServicesDescription',
+        //   type: 'textarea',
+        //   defaultValue: 'From strategic foundations to visual execution, we provide end-to-end branding solutions.',
+        // },
+        { name: 'brandServicesDescription', type: 'richText', editor: lightTextEditor, defaultValue: toLexicalDefault('...') },
+
         {
           name: 'brandServiceItems',
           type: 'array',
@@ -79,7 +80,9 @@ export const BrandingPage: GlobalConfig = {
               defaultValue: 'BadgeCheck',
               options: ['BadgeCheck', 'Palette', 'MessageSquare', 'BookOpen', 'RefreshCw', 'LayoutGrid'],
             },
-            { name: 'bsDescription', type: 'textarea', required: true },
+            // { name: 'bsDescription', type: 'textarea', required: true },
+            { name: 'bsDescription', type: 'richText', editor: lightTextEditor, defaultValue: toLexicalDefault('...') },
+
           ],
         },
       ],
@@ -108,7 +111,9 @@ export const BrandingPage: GlobalConfig = {
           ],
           fields: [
             { name: 'bpTitle', type: 'text', required: true },
-            { name: 'bpDescription', type: 'textarea', required: true },
+            // { name: 'bpDescription', type: 'textarea', required: true },
+            { name: 'bpDescription', type: 'richText', editor: lightTextEditor, defaultValue: toLexicalDefault('...') },
+
             { name: 'bpIcon', type: 'upload', relationTo: 'media' },
           ],
         },
@@ -122,11 +127,12 @@ export const BrandingPage: GlobalConfig = {
       label: 'Branding Stats Section',
       fields: [
         { name: 'statsHeading', type: 'text', defaultValue: 'The Power of a Strong Brand' },
-        {
-          name: 'statsDescription',
-          type: 'textarea',
-          defaultValue: "Branding isn't just about aesthetics; it's a measurable driver of business growth.",
-        },
+        // {
+        //   name: 'statsDescription',
+        //   type: 'textarea',
+        //   defaultValue: "Branding isn't just about aesthetics; it's a measurable driver of business growth.",
+        // },
+        { name: 'statsDescription', type: 'richText', editor: lightTextEditor, defaultValue: toLexicalDefault('...') },
         {
           name: 'statsItems',
           type: 'array',

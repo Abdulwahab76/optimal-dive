@@ -6,6 +6,8 @@ import {
   type LucideIcon, ArrowLeft, ArrowRight,
 } from "lucide-react";
 import type { BrandingPage } from "@/payload-types";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 
 const iconMap: Record<string, LucideIcon> = {
   BadgeCheck, Palette, MessageSquare, BookOpen, RefreshCw, LayoutGrid,
@@ -39,8 +41,9 @@ export default function BrandingServices({ brandServices }: { brandServices?: Br
             {brandServices?.brandServicesHeading ?? "Our Branding Services"}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#6A7282] md:text-base">
-            {brandServices?.brandServicesDescription ??
-              "From strategic foundations to visual execution, we provide end-to-end branding solutions."}
+            {/* {brandServices?.brandServicesDescription ??
+              "From strategic foundations to visual execution, we provide end-to-end branding solutions."} */}
+            <RichText data={brandServices?.brandServicesDescription as SerializedEditorState} />
           </p>
         </div>
 
@@ -61,7 +64,9 @@ export default function BrandingServices({ brandServices }: { brandServices?: Br
                   <Icon size={22} strokeWidth={2} />
                 </div>
                 <h3 className={`mt-6 text-xl font-semibold ${isActive ? "text-white" : "text-[#181818]"}`}>{service.bsTitle}</h3>
-                <p className={`mt-3 text-lg leading-7 ${isActive ? "text-white/90" : "text-[#6A7282]"}`}>{service.bsDescription}</p>
+                <p className={`mt-3 text-lg leading-7 ${isActive ? "text-white/90" : "text-[#6A7282]"}`}>
+                  <RichText data={service.bsDescription as SerializedEditorState} />
+                </p>
               </button>
             );
           })}
@@ -79,7 +84,9 @@ export default function BrandingServices({ brandServices }: { brandServices?: Br
                     <Icon size={22} />
                   </div>
                   <h3 className="mt-6 text-xl font-semibold">{service.bsTitle}</h3>
-                  <p className="mt-3 text-[#6A7282]">{service.bsDescription}</p>
+                  <p className="mt-3 text-[#6A7282]">
+                    <RichText data={service.bsDescription as SerializedEditorState} />
+                  </p>
                 </div>
               </div>
             );

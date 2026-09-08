@@ -1113,7 +1113,21 @@ export interface BrandingPage {
     brandHeroBadgeLabel?: string | null;
     brandHeroTitleLine1?: string | null;
     brandHeroTitleHighlight?: string | null;
-    brandHeroDescription?: string | null;
+    brandHeroDescription?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
     brandHeroCtaLabel?: string | null;
     brandHeroCtaLink?: string | null;
     brandHeroImage?: (number | null) | Media;
@@ -1121,18 +1135,60 @@ export interface BrandingPage {
   brandShowcase?: {
     showcaseSideImage?: (number | null) | Media;
     showcaseHeading?: string | null;
-    showcaseDescription?: string | null;
+    showcaseDescription?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
     showcaseImageOne?: (number | null) | Media;
     showcaseImageTwo?: (number | null) | Media;
   };
   brandServices?: {
     brandServicesHeading?: string | null;
-    brandServicesDescription?: string | null;
+    brandServicesDescription?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
     brandServiceItems?:
       | {
           bsTitle: string;
           bsIcon?: ('BadgeCheck' | 'Palette' | 'MessageSquare' | 'BookOpen' | 'RefreshCw' | 'LayoutGrid') | null;
-          bsDescription: string;
+          bsDescription?: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          } | null;
           id?: string | null;
         }[]
       | null;
@@ -1143,7 +1199,21 @@ export interface BrandingPage {
     processStepsList?:
       | {
           bpTitle: string;
-          bpDescription: string;
+          bpDescription?: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          } | null;
           bpIcon?: (number | null) | Media;
           id?: string | null;
         }[]
@@ -1151,7 +1221,21 @@ export interface BrandingPage {
   };
   brandStats?: {
     statsHeading?: string | null;
-    statsDescription?: string | null;
+    statsDescription?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
     statsItems?:
       | {
           bStatValue: string;

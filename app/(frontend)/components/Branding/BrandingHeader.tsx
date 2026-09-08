@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { BrandingPage } from "@/payload-types";
 import { mediaUrl } from "@/lib/media";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 const BrandingHeader = ({ brandHero }: { brandHero?: BrandingPage["brandHero"] }) => {
   const heroImage = mediaUrl(brandHero?.brandHeroImage, "/images/verified-img.png");
@@ -29,10 +31,11 @@ const BrandingHeader = ({ brandHero }: { brandHero?: BrandingPage["brandHero"] }
             <br />
             <span className="text-primary-1">{brandHero?.brandHeroTitleHighlight ?? "That Resonate"}</span>
           </h1>
-          <p className="text-lg max-w-lg text-center lg:text-left">
-            {brandHero?.brandHeroDescription ??
-              "We design iconic brand identities that work via visual design, messaging, and positioning. We help you convey your value, build trust, and become a brand that performs well and is remembered by your audience."}
-          </p>
+          {/* <p className="text-lg max-w-lg text-center lg:text-left"> */}
+            {/* {brandHero?.brandHeroDescription ??
+              "We design iconic brand identities that work via visual design, messaging, and positioning. We help you convey your value, build trust, and become a brand that performs well and is remembered by your audience."} */}
+              <RichText data={brandHero?.brandHeroDescription as SerializedEditorState} />
+          {/* </p> */}
           <Link
             href={brandHero?.brandHeroCtaLink ?? "/contact-us"}
             className="lg:mx-0 mx-auto mt-6 sm:mt-10 flex w-fit items-center gap-2 rounded-full bg-gradient-to-b from-primary-1 to-primary-2 px-5 py-3 sm:px-6 text-white"

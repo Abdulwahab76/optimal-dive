@@ -1,6 +1,8 @@
 import { TimelineStep } from "../Home/Timelinestep";
 import type { BrandingPage } from "@/payload-types";
 import { mediaUrl } from "@/lib/media";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 const defaultSteps = [
   { bpTitle: "Ideate", bpIcon: null, bpDescription: "We analyze your vision thoroughly to ensure the roadmap aligns perfectly with your end goals." },
@@ -60,7 +62,7 @@ export function BrandingProcess({
                 step={{
                   id: step.bpTitle,
                   title: step.bpTitle,
-                  description: step.bpDescription,
+                  description: step.bpDescription as SerializedEditorState,
                   icon: mediaUrl(step.bpIcon, defaultIcons[index] ?? defaultIcons[0]),
                 }}
                 variant={index % 2 === 0 ? "textLeft" : "textRight"}
@@ -111,7 +113,8 @@ function BrandingStats({ brandStats }: { brandStats?: BrandingPage["brandStats"]
             {brandStats?.statsHeading ?? "The Power of a Strong Brand"}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-lg leading-7 text-white">
-            {brandStats?.statsDescription ?? "Branding isn't just about aesthetics; it's a measurable driver of business growth."}
+            {/* {brandStats?.statsDescription ?? "Branding isn't just about aesthetics; it's a measurable driver of business growth."} */}
+            <RichText data={brandStats?.statsDescription as SerializedEditorState} />
           </p>
         </div>
 
