@@ -2,6 +2,7 @@
 import { TimelineStep } from "./Timelinestep";
 import type { HomePage } from "@/payload-types";
 import { mediaUrl } from "@/lib/media";
+import type { SerializedEditorState, SerializedLexicalNode } from "lexical";
 
 const defaultSteps = [
   { stepTitle: "Ideate", stepIcon: null, stepDescription: "We analyze your vision thoroughly to ensure the roadmap aligns perfectly with your end goals." },
@@ -60,7 +61,37 @@ export function ProductProcessSection({ process }: { process?: HomePage["process
                 step={{
                   id: step.stepTitle,
                   title: step.stepTitle,
-                  description: step.stepDescription,
+                  description: (typeof step.stepDescription === "string"
+                    ? {
+                        root: {
+                          type: "root",
+                          children: [
+                            {
+                              type: "paragraph",
+                              version: 1,
+                              children: [
+                                {
+                                  type: "text",
+                                  version: 1,
+                                  text: step.stepDescription,
+                                  detail: 0,
+                                  format: 0,
+                                  mode: "normal",
+                                  style: "",
+                                },
+                              ],
+                              direction: null,
+                              format: "",
+                              indent: 0,
+                            },
+                          ],
+                          direction: null,
+                          format: "",
+                          indent: 0,
+                          version: 1,
+                        },
+                      }
+                    : step.stepDescription) as SerializedEditorState<SerializedLexicalNode>,
                   icon: mediaUrl(step.stepIcon, defaultIcons[index] ?? defaultIcons[0]),
                 }}
                 variant={index % 2 === 0 ? "textLeft" : "textRight"}

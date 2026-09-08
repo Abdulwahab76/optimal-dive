@@ -4,6 +4,8 @@ import { useState } from "react";
 import IndustryCard from "./IndustryCard";
 import type { HomePage } from "@/payload-types";
 import { mediaUrl } from "@/lib/media";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 const defaultIndustries = [
   { industryTitle: "Automotive", industryIcon: null, industryDescription: "Enhance vehicle management, driver experience, and connected mobility with secure software solutions." },
@@ -50,8 +52,9 @@ export default function IndustriesSection({ industries }: { industries?: HomePag
             {industries?.industriesHeading ?? "Industries We Serve"}
           </h2>
           <p className="max-w-md text-base leading-7 text-white">
-            {industries?.industriesDescription ??
-              "We provide tailored solutions that address the unique demands across various industries, delivering transformative experiences to drive significant impact."}
+            {/* {industries?.industriesDescription ??
+              "We provide tailored solutions that address the unique demands across various industries, delivering transformative experiences to drive significant impact."} */}
+              <RichText data={industries?.industriesDescription as SerializedEditorState} />
           </p>
         </div>
 
@@ -60,7 +63,7 @@ export default function IndustriesSection({ industries }: { industries?: HomePag
             <IndustryCard
               key={item.industryTitle + index}
               title={item.industryTitle}
-              description={item.industryDescription}
+              description={item.industryDescription as SerializedEditorState}
               icon={mediaUrl(item.industryIcon, defaultIcons[index] ?? defaultIcons[0])}
               active={activeIndustry === item.industryTitle}
               onClick={() => setActiveIndustry(item.industryTitle)}

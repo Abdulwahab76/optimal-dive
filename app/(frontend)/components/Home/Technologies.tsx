@@ -4,6 +4,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { HomePage } from "@/payload-types";
 import { mediaUrl } from "@/lib/media";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 const defaultIcons = [
   { techName: "github", techLogo: null, techX: 70, techY: 10, techSize: 66 },
@@ -78,8 +80,10 @@ export default function Technologies({ technologies: tech }: { technologies?: Ho
         </h2>
 
         <p className="mt-5 max-w-5xl font-normal text-lg leading-7 text-[#6A7280]">
-          {tech?.techDescription ??
-            "Hire from our pool of 350+ specialized experts in web, mobile and software engineering, specializing in the latest technologies and frameworks ready to scale your development team effortlessly."}
+          {/* {tech?.techDescription ??
+            "Hire from our pool of 350+ specialized experts in web, mobile and software engineering, specializing in the latest technologies and frameworks ready to scale your development team effortlessly."} */}
+              <RichText data={tech?.techDescription as SerializedEditorState} />
+
         </p>
 
         {/* Desktop */}

@@ -1,9 +1,11 @@
 import Image from "next/image";
 import clsx from "clsx";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 type Props = {
   title: string;
-  description: string;
+  description: SerializedEditorState;   // 👈 string se change
   icon: string;
   active?: boolean;
   onClick?: () => void;
@@ -63,7 +65,10 @@ export default function IndustryCard({
 
         <h3 className="mb-3 text-2xl font-semibold text-white">{title}</h3>
 
-        <p className="text-base leading-7 text-white">{description}</p>
+        <p className="text-base leading-7 text-white">
+
+          <RichText data={description} />
+        </p>
       </div>
     </button>
   );

@@ -1,6 +1,6 @@
 // globals/HomePage.ts
 import type { GlobalConfig } from "payload";
-import { revalidatePath } from 'next/cache'   // 👈 static import (top pe)
+import { revalidatePath } from 'next/cache'
 import { lightTextEditor } from '@/lib/lightRichText'
 import { toLexicalDefault } from "@/lib/toLexicalDefault";
 
@@ -16,16 +16,8 @@ export const HomePage: GlobalConfig = {
       label: "Hero Section",
       fields: [
         { name: "heroTitleLine1", type: "text", defaultValue: "Transforming" },
-        {
-          name: "heroTitleHighlight",
-          type: "text",
-          defaultValue: "Digital Futures",
-        },
-        {
-          name: "heroCtaLabel",
-          type: "text",
-          defaultValue: "Start Your Project",
-        },
+        { name: "heroTitleHighlight", type: "text", defaultValue: "Digital Futures" },
+        { name: "heroCtaLabel", type: "text", defaultValue: "Start Your Project" },
         { name: "heroCtaLink", type: "text", defaultValue: "/contact-us" },
         { name: "heroBackgroundImage", type: "upload", relationTo: "media" },
         { name: "heroForegroundImage", type: "upload", relationTo: "media" },
@@ -42,15 +34,14 @@ export const HomePage: GlobalConfig = {
         {
           name: "aboutHighlightText",
           type: "text",
-          defaultValue:
-            "Optimal Dive is a full-cycle product development company",
+          defaultValue: "Optimal Dive is a full-cycle product development company",
         },
         {
           name: 'aboutBodyText',
           type: 'richText',
           editor: lightTextEditor,
           defaultValue: toLexicalDefault(
-            'built on one simple belief: great software should solve real problems and drive lasting business growth...'
+            'built on one simple belief: great software should solve real problems and drive lasting business growth. We combine creative thinking with deep technical expertise to turn ambitious ideas into products that generate a profitable, sustainable impact.'
           ),
         },
       ],
@@ -80,11 +71,7 @@ export const HomePage: GlobalConfig = {
       type: "group",
       label: "Clients Section",
       fields: [
-        {
-          name: "clientsHeading",
-          type: "text",
-          defaultValue: "Clients We've Served",
-        },
+        { name: "clientsHeading", type: "text", defaultValue: "Clients We've Served" },
         {
           name: "clientLogos",
           type: "array",
@@ -103,7 +90,7 @@ export const HomePage: GlobalConfig = {
           ],
           fields: [
             { name: "clientName", type: "text", required: true },
-            { name: "clientLogo", type: "upload", relationTo: "media" }, // optional override
+            { name: "clientLogo", type: "upload", relationTo: "media" },
           ],
         },
       ],
@@ -115,42 +102,18 @@ export const HomePage: GlobalConfig = {
       type: "group",
       label: "Success Stories",
       fields: [
-        {
-          name: "successHeading",
-          type: "text",
-          defaultValue: "Our Success Stories",
-        },
-        {
-          name: "successViewMoreLabel",
-          type: "text",
-          defaultValue: "View More",
-        },
-        {
-          name: "successCtaLabel",
-          type: "text",
-          defaultValue: "Start Your Project",
-        },
+        { name: "successHeading", type: "text", defaultValue: "Our Success Stories" },
+        { name: "successViewMoreLabel", type: "text", defaultValue: "View More" },
+        { name: "successCtaLabel", type: "text", defaultValue: "Start Your Project" },
         { name: "successCtaLink", type: "text", defaultValue: "/contact-us" },
         {
           name: "projects",
           type: "array",
           minRows: 1,
           defaultValue: [
-            {
-              projectTitle: "Vyro",
-              projectCategory: "Website",
-              projectLarge: true,
-            },
-            {
-              projectTitle: "Bloom",
-              projectCategory: "Mobile App",
-              projectLarge: false,
-            },
-            {
-              projectTitle: "Orvion",
-              projectCategory: "Crm Design",
-              projectLarge: false,
-            },
+            { projectTitle: "Vyro", projectCategory: "Website", projectLarge: true },
+            { projectTitle: "Bloom", projectCategory: "Mobile App", projectLarge: false },
+            { projectTitle: "Orvion", projectCategory: "Crm Design", projectLarge: false },
           ],
           fields: [
             { name: "projectTitle", type: "text", required: true },
@@ -168,11 +131,7 @@ export const HomePage: GlobalConfig = {
       type: "group",
       label: "Services Section",
       fields: [
-        {
-          name: "servicesHeading",
-          type: "text",
-          defaultValue: "Services We Provide",
-        },
+        { name: "servicesHeading", type: "text", defaultValue: "Services We Provide" },
         {
           name: "serviceItems",
           type: "array",
@@ -180,38 +139,50 @@ export const HomePage: GlobalConfig = {
           defaultValue: [
             {
               serviceTitle: "Branding",
-              serviceDescription:
-                "We craft iconic brand identities that combine visual design, strategic messaging, and precise positioning. Build trust, convey your value, and become unforgettable.",
+              serviceDescription: toLexicalDefault(
+                "We craft iconic brand identities that combine visual design, strategic messaging, and precise positioning. Build trust, convey your value, and become unforgettable."
+              ),
             },
             {
               serviceTitle: "Websites Development",
-              serviceDescription:
-                "Custom, high-performance websites built for speed, scale, and user experience. From sleek landing pages to complex platforms—we engineer digital presence that converts.",
+              serviceDescription: toLexicalDefault(
+                "Custom, high-performance websites built for speed, scale, and user experience. From sleek landing pages to complex platforms—we engineer digital presence that converts."
+              ),
             },
             {
               serviceTitle: "Digital Marketing",
-              serviceDescription:
-                "Strategic digital campaigns that turn attention into action. From content to paid media, we drive engagement, leads, and conversions.",
+              serviceDescription: toLexicalDefault(
+                "Strategic digital campaigns that turn attention into action. From content to paid media, we drive engagement, leads, and conversions."
+              ),
             },
             {
               serviceTitle: "Search Engine Optimization",
-              serviceDescription:
-                "Data-driven search optimization that puts your business in front of the right audience. Higher rankings, organic growth, and measurable ROI.",
+              serviceDescription: toLexicalDefault(
+                "Data-driven search optimization that puts your business in front of the right audience. Higher rankings, organic growth, and measurable ROI."
+              ),
             },
             {
               serviceTitle: "Mobile Application Development",
-              serviceDescription:
-                "Native and cross-platform apps built for iOS and Android. Intuitive design, robust architecture, and seamless performance—right in your users' pockets.",
+              serviceDescription: toLexicalDefault(
+                "Native and cross-platform apps built for iOS and Android. Intuitive design, robust architecture, and seamless performance—right in your users' pockets."
+              ),
             },
             {
               serviceTitle: "AI Solution",
-              serviceDescription:
-                "Intelligent automation and machine learning solutions that streamline operations, unlock insights, and give your business a competitive edge.",
+              serviceDescription: toLexicalDefault(
+                "Intelligent automation and machine learning solutions that streamline operations, unlock insights, and give your business a competitive edge."
+              ),
             },
           ],
           fields: [
             { name: "serviceTitle", type: "text", required: true },
-            { name: 'serviceDescription', type: 'richText', editor: lightTextEditor, defaultValue: toLexicalDefault('...') },
+            {
+              name: 'serviceDescription',
+              type: 'richText',
+              editor: lightTextEditor,
+              required: true,
+              defaultValue: toLexicalDefault('Enter service description...'),
+            },
             { name: "serviceImage", type: "upload", relationTo: "media" },
           ],
         },
@@ -224,52 +195,18 @@ export const HomePage: GlobalConfig = {
       type: "group",
       label: "Product Development Process",
       fields: [
-        {
-          name: "processHeading",
-          type: "text",
-          defaultValue: "Our Product Development Process",
-        },
+        { name: "processHeading", type: "text", defaultValue: "Our Product Development Process" },
         {
           name: 'processSteps',
           type: 'array',
           minRows: 1,
           defaultValue: [
-            {
-              stepTitle: 'Ideate',
-              stepDescription: toLexicalDefault(
-                'We analyze your vision thoroughly to ensure the roadmap aligns perfectly with your end goals.'
-              ),
-            },
-            {
-              stepTitle: 'Design',
-              stepDescription: toLexicalDefault(
-                'We craft MVPs that balance stunning design with core functionality.'
-              ),
-            },
-            {
-              stepTitle: 'Develop',
-              stepDescription: toLexicalDefault(
-                'We build end-to-end solutions using agile processes and robust architecture.'
-              ),
-            },
-            {
-              stepTitle: 'Test',
-              stepDescription: toLexicalDefault(
-                'We ensure quality and reliability through extensive QA across every touchpoint.'
-              ),
-            },
-            {
-              stepTitle: 'Launch',
-              stepDescription: toLexicalDefault(
-                'We execute smooth rollouts with tailored deployment plans and dedicated support.'
-              ),
-            },
-            {
-              stepTitle: 'Support',
-              stepDescription: toLexicalDefault(
-                'We provide ongoing enhancements to ensure your product continues to succeed.'
-              ),
-            },
+            { stepTitle: 'Ideate', stepDescription: toLexicalDefault('We analyze your vision thoroughly to ensure the roadmap aligns perfectly with your end goals.') },
+            { stepTitle: 'Design', stepDescription: toLexicalDefault('We craft MVPs that balance stunning design with core functionality.') },
+            { stepTitle: 'Develop', stepDescription: toLexicalDefault('We build end-to-end solutions using agile processes and robust architecture.') },
+            { stepTitle: 'Test', stepDescription: toLexicalDefault('We ensure quality and reliability through extensive QA across every touchpoint.') },
+            { stepTitle: 'Launch', stepDescription: toLexicalDefault('We execute smooth rollouts with tailored deployment plans and dedicated support.') },
+            { stepTitle: 'Support', stepDescription: toLexicalDefault('We provide ongoing enhancements to ensure your product continues to succeed.') },
           ],
           fields: [
             { name: 'stepTitle', type: 'text', required: true },
@@ -292,234 +229,65 @@ export const HomePage: GlobalConfig = {
       type: "group",
       label: "Technologies Section",
       fields: [
+        { name: "techHeading", type: "text", defaultValue: "Technologies We Use" },
         {
-          name: "techHeading",
-          type: "text",
-          defaultValue: "Technologies We Use",
+          name: 'techDescription',
+          type: 'richText',
+          editor: lightTextEditor,
+          defaultValue: toLexicalDefault(
+            'Hire from our pool of 350+ specialized experts in web, mobile and software engineering, specializing in the latest technologies and frameworks ready to scale your development team effortlessly.'
+          ),
         },
-        {
-          name: "techDescription",
-          type: "textarea",
-          defaultValue:
-            "Hire from our pool of 350+ specialized experts in web, mobile and software engineering, specializing in the latest technologies and frameworks ready to scale your development team effortlessly.",
-        },
-        {
-          name: "techCtaHeading",
-          type: "text",
-          defaultValue: "Ready to build something lasting?",
-        },
-        {
-          name: "techCtaLabel",
-          type: "text",
-          defaultValue: "Start Your Project",
-        },
+        { name: "techCtaHeading", type: "text", defaultValue: "Ready to build something lasting?" },
+        { name: "techCtaLabel", type: "text", defaultValue: "Start Your Project" },
         { name: "techCtaLink", type: "text", defaultValue: "/contact-us" },
         {
           name: "techIcons",
           type: "array",
           label: "Technology Logos",
-          dbName: "tech_icons", // keep table name short
+          dbName: "tech_icons",
           minRows: 1,
           defaultValue: [
-            {
-              techName: "github",
-              techLogo: null,
-              techX: 70,
-              techY: 10,
-              techSize: 66,
-            },
-            {
-              techName: "html",
-              techLogo: null,
-              techX: 205,
-              techY: -5,
-              techSize: 62,
-            },
-            {
-              techName: "mysql",
-              techLogo: null,
-              techX: 330,
-              techY: -18,
-              techSize: 66,
-            },
-            {
-              techName: "unreal",
-              techLogo: null,
-              techX: 440,
-              techY: -5,
-              techSize: 68,
-            },
-            {
-              techName: "mongodb",
-              techLogo: null,
-              techX: 540,
-              techY: 10,
-              techSize: 60,
-            },
-            {
-              techName: "slack",
-              techLogo: null,
-              techX: 620,
-              techY: -18,
-              techSize: 58,
-            },
-            {
-              techName: "java",
-              techLogo: null,
-              techX: 20,
-              techY: 95,
-              techSize: 68,
-            },
-            {
-              techName: "css",
-              techLogo: null,
-              techX: 150,
-              techY: 65,
-              techSize: 66,
-            },
-            {
-              techName: "react",
-              techLogo: null,
-              techX: 260,
-              techY: 55,
-              techSize: 70,
-            },
-            {
-              techName: "python",
-              techLogo: null,
-              techX: 340,
-              techY: 98,
-              techSize: 54,
-            },
-            {
-              techName: "unity",
-              techLogo: null,
-              techX: 430,
-              techY: 85,
-              techSize: 56,
-            },
-            {
-              techName: "docker",
-              techLogo: null,
-              techX: 500,
-              techY: 105,
-              techSize: 60,
-            },
-            {
-              techName: "firebase",
-              techLogo: null,
-              techX: 590,
-              techY: 82,
-              techSize: 62,
-            },
-            {
-              techName: "kotlin",
-              techLogo: null,
-              techX: 50,
-              techY: 185,
-              techSize: 54,
-            },
-            {
-              techName: "laravel",
-              techLogo: null,
-              techX: 160,
-              techY: 170,
-              techSize: 70,
-            },
-            {
-              techName: "next",
-              techLogo: null,
-              techX: 250,
-              techY: 150,
-              techSize: 74,
-            },
-            {
-              techName: "wordpress",
-              techLogo: null,
-              techX: 360,
-              techY: 170,
-              techSize: 58,
-            },
-            {
-              techName: "node",
-              techLogo: null,
-              techX: 460,
-              techY: 175,
-              techSize: 66,
-            },
-            {
-              techName: "vercel",
-              techLogo: null,
-              techX: 560,
-              techY: 170,
-              techSize: 58,
-            },
-            {
-              techName: "notion",
-              techLogo: null,
-              techX: 120,
-              techY: 245,
-              techSize: 56,
-            },
-            {
-              techName: "figma",
-              techLogo: null,
-              techX: 230,
-              techY: 230,
-              techSize: 54,
-            },
-            {
-              techName: "shopify",
-              techLogo: null,
-              techX: 330,
-              techY: 228,
-              techSize: 56,
-            },
-            {
-              techName: "openai",
-              techLogo: null,
-              techX: 540,
-              techY: 235,
-              techSize: 56,
-            },
+            { techName: "github", techLogo: null, techX: 70, techY: 10, techSize: 66 },
+            { techName: "html", techLogo: null, techX: 205, techY: -5, techSize: 62 },
+            { techName: "mysql", techLogo: null, techX: 330, techY: -18, techSize: 66 },
+            { techName: "unreal", techLogo: null, techX: 440, techY: -5, techSize: 68 },
+            { techName: "mongodb", techLogo: null, techX: 540, techY: 10, techSize: 60 },
+            { techName: "slack", techLogo: null, techX: 620, techY: -18, techSize: 58 },
+            { techName: "java", techLogo: null, techX: 20, techY: 95, techSize: 68 },
+            { techName: "css", techLogo: null, techX: 150, techY: 65, techSize: 66 },
+            { techName: "react", techLogo: null, techX: 260, techY: 55, techSize: 70 },
+            { techName: "python", techLogo: null, techX: 340, techY: 98, techSize: 54 },
+            { techName: "unity", techLogo: null, techX: 430, techY: 85, techSize: 56 },
+            { techName: "docker", techLogo: null, techX: 500, techY: 105, techSize: 60 },
+            { techName: "firebase", techLogo: null, techX: 590, techY: 82, techSize: 62 },
+            { techName: "kotlin", techLogo: null, techX: 50, techY: 185, techSize: 54 },
+            { techName: "laravel", techLogo: null, techX: 160, techY: 170, techSize: 70 },
+            { techName: "next", techLogo: null, techX: 250, techY: 150, techSize: 74 },
+            { techName: "wordpress", techLogo: null, techX: 360, techY: 170, techSize: 58 },
+            { techName: "node", techLogo: null, techX: 460, techY: 175, techSize: 66 },
+            { techName: "vercel", techLogo: null, techX: 560, techY: 170, techSize: 58 },
+            { techName: "notion", techLogo: null, techX: 120, techY: 245, techSize: 56 },
+            { techName: "figma", techLogo: null, techX: 230, techY: 230, techSize: 54 },
+            { techName: "shopify", techLogo: null, techX: 330, techY: 228, techSize: 56 },
+            { techName: "openai", techLogo: null, techX: 540, techY: 235, techSize: 56 },
           ],
           fields: [
             {
               name: "techName",
               type: "text",
               required: true,
-              admin: {
-                description:
-                  "Used as fallback filename if no custom logo uploaded (e.g. /images/tech/react.svg)",
-              },
+              admin: { description: "Used as fallback filename if no custom logo uploaded (e.g. /images/tech/react.svg)" },
             },
             {
               name: "techLogo",
               type: "upload",
               relationTo: "media",
-              admin: {
-                description:
-                  "Upload a custom logo — overrides the default icon",
-              },
+              admin: { description: "Upload a custom logo — overrides the default icon" },
             },
-            {
-              name: "techX",
-              type: "number",
-              defaultValue: 0,
-              admin: { description: "Horizontal position (desktop layout)" },
-            },
-            {
-              name: "techY",
-              type: "number",
-              defaultValue: 0,
-              admin: { description: "Vertical position (desktop layout)" },
-            },
-            {
-              name: "techSize",
-              type: "number",
-              defaultValue: 60,
-              admin: { description: "Icon size in px" },
-            },
+            { name: "techX", type: "number", defaultValue: 0, admin: { description: "Horizontal position (desktop layout)" } },
+            { name: "techY", type: "number", defaultValue: 0, admin: { description: "Vertical position (desktop layout)" } },
+            { name: "techSize", type: "number", defaultValue: 60, admin: { description: "Icon size in px" } },
           ],
         },
       ],
@@ -531,16 +299,8 @@ export const HomePage: GlobalConfig = {
       type: "group",
       label: "Testimonials",
       fields: [
-        {
-          name: "testimonialsHeading1",
-          type: "text",
-          defaultValue: "Our Clients Simply Love",
-        },
-        {
-          name: "testimonialsHeading2",
-          type: "text",
-          defaultValue: "What We Do",
-        },
+        { name: "testimonialsHeading1", type: "text", defaultValue: "Our Clients Simply Love" },
+        { name: "testimonialsHeading2", type: "text", defaultValue: "What We Do" },
         {
           name: "testimonialItems",
           type: "array",
@@ -548,33 +308,32 @@ export const HomePage: GlobalConfig = {
           defaultValue: [
             {
               testimonialName: "Jackie Dallas",
-              testimonialReview:
-                "Optimal Dive managed to provide successful support and development in a timely manner. The app is still in preparation for the beta launch, but it has been receiving a lot of positive feedback from the client.",
+              testimonialReview: toLexicalDefault(
+                "Optimal Dive managed to provide successful support and development in a timely manner. The app is still in preparation for the beta launch, but it has been receiving a lot of positive feedback from the client."
+              ),
               testimonialRating: 5,
             },
             {
               testimonialName: "John Carter",
-              testimonialReview:
-                "Amazing communication and delivery throughout the project.",
+              testimonialReview: toLexicalDefault("Amazing communication and delivery throughout the project."),
               testimonialRating: 5,
             },
             {
               testimonialName: "Emily Brown",
-              testimonialReview:
-                "Professional team with great attention to detail.",
+              testimonialReview: toLexicalDefault("Professional team with great attention to detail."),
               testimonialRating: 5,
             },
           ],
           fields: [
             { name: "testimonialName", type: "text", required: true },
-            { name: "testimonialReview", type: "textarea", required: true },
             {
-              name: "testimonialRating",
-              type: "number",
-              min: 1,
-              max: 5,
-              defaultValue: 5,
+              name: 'testimonialReview',
+              type: 'richText',
+              editor: lightTextEditor,
+              required: true,
+              defaultValue: toLexicalDefault('Enter testimonial review...'),
             },
+            { name: "testimonialRating", type: "number", min: 1, max: 5, defaultValue: 5 },
             { name: "testimonialAvatar", type: "upload", relationTo: "media" },
           ],
         },
@@ -587,16 +346,14 @@ export const HomePage: GlobalConfig = {
       type: "group",
       label: "Industries We Serve",
       fields: [
+        { name: "industriesHeading", type: "text", defaultValue: "Industries We Serve" },
         {
-          name: "industriesHeading",
-          type: "text",
-          defaultValue: "Industries We Serve",
-        },
-        {
-          name: "industriesDescription",
-          type: "textarea",
-          defaultValue:
-            "We provide tailored solutions that address the unique demands across various industries, delivering transformative experiences to drive significant impact.",
+          name: 'industriesDescription',
+          type: 'richText',
+          editor: lightTextEditor,
+          defaultValue: toLexicalDefault(
+            'We provide tailored solutions that address the unique demands across various industries, delivering transformative experiences to drive significant impact.'
+          ),
         },
         {
           name: "industryItems",
@@ -605,55 +362,63 @@ export const HomePage: GlobalConfig = {
           defaultValue: [
             {
               industryTitle: "Automotive",
-              industryDescription:
-                "Enhance vehicle management, driver experience, and connected mobility with secure software solutions.",
+              industryDescription: toLexicalDefault(
+                "Enhance vehicle management, driver experience, and connected mobility with secure software solutions."
+              ),
             },
             {
               industryTitle: "Finance",
-              industryDescription:
-                "Build reliable digital banking, fintech platforms, and payment systems with security at their core.",
+              industryDescription: toLexicalDefault(
+                "Build reliable digital banking, fintech platforms, and payment systems with security at their core."
+              ),
             },
             {
               industryTitle: "Real Estate",
-              industryDescription:
-                "CRM, property management, online portals, and modern real-estate solutions.",
+              industryDescription: toLexicalDefault(
+                "CRM, property management, online portals, and modern real-estate solutions."
+              ),
             },
             {
               industryTitle: "Food",
-              industryDescription:
-                "Restaurant systems, online ordering, inventory management, and delivery platforms.",
+              industryDescription: toLexicalDefault(
+                "Restaurant systems, online ordering, inventory management, and delivery platforms."
+              ),
             },
             {
               industryTitle: "Education",
-              industryDescription:
-                "E-learning platforms, LMS solutions, student portals, and digital education experiences.",
+              industryDescription: toLexicalDefault(
+                "E-learning platforms, LMS solutions, student portals, and digital education experiences."
+              ),
             },
             {
               industryTitle: "Healthcare",
-              industryDescription:
-                "Healthcare applications, EMR systems, appointment booking, and patient management.",
+              industryDescription: toLexicalDefault(
+                "Healthcare applications, EMR systems, appointment booking, and patient management."
+              ),
             },
           ],
           fields: [
             { name: "industryTitle", type: "text", required: true },
-            { name: "industryDescription", type: "textarea", required: true },
+            {
+              name: 'industryDescription',
+              type: 'richText',
+              editor: lightTextEditor,
+              required: true,
+              defaultValue: toLexicalDefault('Enter industry description...'),
+            },
             { name: "industryIcon", type: "upload", relationTo: "media" },
           ],
         },
       ],
     },
 
-    // ---------- LATEST INSIGHTS (heading only — posts come from Posts collection) ----------
+    // ---------- LATEST INSIGHTS ----------
     {
       name: "latestInsights",
       type: "group",
       label: "Latest Insights Section",
       fields: [
-        {
-          name: "insightsHeading",
-          type: "text",
-          defaultValue: "Latest Insights",
-        },
+        { name: "insightsHeading", type: "text", defaultValue: "Latest Insights" },
         { name: "insightsCtaLabel", type: "text", defaultValue: "View All" },
       ],
     },

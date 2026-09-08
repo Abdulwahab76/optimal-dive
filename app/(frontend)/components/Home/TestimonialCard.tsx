@@ -1,9 +1,10 @@
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import { Star } from "lucide-react";
 export interface Testimonial {
   id: number;
   name: string;
   company?: string;
-  review: string;
+  review: any;
   rating: number;
   avatar?: string;
 }
@@ -34,7 +35,7 @@ export function TestimonialCard({ item }: Props) {
       <h3 className="text-center text-lg font-semibold">{item.name}</h3>
 
       <p className="mx-auto mt-5 max-w-xl text-center leading-8 text-sm md:text-base">
-        {item.review}
+       <RichText  data={item.review} />
       </p>
 
       <div className="mt-6 flex justify-center">

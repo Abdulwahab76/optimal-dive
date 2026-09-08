@@ -728,7 +728,7 @@ export interface HomePage {
     serviceItems?:
       | {
           serviceTitle: string;
-          serviceDescription?: {
+          serviceDescription: {
             root: {
               type: string;
               children: {
@@ -742,7 +742,7 @@ export interface HomePage {
               version: number;
             };
             [k: string]: unknown;
-          } | null;
+          };
           serviceImage?: (number | null) | Media;
           id?: string | null;
         }[]
@@ -775,7 +775,21 @@ export interface HomePage {
   };
   technologies?: {
     techHeading?: string | null;
-    techDescription?: string | null;
+    techDescription?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
     techCtaHeading?: string | null;
     techCtaLabel?: string | null;
     techCtaLink?: string | null;
@@ -811,7 +825,21 @@ export interface HomePage {
     testimonialItems?:
       | {
           testimonialName: string;
-          testimonialReview: string;
+          testimonialReview: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
           testimonialRating?: number | null;
           testimonialAvatar?: (number | null) | Media;
           id?: string | null;
@@ -820,11 +848,39 @@ export interface HomePage {
   };
   industries?: {
     industriesHeading?: string | null;
-    industriesDescription?: string | null;
+    industriesDescription?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
     industryItems?:
       | {
           industryTitle: string;
-          industryDescription: string;
+          industryDescription: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
           industryIcon?: (number | null) | Media;
           id?: string | null;
         }[]

@@ -4,10 +4,11 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { RichText } from "@payloadcms/richtext-lexical/react";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 interface Props {
   title: string;
-  description: any;
+  description: SerializedEditorState;   // 👈 string se change
   image: string;
   active: boolean;
   onClick: () => void;

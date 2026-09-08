@@ -1,3 +1,4 @@
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
 
@@ -6,7 +7,7 @@ export type StepVariant = "textLeft" | "textRight";
 export interface ProcessStep {
   id: string;
   title: string;
-  description: any;
+  description: SerializedEditorState;  // 👈 string se change
   icon: string;
 }
 

@@ -91,7 +91,7 @@ export default function ServicesSection({ services }: { services?: HomePage["ser
                 >
                   <ServiceCard
                     title={service.serviceTitle}
-                    description={service.serviceDescription}
+                    description={service.serviceDescription as any}
                     image={mediaUrl(service.serviceImage, defaultImages[index] ?? defaultImages[0])}
                     active={active === index}
                     onClick={() => setActive(index)}
