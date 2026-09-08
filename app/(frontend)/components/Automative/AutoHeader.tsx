@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { AutomotivePage } from "@/payload-types";
 import { mediaUrl } from "@/lib/media";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 const defaultStats = [
   { autoStatValue: "500+", autoStatLabel: "Projects Delivered" },
@@ -39,8 +41,10 @@ const AutoHeader = ({ autoHero }: { autoHero?: AutomotivePage["autoHero"] }) => 
               <span className="text-primary-1">{autoHero?.autoHeroTitleHighlight ?? "Development Services"}</span>
             </h1>
             <p className="text-lg max-w-lg text-center lg:text-left">
-              {autoHero?.autoHeroDescription ??
-                "We provide expert automotive software development services for vehicle automation, safety, connectivity, and performance optimization."}
+              {/* {autoHero?.autoHeroDescription ??
+                "We provide expert automotive software development services for vehicle automation, safety, connectivity, and performance optimization."} */}
+                  <RichText data={autoHero?.autoHeroDescription as SerializedEditorState} />
+
             </p>
             <Link
               href={autoHero?.autoHeroCtaLink ?? "/contact-us"}

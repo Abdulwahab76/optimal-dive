@@ -1,6 +1,8 @@
 // globals/AutomotivePage.ts
 import type { GlobalConfig } from 'payload'
-import { revalidatePath } from 'next/cache'   // 👈 static import (top pe)
+import { revalidatePath } from 'next/cache'
+import { lightTextEditor } from '@/lib/lightRichText'
+import { toLexicalDefault } from '@/lib/toLexicalDefault'
 
 export const AutomotivePage: GlobalConfig = {
   slug: 'automotive-page',
@@ -17,9 +19,11 @@ export const AutomotivePage: GlobalConfig = {
         { name: 'autoHeroTitleHighlight', type: 'text', defaultValue: 'Development Services' },
         {
           name: 'autoHeroDescription',
-          type: 'textarea',
-          defaultValue:
-            'We provide expert automotive software development services for vehicle automation, safety, connectivity, and performance optimization.',
+          type: 'richText',
+          editor: lightTextEditor,
+          defaultValue: toLexicalDefault(
+            'We provide expert automotive software development services for vehicle automation, safety, connectivity, and performance optimization.'
+          ),
         },
         { name: 'autoHeroCtaLabel', type: 'text', defaultValue: 'Start Your Project' },
         { name: 'autoHeroCtaLink', type: 'text', defaultValue: '/contact-us' },
@@ -27,7 +31,7 @@ export const AutomotivePage: GlobalConfig = {
         {
           name: 'autoHeroStats',
           type: 'array',
-          dbName: 'auto_hero_stats', // 👈 short explicit table name
+          dbName: 'auto_hero_stats',
           minRows: 1,
           defaultValue: [
             { autoStatValue: '500+', autoStatLabel: 'Projects Delivered' },
@@ -53,14 +57,15 @@ export const AutomotivePage: GlobalConfig = {
         {
           name: 'autoSolutionsItems',
           type: 'array',
-          dbName: 'auto_solutions_items', // 👈 short
+          dbName: 'auto_solutions_items',
           minRows: 1,
           defaultValue: [
             {
               autoSolutionNumber: '01',
               autoSolutionTitle: 'Autonomous Driving Systems',
-              autoSolutionDescription:
-                'Autonomous Driving Systems enhance safety and efficiency by enabling self-navigation using AI, sensors, and real-time data for precision.',
+              autoSolutionDescription: toLexicalDefault(
+                'Autonomous Driving Systems enhance safety and efficiency by enabling self-navigation using AI, sensors, and real-time data for precision.'
+              ),
               autoSolutionFeatures: [
                 { featureText: 'Smart Navigation' },
                 { featureText: 'Adaptive Cruise Control' },
@@ -73,8 +78,9 @@ export const AutomotivePage: GlobalConfig = {
             {
               autoSolutionNumber: '02',
               autoSolutionTitle: 'Predictive Maintenance',
-              autoSolutionDescription:
-                'Predictive Maintenance uses AI to detect issues before breakdowns, ensuring smooth and safe vehicle operation.',
+              autoSolutionDescription: toLexicalDefault(
+                'Predictive Maintenance uses AI to detect issues before breakdowns, ensuring smooth and safe vehicle operation.'
+              ),
               autoSolutionFeatures: [
                 { featureText: 'AI-driven Diagnostics' },
                 { featureText: 'Automated Alerts' },
@@ -87,8 +93,9 @@ export const AutomotivePage: GlobalConfig = {
             {
               autoSolutionNumber: '03',
               autoSolutionTitle: 'AI-powered Safety Features',
-              autoSolutionDescription:
-                'AI-powered safety features improve autonomous driving by detecting hazards and preventing collisions using real-time sensor data.',
+              autoSolutionDescription: toLexicalDefault(
+                'AI-powered safety features improve autonomous driving by detecting hazards and preventing collisions using real-time sensor data.'
+              ),
               autoSolutionFeatures: [
                 { featureText: 'Collision Prevention' },
                 { featureText: 'Emergency Braking' },
@@ -102,11 +109,17 @@ export const AutomotivePage: GlobalConfig = {
           fields: [
             { name: 'autoSolutionNumber', type: 'text', required: true },
             { name: 'autoSolutionTitle', type: 'text', required: true },
-            { name: 'autoSolutionDescription', type: 'textarea', required: true },
+            {
+              name: 'autoSolutionDescription',
+              type: 'richText',
+              editor: lightTextEditor,
+              required: true,
+              defaultValue: toLexicalDefault('Enter solution description...'),
+            },
             {
               name: 'autoSolutionFeatures',
               type: 'array',
-              dbName: 'auto_solution_features', // 👈 short — this was the culprit
+              dbName: 'auto_solution_features',
               minRows: 1,
               fields: [{ name: 'featureText', type: 'text', required: true }],
             },
@@ -124,15 +137,51 @@ export const AutomotivePage: GlobalConfig = {
         {
           name: 'autoWhyItems',
           type: 'array',
-          dbName: 'auto_why_items', // 👈 short
+          dbName: 'auto_why_items',
           minRows: 1,
           defaultValue: [
-            { whyTitle: 'Automobile Experts', whyIcon: 'UserRound', whyDescription: 'Our team of experienced automotive specialists provides deep industry expertise, delivering optimized and reliable software solutions.' },
-            { whyTitle: 'Custom Solutions', whyIcon: 'Cog', whyDescription: 'Every automotive business is unique. We build scalable, efficient, and custom software tailored to your requirements.' },
-            { whyTitle: 'Data Security', whyIcon: 'ShieldCheck', whyDescription: 'Enterprise-grade security practices ensure your sensitive business and vehicle data remains protected.' },
-            { whyTitle: 'QA & Testing', whyIcon: 'ClipboardCheck', whyDescription: 'Comprehensive testing guarantees high performance, stability, and long-term reliability.' },
-            { whyTitle: 'Digital Cockpits', whyIcon: 'LayoutDashboard', whyDescription: 'Modern digital dashboards with AI-powered experiences create seamless interactions.' },
-            { whyTitle: 'Effective Onboarding', whyIcon: 'Megaphone', whyDescription: 'A smooth onboarding process enables your teams to become productive quickly.' },
+            {
+              whyTitle: 'Automobile Experts',
+              whyIcon: 'UserRound',
+              whyDescription: toLexicalDefault(
+                'Our team of experienced automotive specialists provides deep industry expertise, delivering optimized and reliable software solutions.'
+              ),
+            },
+            {
+              whyTitle: 'Custom Solutions',
+              whyIcon: 'Cog',
+              whyDescription: toLexicalDefault(
+                'Every automotive business is unique. We build scalable, efficient, and custom software tailored to your requirements.'
+              ),
+            },
+            {
+              whyTitle: 'Data Security',
+              whyIcon: 'ShieldCheck',
+              whyDescription: toLexicalDefault(
+                'Enterprise-grade security practices ensure your sensitive business and vehicle data remains protected.'
+              ),
+            },
+            {
+              whyTitle: 'QA & Testing',
+              whyIcon: 'ClipboardCheck',
+              whyDescription: toLexicalDefault(
+                'Comprehensive testing guarantees high performance, stability, and long-term reliability.'
+              ),
+            },
+            {
+              whyTitle: 'Digital Cockpits',
+              whyIcon: 'LayoutDashboard',
+              whyDescription: toLexicalDefault(
+                'Modern digital dashboards with AI-powered experiences create seamless interactions.'
+              ),
+            },
+            {
+              whyTitle: 'Effective Onboarding',
+              whyIcon: 'Megaphone',
+              whyDescription: toLexicalDefault(
+                'A smooth onboarding process enables your teams to become productive quickly.'
+              ),
+            },
           ],
           fields: [
             { name: 'whyTitle', type: 'text', required: true },
@@ -142,7 +191,13 @@ export const AutomotivePage: GlobalConfig = {
               defaultValue: 'UserRound',
               options: ['UserRound', 'Cog', 'ShieldCheck', 'ClipboardCheck', 'LayoutDashboard', 'Megaphone'],
             },
-            { name: 'whyDescription', type: 'textarea', required: true },
+            {
+              name: 'whyDescription',
+              type: 'richText',
+              editor: lightTextEditor,
+              required: true,
+              defaultValue: toLexicalDefault('Enter description...'),
+            },
           ],
         },
       ],
@@ -157,29 +212,59 @@ export const AutomotivePage: GlobalConfig = {
         {
           name: 'autoFaqItems',
           type: 'array',
-          dbName: 'auto_faq_items', // 👈 short
+          dbName: 'auto_faq_items',
           minRows: 1,
           defaultValue: [
-            { faqQuestion: 'How long does the branding process take?', faqAnswer: 'Most branding projects take between 2–6 weeks depending on the scope, revisions, and required deliverables.' },
-            { faqQuestion: 'What deliverables do I receive?', faqAnswer: "You'll receive your logo, color palette, typography, brand guidelines, social assets, and all source files depending on your package." },
-            { faqQuestion: 'Can you rebrand an existing company?', faqAnswer: "Absolutely. We help businesses modernize their identity while preserving the equity they've already built." },
-            { faqQuestion: 'Do you provide brand guidelines?', faqAnswer: 'Yes. Every branding project includes a comprehensive brand guideline document to ensure consistency.' },
-            { faqQuestion: 'How do you ensure brand consistency?', faqAnswer: 'We create clear visual systems, messaging frameworks, and documentation that your entire team can follow.' },
+            {
+              faqQuestion: 'How long does the branding process take?',
+              faqAnswer: toLexicalDefault(
+                'Most branding projects take between 2–6 weeks depending on the scope, revisions, and required deliverables.'
+              ),
+            },
+            {
+              faqQuestion: 'What deliverables do I receive?',
+              faqAnswer: toLexicalDefault(
+                "You'll receive your logo, color palette, typography, brand guidelines, social assets, and all source files depending on your package."
+              ),
+            },
+            {
+              faqQuestion: 'Can you rebrand an existing company?',
+              faqAnswer: toLexicalDefault(
+                "Absolutely. We help businesses modernize their identity while preserving the equity they've already built."
+              ),
+            },
+            {
+              faqQuestion: 'Do you provide brand guidelines?',
+              faqAnswer: toLexicalDefault(
+                'Yes. Every branding project includes a comprehensive brand guideline document to ensure consistency.'
+              ),
+            },
+            {
+              faqQuestion: 'How do you ensure brand consistency?',
+              faqAnswer: toLexicalDefault(
+                'We create clear visual systems, messaging frameworks, and documentation that your entire team can follow.'
+              ),
+            },
           ],
           fields: [
             { name: 'faqQuestion', type: 'text', required: true },
-            { name: 'faqAnswer', type: 'textarea', required: true },
+            {
+              name: 'faqAnswer',
+              type: 'richText',
+              editor: lightTextEditor,
+              required: true,
+              defaultValue: toLexicalDefault('Enter answer...'),
+            },
           ],
         },
       ],
     },
   ],
-   hooks: {
-      afterChange: [
-        async () => {
-          revalidatePath('/automative')
-        },
-      ],
-    },
-  
+  hooks: {
+    afterChange: [
+      async () => {
+        revalidatePath('/automative')
+      },
+    ],
+  },
 }

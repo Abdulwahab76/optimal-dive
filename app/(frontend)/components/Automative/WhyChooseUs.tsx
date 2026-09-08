@@ -5,6 +5,8 @@ import {
   type LucideIcon, ArrowLeft, ArrowRight,
 } from "lucide-react";
 import type { AutomotivePage } from "@/payload-types";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 const iconMap: Record<string, LucideIcon> = {
   UserRound, Cog, ShieldCheck, ClipboardCheck, LayoutDashboard, Megaphone,
@@ -58,7 +60,8 @@ export default function WhyChooseUs({ autoWhyChooseUs }: { autoWhyChooseUs?: Aut
                   <Icon size={24} />
                 </div>
                 <h3 className={`mb-3 text-xl font-semibold ${active ? "text-white" : "text-gray-900"}`}>{item.whyTitle}</h3>
-                <p className={`text-lg leading-6 ${active ? "text-blue-100" : "text-gray-500"}`}>{item.whyDescription}</p>
+                <p className={`text-lg leading-6 ${active ? "text-blue-100" : "text-gray-500"}`}>                      <RichText data={item.whyDescription as SerializedEditorState} />
+</p>
               </button>
             );
           })}
@@ -74,7 +77,10 @@ export default function WhyChooseUs({ autoWhyChooseUs }: { autoWhyChooseUs?: Aut
                     <Icon size={24} />
                   </div>
                   <h3 className="mb-3 text-xl font-semibold text-gray-900">{item.whyTitle}</h3>
-                  <p className="text-lg leading-6 text-gray-500">{item.whyDescription}</p>
+                  <p className="text-lg leading-6 text-gray-500">
+                      <RichText data={item.whyDescription as SerializedEditorState} />
+
+                  </p>
                 </div>
               );
             })}

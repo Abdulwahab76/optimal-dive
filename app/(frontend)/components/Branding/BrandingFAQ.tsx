@@ -3,6 +3,8 @@
 import { useState } from "react";
 import { Minus, Plus } from "lucide-react";
 import type { AutomotivePage } from "@/payload-types";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 
 const defaultFaqs = [
   { faqQuestion: "How long does the branding process take?", faqAnswer: "Most branding projects take between 2–6 weeks depending on the scope, revisions, and required deliverables." },
@@ -40,7 +42,9 @@ export default function BrandingFAQ({ autoFaq }: { autoFaq?: AutomotivePage["aut
                 <div className={`grid transition-all duration-500 ${open ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"}`}>
                   <div className="overflow-hidden">
                     <div className="px-6 pb-6">
-                      <p className="max-w-4xl text-[15px] leading-7 text-[#666]">{faq.faqAnswer}</p>
+                      <p className="max-w-4xl text-[15px] leading-7 text-[#666]">
+                          <RichText data={faq.faqAnswer as SerializedEditorState} />
+                      </p>
                     </div>
                   </div>
                 </div>

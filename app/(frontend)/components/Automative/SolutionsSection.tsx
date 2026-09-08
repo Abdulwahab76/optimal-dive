@@ -2,6 +2,8 @@
 
 import { Check } from "lucide-react";
 import type { AutomotivePage } from "@/payload-types";
+import { RichText } from "@payloadcms/richtext-lexical/react";
+import { SerializedEditorState } from "@payloadcms/richtext-lexical/lexical";
 
 const defaultSolutions = [
   {
@@ -83,7 +85,8 @@ export default function SolutionsSection({
                 {item.autoSolutionTitle}
               </h4>
               <p className="mt-4 text-base leading-7 text-[#6A7282]">
-                {item.autoSolutionDescription}
+                {/* {item.autoSolutionDescription} */}
+                <RichText data={item.autoSolutionDescription as SerializedEditorState} />
               </p>
               <ul className="mt-8 space-y-3">
                 {(item.autoSolutionFeatures ?? []).map((f, fi) => (

@@ -948,7 +948,21 @@ export interface AutomotivePage {
     autoHeroBadgeLabel?: string | null;
     autoHeroTitleLine1?: string | null;
     autoHeroTitleHighlight?: string | null;
-    autoHeroDescription?: string | null;
+    autoHeroDescription?: {
+      root: {
+        type: string;
+        children: {
+          type: any;
+          version: number;
+          [k: string]: unknown;
+        }[];
+        direction: ('ltr' | 'rtl') | null;
+        format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+        indent: number;
+        version: number;
+      };
+      [k: string]: unknown;
+    } | null;
     autoHeroCtaLabel?: string | null;
     autoHeroCtaLink?: string | null;
     autoHeroImage?: (number | null) | Media;
@@ -967,7 +981,21 @@ export interface AutomotivePage {
       | {
           autoSolutionNumber: string;
           autoSolutionTitle: string;
-          autoSolutionDescription: string;
+          autoSolutionDescription: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
           autoSolutionFeatures?:
             | {
                 featureText: string;
@@ -984,7 +1012,21 @@ export interface AutomotivePage {
       | {
           whyTitle: string;
           whyIcon?: ('UserRound' | 'Cog' | 'ShieldCheck' | 'ClipboardCheck' | 'LayoutDashboard' | 'Megaphone') | null;
-          whyDescription: string;
+          whyDescription: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
           id?: string | null;
         }[]
       | null;
@@ -994,7 +1036,21 @@ export interface AutomotivePage {
     autoFaqItems?:
       | {
           faqQuestion: string;
-          faqAnswer: string;
+          faqAnswer: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
           id?: string | null;
         }[]
       | null;
