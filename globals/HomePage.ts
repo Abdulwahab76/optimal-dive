@@ -2,6 +2,7 @@
 import type { GlobalConfig } from "payload";
 import { revalidatePath } from 'next/cache'   // 👈 static import (top pe)
 import { lightTextEditor } from '@/lib/lightRichText'
+import { toLexicalDefault } from "@/lib/toLexicalDefault";
 
 export const HomePage: GlobalConfig = {
   slug: "home-page",
@@ -48,28 +49,9 @@ export const HomePage: GlobalConfig = {
           name: 'aboutBodyText',
           type: 'richText',
           editor: lightTextEditor,
-          defaultValue: {
-            root: {
-              type: 'root',
-              children: [
-                {
-                  type: 'paragraph',
-                  children: [
-                    {
-                      type: 'text',
-                      text: 'built on one simple belief: great software should solve real problems and drive lasting business growth. We combine creative thinking with deep technical expertise to turn ambitious ideas into products that generate a profitable, sustainable impact.',
-                      version: 1,
-                    },
-                  ],
-                  version: 1,
-                },
-              ],
-              direction: 'ltr',
-              format: '',
-              indent: 0,
-              version: 1,
-            },
-          },
+          defaultValue: toLexicalDefault(
+            'built on one simple belief: great software should solve real problems and drive lasting business growth...'
+          ),
         },
       ],
     },
@@ -229,7 +211,7 @@ export const HomePage: GlobalConfig = {
           ],
           fields: [
             { name: "serviceTitle", type: "text", required: true },
-            { name: "serviceDescription", type: "textarea", required: true },
+            { name: 'serviceDescription', type: 'richText', editor: lightTextEditor, defaultValue: toLexicalDefault('...') },
             { name: "serviceImage", type: "upload", relationTo: "media" },
           ],
         },
@@ -248,45 +230,57 @@ export const HomePage: GlobalConfig = {
           defaultValue: "Our Product Development Process",
         },
         {
-          name: "processSteps",
-          type: "array",
+          name: 'processSteps',
+          type: 'array',
           minRows: 1,
           defaultValue: [
             {
-              stepTitle: "Ideate",
-              stepDescription:
-                "We analyze your vision thoroughly to ensure the roadmap aligns perfectly with your end goals.",
+              stepTitle: 'Ideate',
+              stepDescription: toLexicalDefault(
+                'We analyze your vision thoroughly to ensure the roadmap aligns perfectly with your end goals.'
+              ),
             },
             {
-              stepTitle: "Design",
-              stepDescription:
-                "We craft MVPs that balance stunning design with core functionality.",
+              stepTitle: 'Design',
+              stepDescription: toLexicalDefault(
+                'We craft MVPs that balance stunning design with core functionality.'
+              ),
             },
             {
-              stepTitle: "Develop",
-              stepDescription:
-                "We build end-to-end solutions using agile processes and robust architecture.",
+              stepTitle: 'Develop',
+              stepDescription: toLexicalDefault(
+                'We build end-to-end solutions using agile processes and robust architecture.'
+              ),
             },
             {
-              stepTitle: "Test",
-              stepDescription:
-                "We ensure quality and reliability through extensive QA across every touchpoint.",
+              stepTitle: 'Test',
+              stepDescription: toLexicalDefault(
+                'We ensure quality and reliability through extensive QA across every touchpoint.'
+              ),
             },
             {
-              stepTitle: "Launch",
-              stepDescription:
-                "We execute smooth rollouts with tailored deployment plans and dedicated support.",
+              stepTitle: 'Launch',
+              stepDescription: toLexicalDefault(
+                'We execute smooth rollouts with tailored deployment plans and dedicated support.'
+              ),
             },
             {
-              stepTitle: "Support",
-              stepDescription:
-                "We provide ongoing enhancements to ensure your product continues to succeed.",
+              stepTitle: 'Support',
+              stepDescription: toLexicalDefault(
+                'We provide ongoing enhancements to ensure your product continues to succeed.'
+              ),
             },
           ],
           fields: [
-            { name: "stepTitle", type: "text", required: true },
-            { name: "stepDescription", type: "textarea", required: true },
-            { name: "stepIcon", type: "upload", relationTo: "media" },
+            { name: 'stepTitle', type: 'text', required: true },
+            {
+              name: 'stepDescription',
+              type: 'richText',
+              editor: lightTextEditor,
+              required: true,
+              defaultValue: toLexicalDefault('Enter step description...'),
+            },
+            { name: 'stepIcon', type: 'upload', relationTo: 'media' },
           ],
         },
       ],

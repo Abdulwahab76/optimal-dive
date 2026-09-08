@@ -1,3 +1,4 @@
+import { RichText } from "@payloadcms/richtext-lexical/react";
 import Image from "next/image";
 
 export type StepVariant = "textLeft" | "textRight";
@@ -5,7 +6,7 @@ export type StepVariant = "textLeft" | "textRight";
 export interface ProcessStep {
   id: string;
   title: string;
-  description: string;
+  description: any;
   icon: string;
 }
 
@@ -37,7 +38,7 @@ function StepText({
   isDarkText = false,
 }: {
   title: string;
-  description: string;
+  description: any;
   align: "left" | "right" | "start";
   index: number;
   isDarkText?: boolean;
@@ -64,7 +65,7 @@ function StepText({
           isDarkText ? "text-[#6A7282]" : "text-white"
         }`}
       >
-        {description}
+        <RichText data={description} />
       </p>
     </div>
   );

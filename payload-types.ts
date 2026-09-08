@@ -728,7 +728,21 @@ export interface HomePage {
     serviceItems?:
       | {
           serviceTitle: string;
-          serviceDescription: string;
+          serviceDescription?: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          } | null;
           serviceImage?: (number | null) | Media;
           id?: string | null;
         }[]
@@ -739,7 +753,21 @@ export interface HomePage {
     processSteps?:
       | {
           stepTitle: string;
-          stepDescription: string;
+          stepDescription: {
+            root: {
+              type: string;
+              children: {
+                type: any;
+                version: number;
+                [k: string]: unknown;
+              }[];
+              direction: ('ltr' | 'rtl') | null;
+              format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+              indent: number;
+              version: number;
+            };
+            [k: string]: unknown;
+          };
           stepIcon?: (number | null) | Media;
           id?: string | null;
         }[]

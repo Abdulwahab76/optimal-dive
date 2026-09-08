@@ -15,7 +15,7 @@ importers:
         specifier: ^3.87.1
         version: 3.87.1(payload@3.87.1(graphql@16.14.2)(supports-color@7.2.0)(typescript@5.9.3))(supports-color@7.2.0)
       '@payloadcms/email-resend':
-        specifier: ^3.88.0
+        specifier: ^3.87.1
         version: 3.88.0(payload@3.87.1(graphql@16.14.2)(supports-color@7.2.0)(typescript@5.9.3))
       '@payloadcms/next':
         specifier: ^3.87.1

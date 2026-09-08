@@ -36,7 +36,7 @@ export default async function RootLayout({
   const visionCTA = await getVisionCTA();
 
   return (
-    <html lang="en" className={`${poppins.variable} h-full antialiased`}>
+    <html lang="en" className={`${poppins.variable} h-full antialiased `}>
       <body className="min-h-full flex flex-col">
         <div>
           <Navbar data={navbarData} />

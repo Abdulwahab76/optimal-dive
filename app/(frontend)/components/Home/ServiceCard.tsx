@@ -3,10 +3,11 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { RichText } from "@payloadcms/richtext-lexical/react";
 
 interface Props {
   title: string;
-  description: string;
+  description: any;
   image: string;
   active: boolean;
   onClick: () => void;
@@ -46,10 +47,9 @@ export default function ServiceCard({
         md:px-12
         md:pt-16
  
-        ${
-          active
-            ? "bg-[#1F1F1F] text-white min-h-[340px] md:h-[420px]"
-            : "bg-white shadow-[0_15px_60px_rgba(0,0,0,.08)] min-h-[220px] md:h-[350px]"
+        ${active
+          ? "bg-[#1F1F1F] text-white min-h-[340px] md:h-[420px]"
+          : "bg-white shadow-[0_15px_60px_rgba(0,0,0,.08)] min-h-[220px] md:h-[350px]"
         }
       `}
     >
@@ -73,10 +73,9 @@ export default function ServiceCard({
             duration-500
             ease-out
 
-            ${
-              active
-                ? "max-h-96 opacity-100 mt-4 md:mt-5"
-                : "max-h-0 opacity-0 mt-0"
+            ${active
+              ? "max-h-96 opacity-100 mt-4 md:mt-5"
+              : "max-h-0 opacity-0 mt-0"
             }
           `}
         >
@@ -92,7 +91,7 @@ export default function ServiceCard({
               ${active ? "text-white/70" : "text-black"}
             `}
           >
-            {description}
+            <RichText data={description} />
           </p>
           <Link href='/contact-us'>
             <button
@@ -141,9 +140,8 @@ export default function ServiceCard({
           ease-out
           lg:block 
           hidden
-          ${
-            active
-              ? `
+          ${active
+            ? `
                 relative
                 mx-auto
                 mt-8
@@ -156,7 +154,7 @@ export default function ServiceCard({
                 md:mt-0
                 md:w-[350px]
               `
-              : `
+            : `
                 absolute
                 right-4
                 bottom-4
