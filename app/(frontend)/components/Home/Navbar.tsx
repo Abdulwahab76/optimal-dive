@@ -187,7 +187,8 @@ export default function Navbar({ data }: { data?: NavbarType }) {
               <div className="flex items-stretch gap-3 rounded-3xl border border-gray-100 bg-[#E8E8E8] p-3 shadow-2xl shadow-black/10">
                 <Link
                   href={activeService?.smHref ?? highlightLink}
-className="flex h-[230px] min-h-[230px] max-h-[230px] w-68 shrink-0 flex-col justify-start gap-3 overflow-hidden rounded-2xl bg-gradient-to-br from-primary-1 to-primary-2 p-5"              >
+                  className="flex h-[230px] min-h-[230px] max-h-[230px] w-68 shrink-0 flex-col justify-start gap-3 overflow-hidden rounded-2xl bg-gradient-to-br from-primary-1 to-primary-2 p-5"
+                >
                   <div>
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
                       <HighlightIcon size={18} className="text-white" />
@@ -238,15 +239,11 @@ className="flex h-[230px] min-h-[230px] max-h-[230px] w-68 shrink-0 flex-col jus
               </div>
             </div>
           </li>
-
           {/* Industries mega menu */}
           <li
             className="relative"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => {
-              setServicesOpen(false);
-              setActiveServiceTitle(null);
-            }}
+            onMouseEnter={() => setIndustriesOpen(true)}
+            onMouseLeave={() => setIndustriesOpen(false)}
           >
             <button
               className="flex items-center gap-1 transition hover:text-primary-1"
@@ -255,10 +252,14 @@ className="flex h-[230px] min-h-[230px] max-h-[230px] w-68 shrink-0 flex-col jus
               Industries
               <ChevronDown
                 size={14}
-                className={`transition-transform duration-300 ${industriesOpen ? "rotate-180" : ""}`}
+                className={`transition-transform duration-300 ${
+                  industriesOpen ? "rotate-180" : ""
+                }`}
               />
             </button>
+
             <div className="absolute left-1/2 top-full h-4 w-[680px] -translate-x-1/2" />
+
             <div
               className={`absolute left-1/2 top-full z-50 w-[680px] -translate-x-1/2 pt-4 transition-all duration-300 ease-out ${
                 industriesOpen
@@ -280,6 +281,7 @@ className="flex h-[230px] min-h-[230px] max-h-[230px] w-68 shrink-0 flex-col jus
                         className="text-gray-900 transition"
                       />
                     </span>
+
                     <span className="min-w-0">
                       <span className="block text-sm font-semibold text-gray-900 transition group-hover:text-white">
                         {item.imTitle}
@@ -293,7 +295,7 @@ className="flex h-[230px] min-h-[230px] max-h-[230px] w-68 shrink-0 flex-col jus
               </div>
             </div>
           </li>
-
+    
           {navLinks
             .filter((item) => item.navLabel !== "Home")
             .map((item, i) => (

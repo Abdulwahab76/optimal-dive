@@ -251,6 +251,7 @@ export default function ContactForm({
     <form
       onSubmit={submit}
       className="rounded-3xl p-6 shadow-sm md:p-10"
+      id='contact-form'
     >
       <h2 className="mb-8 text-3xl font-bold text-gray-900 md:text-4xl">
         {heading}

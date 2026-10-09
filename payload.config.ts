@@ -25,6 +25,7 @@ import { ContactPage } from "./globals/ContactPage";
 import { BlogPage } from "./globals/BlogPage";
 import { Submissions } from "./collections/Submissions";
  import { resendAdapter } from '@payloadcms/email-resend'
+import { Subscribers } from "./collections/Subscribers";
 
 const filename = fileURLToPath(import.meta.url);
 const dirname = path.dirname(filename);
@@ -33,7 +34,7 @@ export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  collections: [Users, Media, Categories, Posts, Pages,Submissions],
+  collections: [Users, Media, Categories, Posts, Pages,Submissions,Subscribers],
   globals: [HomePage, AutomotivePage, BrandingPage,NavbarGlobal,Footer,VisionCTA,  ContactForm, ContactPage,BlogPage ],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || "",
