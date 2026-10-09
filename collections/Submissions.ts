@@ -42,6 +42,7 @@ export const Submissions: CollectionConfig = {
         if (operation === 'create') {
           try {
             await req.payload.sendEmail({
+              from: 'Optimal Dive <onboarding@resend.dev>',
               to: process.env.CONTACT_NOTIFICATION_EMAIL || 'owner@optimaldive.com',
               subject: `New Contact Form Submission — ${doc.firstName} ${doc.lastName}`,
               html: `
