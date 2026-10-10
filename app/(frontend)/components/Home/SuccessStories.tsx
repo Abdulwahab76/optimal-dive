@@ -31,9 +31,11 @@ export default function SuccessStories({
           </h2>
 
           <div className="flex flex-nowrap items-center gap-2 sm:gap-4">
-            <button className="flex h-10 shrink-0 items-center gap-2 rounded-full border border-black px-3 sm:px-4 lg:px-8 text-sm sm:text-base font-medium whitespace-nowrap">
-              {successStories?.successViewMoreLabel ?? "View More"} <ArrowRight size={12} />
-            </button>
+            <Link href={successStories?.successViewMoreLink ?? "/portfolio"}>
+              <button className="flex h-10 shrink-0 items-center gap-2 rounded-full border border-black px-3 sm:px-4 lg:px-8 text-sm sm:text-base font-medium whitespace-nowrap">
+                {successStories?.successViewMoreLabel ?? "View More"} <ArrowRight size={12} />
+              </button>
+            </Link>
             <Link href={successStories?.successCtaLink ?? "/contact-us"}>
               <button className="flex cursor-pointer shrink-0 items-center gap-2 rounded-full bg-linear-to-b from-primary-1 to-primary-2 px-4 sm:px-6 py-2.5 text-sm sm:text-base font-medium text-white whitespace-nowrap">
                 {successStories?.successCtaLabel ?? "Start Your Project"}

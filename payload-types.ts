@@ -743,6 +743,7 @@ export interface HomePage {
   successStories?: {
     successHeading?: string | null;
     successViewMoreLabel?: string | null;
+    successViewMoreLink?: string | null;
     successCtaLabel?: string | null;
     successCtaLink?: string | null;
     projects?:
@@ -1683,6 +1684,7 @@ export interface HomePageSelect<T extends boolean = true> {
     | {
         successHeading?: T;
         successViewMoreLabel?: T;
+        successViewMoreLink?: T;
         successCtaLabel?: T;
         successCtaLink?: T;
         projects?:

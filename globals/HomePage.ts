@@ -104,6 +104,7 @@ export const HomePage: GlobalConfig = {
       fields: [
         { name: "successHeading", type: "text", defaultValue: "Our Success Stories" },
         { name: "successViewMoreLabel", type: "text", defaultValue: "View More" },
+        { name: "successViewMoreLink", type: "text", defaultValue: "/portfolio" },
         { name: "successCtaLabel", type: "text", defaultValue: "Start Your Project" },
         { name: "successCtaLink", type: "text", defaultValue: "/contact-us" },
         {
