@@ -41,6 +41,12 @@ const defaultNavLinks = [
 
 const defaultServices = [
   {
+    smTitle: "Branding",
+    smDesc: "We design iconic brand identities that work via visual design.",
+    smHref: "/branding",
+    smIcon: "PenTool",
+  },
+  {
     smTitle: "Web Development",
     smDesc: "Digital Experience that scale.",
     smHref: "/services/web-development",
@@ -116,7 +122,7 @@ export default function Navbar({ data }: { data?: NavbarType }) {
   const [servicesOpen, setServicesOpen] = useState(false);
   const [industriesOpen, setIndustriesOpen] = useState(false);
   const [activeServiceTitle, setActiveServiceTitle] = useState<string | null>(
-    null,
+    defaultServices[0]?.smTitle ?? null,
   );
   const logo = mediaUrl(data?.logo, "/images/logo.png");
   const navLinks = data?.navLinks?.length ? data.navLinks : defaultNavLinks;
@@ -184,10 +190,13 @@ export default function Navbar({ data }: { data?: NavbarType }) {
                   : "-translate-y-2 opacity-0 invisible pointer-events-none"
               }`}
             >
-              <div className="flex items-stretch gap-3 rounded-3xl border border-gray-100 bg-[#E8E8E8] p-3 shadow-2xl shadow-black/10">
+              <div className="flex items-center gap-3 rounded-3xl border border-gray-100 bg-[#E8E8E8] p-3 shadow-2xl shadow-black/10">
                 <Link
-                  href={activeService?.smHref ?? highlightLink}
-                  className="flex h-[230px] min-h-[230px] max-h-[230px] w-68 shrink-0 flex-col justify-start gap-3 overflow-hidden rounded-2xl bg-gradient-to-br from-primary-1 to-primary-2 p-5"
+                  href={
+                    activeService?.smHref ?? services[0]?.smHref ?? "/branding"
+                  }
+
+                  className="flex h-[230px] min-h-[264px] max-h-[230px] w-68 shrink-0 flex-col justify-start gap-3 overflow-hidden rounded-2xl bg-gradient-to-br from-primary-1 to-primary-2 p-5"
                 >
                   <div>
                     <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/20">
@@ -195,18 +204,20 @@ export default function Navbar({ data }: { data?: NavbarType }) {
                     </div>
 
                     <h3 className="mb-2 line-clamp-2 text-base font-semibold text-white">
-                      {activeService?.smTitle ?? highlightTitle}
+                      {activeService?.smTitle ??
+                        services[0]?.smTitle ??
+                        "Branding"}
                     </h3>
 
                     <p className="line-clamp-3 min-h-[60px] text-sm leading-snug text-white/80">
-                      {activeService?.smDesc ?? highlightDescription}
+                      {activeService?.smDesc ??
+                        services[0]?.smDesc ??
+                        "We design iconic brand identities."}
                     </p>
                   </div>
 
                   <span className="mt-auto flex min-h-0 w-fit shrink-0 items-center gap-1 pb-1 text-sm font-semibold text-white">
-                    {activeService
-                      ? `Explore ${activeService.smTitle}`
-                      : highlightCtaLabel}
+                    {`Explore ${activeService?.smTitle ?? services[0]?.smTitle ?? "Branding"}`}
                     <ArrowRight size={14} />
                   </span>
                 </Link>
