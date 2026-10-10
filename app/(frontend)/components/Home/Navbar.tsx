@@ -161,14 +161,12 @@ export default function Navbar({ data }: { data?: NavbarType }) {
 
         <ul className="hidden items-center gap-8 rounded-full border border-primary-1 px-8 py-2 text-sm md:flex">
           {/* Services mega menu */}
-          <li
-            className="relative"
-            onMouseEnter={() => setServicesOpen(true)}
-            onMouseLeave={() => setServicesOpen(false)}
-          >
+          <li className="relative">
             <button
               className="flex items-center gap-1 transition hover:text-primary-1"
               aria-expanded={servicesOpen}
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
             >
               Services
               <ChevronDown
@@ -178,6 +176,8 @@ export default function Navbar({ data }: { data?: NavbarType }) {
             </button>
             <div className="absolute left-1/2 top-full h-4 w-200 -translate-x-1/2" />
             <div
+              onMouseEnter={() => setServicesOpen(true)}
+              onMouseLeave={() => setServicesOpen(false)}
               className={`absolute left-1/2 top-full z-50 w-200 -translate-x-1/2 pt-4 transition-all duration-300 ease-out ${
                 servicesOpen
                   ? "translate-y-0 opacity-100 visible"
@@ -240,14 +240,12 @@ export default function Navbar({ data }: { data?: NavbarType }) {
             </div>
           </li>
           {/* Industries mega menu */}
-          <li
-            className="relative"
-            onMouseEnter={() => setIndustriesOpen(true)}
-            onMouseLeave={() => setIndustriesOpen(false)}
-          >
+          <li className="relative">
             <button
               className="flex items-center gap-1 transition hover:text-primary-1"
               aria-expanded={industriesOpen}
+              onMouseEnter={() => setIndustriesOpen(true)}
+              onMouseLeave={() => setIndustriesOpen(false)}
             >
               Industries
               <ChevronDown
@@ -261,6 +259,8 @@ export default function Navbar({ data }: { data?: NavbarType }) {
             <div className="absolute left-1/2 top-full h-4 w-[680px] -translate-x-1/2" />
 
             <div
+              onMouseEnter={() => setIndustriesOpen(true)}
+              onMouseLeave={() => setIndustriesOpen(false)}
               className={`absolute left-1/2 top-full z-50 w-[680px] -translate-x-1/2 pt-4 transition-all duration-300 ease-out ${
                 industriesOpen
                   ? "translate-y-0 opacity-100 visible"
@@ -295,7 +295,7 @@ export default function Navbar({ data }: { data?: NavbarType }) {
               </div>
             </div>
           </li>
-    
+
           {navLinks
             .filter((item) => item.navLabel !== "Home")
             .map((item, i) => (
