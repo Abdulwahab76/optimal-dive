@@ -1,8 +1,33 @@
+"use client";
+
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
- 
+import { useRouter } from "next/navigation";
 
 export default function VisionCta({ visionCTA }: any) {
+  const router = useRouter();
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const link = visionCTA.buttonLink;
+
+    // Check karein ke link mein hash (#) hai ya nahi
+    if (link.includes("#")) {
+      e.preventDefault();
+      const hash = link.split("#")[1];
+      const element = document.getElementById(hash);
+
+      if (element) {
+        // Smooth scroll karein
+        element.scrollIntoView({ behavior: "smooth", block: "start" });
+        // URL update karein bina page reload ke
+        window.history.pushState(null, "", `#${hash}`);
+      } else {
+        // Agar element is page par nahi hai to Next.js router se navigate karein
+        router.push(link);
+      }
+    }
+  };
+
   return (
     <section className="px-5 py-16 sm:px-8">
       <div className="relative mx-auto h-[300px] max-w-7xl md:h-[360px]">
@@ -48,12 +73,14 @@ export default function VisionCta({ visionCTA }: any) {
             {visionCTA.heading}
           </h2>
 
-          <Link href={visionCTA.buttonLink}>
-            <button className="mt-7 flex items-center gap-2 rounded-full bg-black px-7 py-3 text-sm font-normal text-white">
-              {visionCTA.buttonLabel}
-              <ArrowRight size={14} />
-            </button>
-          </Link>
+          <a
+            href={visionCTA.buttonLink}
+            onClick={handleClick}
+            className="mt-7 flex items-center gap-2 rounded-full bg-black px-7 py-3 text-sm font-normal text-white"
+          >
+            {visionCTA.buttonLabel}
+            <ArrowRight size={14} />
+          </a>
         </div>
       </div>
     </section>
