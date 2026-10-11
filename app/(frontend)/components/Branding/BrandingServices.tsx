@@ -39,9 +39,9 @@ export default function BrandingServices({ brandServices }: { brandServices?: Br
           <h2 className="text-3xl font-bold text-[#181818] md:text-5xl">
             {brandServices?.brandServicesHeading ?? "Our Branding Services"}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#6A7282] md:text-base">
+          <div className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#6A7282] md:text-base [&_a]:underline [&_a]:text-primary-1">
             <RichText data={brandServices?.brandServicesDescription as SerializedEditorState} />
-          </p>
+          </div>
         </div>
 
         <div className="mt-12 hidden grid-cols-1 gap-5 sm:grid-cols-2 lg:grid lg:grid-cols-3">
@@ -59,9 +59,9 @@ export default function BrandingServices({ brandServices }: { brandServices?: Br
                 <h3 className="mt-6 text-xl font-semibold text-[#181818] transition-colors duration-300 group-hover:text-white">
                   {service.bsTitle}
                 </h3>
-                <p className="mt-3 text-lg leading-7 text-[#6A7282] transition-colors duration-300 group-hover:text-white/90">
+                <div className="mt-3 text-lg leading-7 text-[#6A7282] transition-colors duration-300 group-hover:text-white/90 [&_a]:underline [&_a]:text-primary-1">
                   <RichText data={service.bsDescription as SerializedEditorState} />
-                </p>
+                </div>
               </div>
             );
           })}
@@ -79,9 +79,9 @@ export default function BrandingServices({ brandServices }: { brandServices?: Br
                     <Icon size={22} />
                   </div>
                   <h3 className="mt-6 text-xl font-semibold">{service.bsTitle}</h3>
-                  <p className="mt-3 text-[#6A7282]">
+                  <div className="mt-3 text-[#6A7282] [&_a]:underline [&_a]:text-primary-1">
                     <RichText data={service.bsDescription as SerializedEditorState} />
-                  </p>
+                  </div>
                 </div>
               </div>
             );

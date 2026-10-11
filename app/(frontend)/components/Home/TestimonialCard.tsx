@@ -34,9 +34,9 @@ export function TestimonialCard({ item }: Props) {
 
       <h3 className="text-center text-lg font-semibold">{item.name}</h3>
 
-      <p className="mx-auto mt-5 max-w-xl text-center leading-8 text-sm md:text-base">
+      <div className="mx-auto mt-5 max-w-xl text-center leading-8 text-sm md:text-base [&_a]:underline [&_a]:text-primary-1">
        <RichText  data={item.review} />
-      </p>
+      </div>
 
       <div className="mt-6 flex justify-center">
         {Array.from({ length: item.rating }).map((_, i) => (

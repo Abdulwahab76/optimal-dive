@@ -79,12 +79,12 @@ export default function Technologies({ technologies: tech }: { technologies?: Ho
           {tech?.techHeading ?? "Technologies We Use"}
         </h2>
 
-        <p className="mt-5 max-w-5xl font-normal text-lg leading-7 text-[#6A7280]">
+        <div className="mt-5 max-w-5xl font-normal text-lg leading-7 text-[#6A7280] [&_a]:underline [&_a]:text-primary-1">
           {/* {tech?.techDescription ??
             "Hire from our pool of 350+ specialized experts in web, mobile and software engineering, specializing in the latest technologies and frameworks ready to scale your development team effortlessly."} */}
               <RichText data={tech?.techDescription as SerializedEditorState} />
 
-        </p>
+        </div>
 
         {/* Desktop */}
         <div className="relative mx-auto mt-20 hidden h-[480px] max-w-[1100px] lg:block">

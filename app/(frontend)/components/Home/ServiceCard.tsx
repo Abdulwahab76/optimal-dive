@@ -80,20 +80,20 @@ export default function ServiceCard({
             }
           `}
         >
-          <p
-            className={`
-              text-sm
-              leading-7
-              font-normal
+         <div
+  className={`
+    text-sm
+    leading-7
+    font-normal
 
-              md:text-lg
-              md:leading-8
-
-              ${active ? "text-white/70" : "text-black"}
-            `}
-          >
-            <RichText data={description} />
-          </p>
+    md:text-lg
+    md:leading-8
+[&_a]:underline [&_a]:text-primary-1
+    ${active ? "text-white/70" : "text-black"}
+  `}
+>
+  <RichText data={description} />
+</div>
           <Link href='/contact-us'>
             <button
               onClick={(e) => e.stopPropagation()}

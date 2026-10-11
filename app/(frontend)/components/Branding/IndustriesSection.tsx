@@ -51,11 +51,11 @@ export default function IndustriesSection({ industries }: { industries?: HomePag
           <h2 className="text-4xl font-semibold leading-tight text-white lg:text-5xl">
             {industries?.industriesHeading ?? "Industries We Serve"}
           </h2>
-          <p className="max-w-md text-base leading-7 text-white">
+          <div className="max-w-md text-base leading-7 text-white [&_a]:underline [&_a]:text-primary-1">
             {/* {industries?.industriesDescription ??
               "We provide tailored solutions that address the unique demands across various industries, delivering transformative experiences to drive significant impact."} */}
               <RichText data={industries?.industriesDescription as SerializedEditorState} />
-          </p>
+          </div>
         </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

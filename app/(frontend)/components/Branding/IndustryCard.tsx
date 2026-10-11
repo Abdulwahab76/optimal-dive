@@ -65,10 +65,10 @@ export default function IndustryCard({
 
         <h3 className="mb-3 text-2xl font-semibold text-white">{title}</h3>
 
-        <p className="text-base leading-7 text-white">
+        <div className="text-base leading-7 text-white [&_a]:underline [&_a]:text-primary-1">
 
           <RichText data={description} />
-        </p>
+        </div>
       </div>
     </button>
   );

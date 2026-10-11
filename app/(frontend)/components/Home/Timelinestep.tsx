@@ -7,7 +7,7 @@ export type StepVariant = "textLeft" | "textRight";
 export interface ProcessStep {
   id: string;
   title: string;
-  description: SerializedEditorState;  // 👈 string se change
+  description: SerializedEditorState; // 👈 string se change
   icon: string;
 }
 
@@ -48,8 +48,8 @@ function StepText({
     align === "right"
       ? "items-end text-right"
       : align === "left"
-      ? "items-start text-left"
-      : "items-start text-left";
+        ? "items-start text-left"
+        : "items-start text-left";
 
   return (
     <div className={`flex max-w-md flex-col ${alignClass}`}>
@@ -61,13 +61,13 @@ function StepText({
       >
         {title}
       </h3>
-      <p
-        className={`mt-1.5 text-lg leading-relaxed  ${
+      <div
+        className={`mt-1.5 text-lg leading-relaxed [&_a]:underline [&_a]:text-primary-1  ${
           isDarkText ? "text-[#6A7282]" : "text-white"
         }`}
       >
         <RichText data={description} />
-      </p>
+      </div>
     </div>
   );
 }

@@ -189,12 +189,12 @@ function BrandingStats({
           <h2 className="text-3xl font-semibold md:text-6xl">
             {brandStats?.statsHeading ?? "The Power of a Strong Brand"}
           </h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg leading-7 text-white">
+          <div className="mx-auto mt-4 max-w-xl text-lg leading-7 text-white [&_a]:underline [&_a]:text-primary-1">
             {/* {brandStats?.statsDescription ?? "Branding isn't just about aesthetics; it's a measurable driver of business growth."} */}
             <RichText
               data={brandStats?.statsDescription as SerializedEditorState}
             />
-          </p>
+          </div>
         </div>
 
         <div className="mt-24 grid grid-cols-2 gap-y-14 md:grid-cols-4">

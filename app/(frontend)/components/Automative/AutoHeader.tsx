@@ -40,12 +40,12 @@ const AutoHeader = ({ autoHero }: { autoHero?: AutomotivePage["autoHero"] }) => 
               <br />
               <span className="text-primary-1">{autoHero?.autoHeroTitleHighlight ?? "Development Services"}</span>
             </h1>
-            <p className="text-lg max-w-lg text-center lg:text-left">
+            <div className="text-lg max-w-lg text-center lg:text-left [&_a]:underline [&_a]:text-primary-1">
               {/* {autoHero?.autoHeroDescription ??
                 "We provide expert automotive software development services for vehicle automation, safety, connectivity, and performance optimization."} */}
                   <RichText data={autoHero?.autoHeroDescription as SerializedEditorState} />
 
-            </p>
+            </div>
             <Link
               href={autoHero?.autoHeroCtaLink ?? "/contact-us"}
               className="lg:mx-0 mx-auto mt-6 sm:mt-10 flex w-fit items-center gap-2 rounded-full bg-gradient-to-b from-primary-1 to-primary-2 px-5 py-3 sm:px-6 text-white"

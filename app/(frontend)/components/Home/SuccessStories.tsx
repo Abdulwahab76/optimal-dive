@@ -32,7 +32,7 @@ export default function SuccessStories({
 
           <div className="flex flex-nowrap items-center gap-2 sm:gap-4">
             <Link href={successStories?.successViewMoreLink ?? "/portfolio"}>
-              <button className="flex h-10 shrink-0 items-center gap-2 rounded-full border border-black px-3 sm:px-4 lg:px-8 text-sm sm:text-base font-medium whitespace-nowrap">
+              <button className="flex h-10 cursor-pointer shrink-0 items-center gap-2 rounded-full border border-black px-3 sm:px-4 lg:px-8 text-sm sm:text-base font-medium whitespace-nowrap">
                 {successStories?.successViewMoreLabel ?? "View More"} <ArrowRight size={12} />
               </button>
             </Link>

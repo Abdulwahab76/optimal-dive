@@ -21,9 +21,9 @@ export default function BrandingShowcase({ brandShowcase }: { brandShowcase?: Br
               {brandShowcase?.showcaseHeading ?? "More Than Just a Logo"}
             </h2>
             <hr className="w-20 border-0 h-1 my-4 bg-primary-1 rounded-full" />
-            <p className="mt-3 max-w-3xl text-sm leading-7 text-[#4A5565] lg:text-base">
+            <div className="mt-3 max-w-3xl text-sm leading-7 text-[#4A5565] lg:text-base [&_a]:underline [&_a]:text-primary-1">
               <RichText data={brandShowcase?.showcaseDescription as SerializedEditorState} />
-            </p>
+            </div>
           </div>
         </div>
 

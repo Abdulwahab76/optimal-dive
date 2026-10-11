@@ -61,11 +61,11 @@ export default async function ContactPage() {
               {hero?.titleHighlight ?? "Amazing Together"}
             </span>
           </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-gray-300 md:text-lg">
+          <div className="mx-auto mt-6 max-w-2xl text-base leading-7 text-gray-300 md:text-lg [&_a]:underline [&_a]:text-primary-1">
             {/* {hero?.description ??
               "Have a project in mind? Tell us about your goals and our team will help turn your ideas into powerful digital solutions."} */}
             <RichText data={hero?.description as SerializedEditorState} />
-          </p>
+          </div>
         </div>
       </section>
 
@@ -82,10 +82,10 @@ export default async function ContactPage() {
                   {panel?.panelTitleHighlight ?? "digital solution"}
                 </span>
               </h2>
-              <p className="mt-4 max-w-md text-gray-300">
+              <div className="mt-4 max-w-md text-gray-300 [&_a]:underline [&_a]:text-primary-1">
                 {/* {panel?.panelDescription ?? "Share your idea with our team and let's create something powerful together."} */}
                 <RichText data={panel?.panelDescription as SerializedEditorState} />
-              </p>
+              </div>
             </div>
           </div>
 

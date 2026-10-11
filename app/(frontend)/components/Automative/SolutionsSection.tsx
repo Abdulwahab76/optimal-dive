@@ -84,10 +84,10 @@ export default function SolutionsSection({
               <h4 className="mt-5 text-2xl font-bold leading-tight text-[#171717]">
                 {item.autoSolutionTitle}
               </h4>
-              <p className="mt-4 text-base leading-7 text-[#6A7282]">
+              <div className="mt-4 text-base leading-7 text-[#6A7282] [&_a]:underline [&_a]:text-primary-1">
                 {/* {item.autoSolutionDescription} */}
                 <RichText data={item.autoSolutionDescription as SerializedEditorState} />
-              </p>
+              </div>
               <ul className="mt-8 space-y-3">
                 {(item.autoSolutionFeatures ?? []).map((f, fi) => (
                   <li
