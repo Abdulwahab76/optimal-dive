@@ -72,7 +72,7 @@ export default function Footer({ footer }: Props) {
     }
   }
   return (
-    <footer className="relative overflow-hidden border-t border-[#EAEAEA] bg-white">
+    <footer className="relative overflow-hidden border-t border-[#EAEAEA] bg-white pt-6 md:pt-4">
       {/* Background Image */}
       {logo?.url && (
         <Image
@@ -84,9 +84,9 @@ export default function Footer({ footer }: Props) {
         />
       )}
       <div className="relative z-10 mx-auto max-w-7xl px-6  pb-2 pt-6">
-        <div className="grid gap-14 lg:grid-cols-[1.5fr_1fr_1.1fr]">
+        <div className="grid grid-cols-1 gap-10 sm:gap-14 lg:grid-cols-[1.5fr_1fr_1.1fr]">
           {/* Left */}
-          <div>
+          <div className="min-w-0">
             {logo?.url && (
               <Image
                 src="/images/footer-logo.png"
@@ -103,7 +103,7 @@ export default function Footer({ footer }: Props) {
 
             <form
               onSubmit={handleSubscribe}
-              className="flex h-12 w-full max-w-md overflow-hidden rounded-full border border-primary-1 bg-white"
+              className="flex h-11 sm:h-12 w-full max-w-md overflow-hidden rounded-full border border-primary-1 bg-white"
             >
               {/* Honeypot: users ko nazar nahi ata */}
               <input
@@ -130,18 +130,18 @@ export default function Footer({ footer }: Props) {
                 }}
                 disabled={status === "loading"}
                 placeholder={footer.newsletter?.placeholder || ""}
-                className="min-w-0 flex-1 bg-[#F8F8FF] px-5 text-sm outline-none disabled:opacity-60"
+                className="min-w-0 flex-1 bg-[#F8F8FF] px-3 sm:px-5 text-xs sm:text-sm outline-none disabled:opacity-60"
               />
 
               <button
                 type="submit"
                 disabled={!email.trim() || status === "loading"}
-                className="m-1 flex items-center gap-1 rounded-full bg-gradient-to-r from-primary-1 to-primary-2 px-5 text-sm text-white disabled:cursor-not-allowed disabled:opacity-40"
+                className="m-0.5 sm:m-1 flex shrink-0 items-center gap-0.5 sm:gap-1 whitespace-nowrap rounded-full bg-gradient-to-r from-primary-1 to-primary-2 px-3 sm:px-5 text-xs sm:text-sm text-white disabled:cursor-not-allowed disabled:opacity-40"
               >
                 {status === "loading"
                   ? "Subscribing..."
                   : footer.newsletter?.buttonLabel}
-                <ChevronRight size={14} />
+                <ChevronRight size={12} className="sm:w-3.5 sm:h-3.5" />{" "}
               </button>
             </form>
 
@@ -156,7 +156,6 @@ export default function Footer({ footer }: Props) {
               </p>
             )}
           </div>
-
           {/* Company */}
           <div>
             <h3 className="mb-5 text-lg font-semibold">Company</h3>
@@ -175,7 +174,6 @@ export default function Footer({ footer }: Props) {
               ))}
             </ul>
           </div>
-
           {/* Contact */}
           <div>
             <div className="space-y-5">

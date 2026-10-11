@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 
@@ -10,30 +9,26 @@ export default function VisionCta({ visionCTA }: any) {
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     const link = visionCTA.buttonLink;
 
-    // Check karein ke link mein hash (#) hai ya nahi
     if (link.includes("#")) {
       e.preventDefault();
       const hash = link.split("#")[1];
       const element = document.getElementById(hash);
 
       if (element) {
-        // Smooth scroll karein
         element.scrollIntoView({ behavior: "smooth", block: "start" });
-        // URL update karein bina page reload ke
         window.history.pushState(null, "", `#${hash}`);
       } else {
-        // Agar element is page par nahi hai to Next.js router se navigate karein
         router.push(link);
       }
     }
   };
 
   return (
-    <section className="px-5 py-16 sm:px-8">
-      <div className="relative mx-auto h-[300px] max-w-7xl md:h-[360px]">
-        {/* Shape */}
+    <section className="px-0 py-0 sm:px-8 sm:py-16">
+      <div className="relative mx-auto h-auto w-full sm:h-[300px] sm:max-w-7xl md:h-[360px]">
+        {/* Shape - sirf desktop par (sm aur upar) */}
         <svg
-          className="absolute inset-0 h-full w-full"
+          className="absolute inset-0 hidden h-full w-full sm:block"
           viewBox="0 0 1376 413"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -67,9 +62,12 @@ export default function VisionCta({ visionCTA }: any) {
           />
         </svg>
 
+        {/* Mobile-only full-width gradient box (edges tak) */}
+        <div className="absolute inset-0 block bg-gradient-to-b from-[var(--color-primary-1)] to-[var(--color-primary-2)] sm:hidden" />
+
         {/* Content */}
-        <div className="relative z-10 flex h-full flex-col items-center justify-center py-20">
-          <h2 className="max-w-[500px] text-center text-3xl font-semibold leading-tight text-white md:text-5xl">
+        <div className="relative z-10 flex h-full flex-col items-center justify-center px-5 py-20 sm:py-20">
+          <h2 className="max-w-[500px] text-center text-4xl font-semibold leading-tight text-white md:text-5xl">
             {visionCTA.heading}
           </h2>
 

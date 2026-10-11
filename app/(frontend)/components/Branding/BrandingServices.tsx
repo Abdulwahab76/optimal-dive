@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import {
   BadgeCheck, Palette, MessageSquare, BookOpen, RefreshCw, LayoutGrid,
   type LucideIcon, ArrowLeft, ArrowRight,
@@ -24,7 +24,6 @@ const defaultServices = [
 
 export default function BrandingServices({ brandServices }: { brandServices?: BrandingPage["brandServices"] }) {
   const items = brandServices?.brandServiceItems?.length ? brandServices.brandServiceItems : defaultServices;
-  const [activeService, setActiveService] = useState(items[0]?.bsTitle);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -41,8 +40,6 @@ export default function BrandingServices({ brandServices }: { brandServices?: Br
             {brandServices?.brandServicesHeading ?? "Our Branding Services"}
           </h2>
           <p className="mx-auto mt-4 max-w-xl text-sm leading-7 text-[#6A7282] md:text-base">
-            {/* {brandServices?.brandServicesDescription ??
-              "From strategic foundations to visual execution, we provide end-to-end branding solutions."} */}
             <RichText data={brandServices?.brandServicesDescription as SerializedEditorState} />
           </p>
         </div>
@@ -50,24 +47,22 @@ export default function BrandingServices({ brandServices }: { brandServices?: Br
         <div className="mt-12 hidden grid-cols-1 gap-5 sm:grid-cols-2 lg:grid lg:grid-cols-3">
           {items.map((service, i) => {
             const Icon = iconMap[service.bsIcon ?? "BadgeCheck"] ?? BadgeCheck;
-            const isActive = activeService === service.bsTitle;
 
             return (
-              <button
+              <div
                 key={service.bsTitle + i}
-                onClick={() => setActiveService(service.bsTitle)}
-                className={`group rounded-2xl border bg-[#FCFDFF] p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-                  isActive ? "border-primary-1 bg-primary-1 text-white shadow-xl" : "border-[#EEF1FF] hover:border-primary-1/30"
-                }`}
+                className="group rounded-2xl border border-[#EEF1FF] bg-[#FCFDFF] p-6 text-left transition-all duration-300 hover:-translate-y-1 hover:border-primary-1 hover:bg-primary-1 hover:shadow-xl"
               >
-                <div className={`flex h-12 w-12 items-center justify-center rounded-full transition-all duration-300 ${isActive ? "bg-white text-primary-1" : "bg-[#F5F6FF] text-primary-1 group-hover:bg-primary-1 group-hover:text-white"}`}>
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F5F6FF] text-primary-1 transition-all duration-300 group-hover:bg-white group-hover:text-primary-1">
                   <Icon size={22} strokeWidth={2} />
                 </div>
-                <h3 className={`mt-6 text-xl font-semibold ${isActive ? "text-white" : "text-[#181818]"}`}>{service.bsTitle}</h3>
-                <p className={`mt-3 text-lg leading-7 ${isActive ? "text-white/90" : "text-[#6A7282]"}`}>
+                <h3 className="mt-6 text-xl font-semibold text-[#181818] transition-colors duration-300 group-hover:text-white">
+                  {service.bsTitle}
+                </h3>
+                <p className="mt-3 text-lg leading-7 text-[#6A7282] transition-colors duration-300 group-hover:text-white/90">
                   <RichText data={service.bsDescription as SerializedEditorState} />
                 </p>
-              </button>
+              </div>
             );
           })}
         </div>
