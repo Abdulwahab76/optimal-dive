@@ -124,7 +124,7 @@ export default function Navbar({ data }: { data?: NavbarType }) {
   const [activeServiceTitle, setActiveServiceTitle] = useState<string | null>(
     defaultServices[0]?.smTitle ?? null,
   );
-  const logo = mediaUrl(data?.logo, "/images/logo.png");
+  const logo = mediaUrl(data?.logo, "/images/optimize_logo.svg");
   const navLinks = data?.navLinks?.length ? data.navLinks : defaultNavLinks;
   const services = data?.servicesMenu?.serviceMenuItems?.length
     ? data.servicesMenu.serviceMenuItems
@@ -152,15 +152,17 @@ export default function Navbar({ data }: { data?: NavbarType }) {
   return (
     <nav className="fixed w-full mx-auto z-50">
       <div className="mx-auto flex max-w-7xl items-center justify-between lg:rounded-b-3xl border border-gray-100 bg-white px-5 py-4 shadow-[0px_-26px_15px_0px_#2A4CE0]">
-        <Link href="/">
-          <div className="relative h-10 w-44">
+        <Link href="/" className="shrink-0">
+          <div className="relative h-10 w-44 sm:h-12 sm:w-52">
             <Image
               src={logo}
               alt="Logo"
               fill
               priority
-              sizes="176px"
+              sizes="(max-width: 640px) 176px, 208px"
+              quality={100}
               className="object-contain"
+              style={{ imageRendering: "-webkit-optimize-contrast" }}
             />
           </div>
         </Link>
