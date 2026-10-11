@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import {
   UserRound,
   Cog,
@@ -74,7 +74,6 @@ export default function WhyChooseUs({
     ? autoWhyChooseUs.autoWhyItems
     : defaultItems;
 
-  const [activeId, setActiveId] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   const scroll = (direction: "left" | "right") => {
@@ -113,36 +112,24 @@ export default function WhyChooseUs({
         >
           {data.map((item, index) => {
             const Icon = iconMap[item.whyIcon ?? "UserRound"] ?? UserRound;
-            const active = activeId === index;
 
             return (
-              <button
+              <div
                 key={item.whyTitle + index}
-                onClick={() => setActiveId(index)}
-                className={`group w-80 rounded-2xl p-7 text-left transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
-                  active
-                    ? "bg-gradient-to-br from-[#5B66F6] to-[#737DFF] text-white"
-                    : "bg-white shadow-sm"
-                }`}
+                className="group w-80 rounded-2xl bg-white p-7 text-left shadow-sm transition-all duration-300 hover:-translate-y-2 hover:bg-gradient-to-br hover:from-[#5B66F6] hover:to-[#737DFF] hover:shadow-xl"
               >
-                <div
-                  className={`mb-5 flex h-14 w-14 items-center justify-center rounded-full ${active ? "bg-white text-[#5B66F6]" : "bg-gray-100 text-gray-700 group-hover:bg-blue-100 group-hover:text-blue-600"}`}
-                >
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-gray-100 text-gray-700 transition-colors duration-300 group-hover:bg-white group-hover:text-[#5B66F6]">
                   <Icon size={24} />
                 </div>
-                <h3
-                  className={`mb-3 text-xl font-semibold ${active ? "text-white" : "text-gray-900"}`}
-                >
+                <h3 className="mb-3 text-xl font-semibold text-gray-900 transition-colors duration-300 group-hover:text-white">
                   {item.whyTitle}
                 </h3>
-                <div
-                  className={`text-lg leading-6 [&_a]:underline [&_a]:text-primary-1 ${active ? "text-blue-100" : "text-gray-500"}`}
-                >
+                <div className="text-lg leading-6 text-gray-500 transition-colors duration-300 [&_a]:underline [&_a]:text-primary-1 group-hover:text-blue-100">
                   <RichText
                     data={item.whyDescription as SerializedEditorState}
                   />
                 </div>
-              </button>
+              </div>
             );
           })}
         </div>
@@ -157,7 +144,7 @@ export default function WhyChooseUs({
               return (
                 <div
                   key={item.whyTitle + index}
-                  className="w-full shrink-0 snap-center rounded-2xl p-7 transition-all duration-500 text-white bg-white shadow-sm"
+                  className="w-full shrink-0 snap-center rounded-2xl bg-white p-7 shadow-sm transition-all duration-500"
                 >
                   <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-gray-100 text-gray-700">
                     <Icon size={24} />
@@ -165,11 +152,11 @@ export default function WhyChooseUs({
                   <h3 className="mb-3 text-xl font-semibold text-gray-900">
                     {item.whyTitle}
                   </h3>
-                  <p className="text-lg leading-6 text-gray-500">
+                  <div className="text-lg leading-6 text-gray-500">
                     <RichText
                       data={item.whyDescription as SerializedEditorState}
                     />
-                  </p>
+                  </div>
                 </div>
               );
             })}
